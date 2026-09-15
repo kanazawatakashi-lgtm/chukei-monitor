@@ -110,6 +110,17 @@ td.cmt{position:relative;text-align:center}
 .cmt-pop textarea{width:100%;box-sizing:border-box;font-family:var(--f-body);font-size:12.5px;
   color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:3px;
   padding:6px;resize:vertical;line-height:1.6}
+td.del{text-align:center}
+.del-btn{font-size:15px;line-height:1;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--ink-muted)}
+.del-btn:hover{background:var(--crit-tint);border-color:var(--crit);color:var(--crit-ink)}
+tr.row-deleted{display:none}
+.restore-bar{margin-top:14px;padding:10px 14px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12.5px;color:var(--ink-2);display:none}
+.restore-bar.show{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.restore-bar button{font-family:var(--f-body);font-size:12px;font-weight:500;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:4px 12px;cursor:pointer}
+.restore-bar button:hover{border-color:var(--border-strong)}
 .legend{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:1px;background:var(--border);border:1px solid var(--border)}
 .legend>div{background:var(--surface);padding:14px 16px}
@@ -136,7 +147,7 @@ td.cmt{position:relative;text-align:center}
     掲載　　　　<b>13銘柄 / 最大30</b><br>
     判定エンジン<b>仕様 v1.3</b><br>
     総合判定　　<b>置かない</b><br>
-    基準日　　　<b>2026年9月14日</b>
+    基準日　　　<b>2026年9月15日</b>
   </div>
 </header>
 
@@ -163,13 +174,13 @@ td.cmt{position:relative;text-align:center}
         <th class="lv">P</th><th class="lv">A</th><th class="lv">G</th><th class="lv">R</th><th class="lv">E</th>
         <th>ボトルネック</th>
         <th>追加還元<br>の必要度</th>
-        <th>ｶﾊﾞﾚｯｼﾞ / 基準</th><th>重要度</th><th>コメント</th>
+        <th>ｶﾊﾞﾚｯｼﾞ / 基準</th><th>重要度</th><th>コメント</th><th>操作</th>
       </tr>
     </thead>
     <tbody>
       <tr data-code="3151">
         <td class="code">3151</td>
-        <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a><span class="upd" title="台帳更新 2026-09-07">更新</span><small>中期経営計画2027－Move on to the Next Stage－</small></td>
+        <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a><small>中期経営計画2027－Move on to the Next Stage－</small></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>835</b>億円<br><span class="mkt-sub">10.4倍 ／ 0.68倍</span></td>
         <td class="num">2025-2027</td>
         <td class="num">1/3</td>
@@ -189,6 +200,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="3151"
+          data-name="バイタルケーエスケー・ホールディングス" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="4547">
         <td class="code">4547</td>
@@ -212,6 +225,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="4547"
+          data-name="キッセイ薬品工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="4619">
         <td class="code">4619</td>
@@ -235,6 +250,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="4619"
+          data-name="日本特殊塗料" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="4973">
         <td class="code">4973</td>
@@ -258,6 +275,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="4973"
+          data-name="日本高純度化学" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="5290">
         <td class="code">5290</td>
@@ -281,6 +300,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="5290"
+          data-name="ベルテクスコーポレーション" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="5482">
         <td class="code">5482</td>
@@ -304,6 +325,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="5482"
+          data-name="愛知製鋼" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="5563">
         <td class="code">5563</td>
@@ -327,6 +350,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="5563"
+          data-name="新日本電工" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="5901">
         <td class="code">5901</td>
@@ -350,10 +375,12 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="5901"
+          data-name="東洋製罐グループホールディングス" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="6309">
         <td class="code">6309</td>
-        <td class="nm"><a href="6309_scorecard.html">巴工業</a><small>第14回中期経営計画「Create The New Future ～新たな未来の創造～」</small></td>
+        <td class="nm"><a href="6309_scorecard.html">巴工業</a><span class="upd" title="台帳更新 2026-09-15">更新</span><small>第14回中期経営計画「Create The New Future ～新たな未来の創造～」</small></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">13.8倍 ／ 1.38倍</span></td>
         <td class="num">2026-2028</td>
         <td class="num">0/3</td>
@@ -373,6 +400,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="6309"
+          data-name="巴工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="6737">
         <td class="code">6737</td>
@@ -396,6 +425,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="6737"
+          data-name="EIZO" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="7305">
         <td class="code">7305</td>
@@ -419,6 +450,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="7305"
+          data-name="新家工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="8018">
         <td class="code">8018</td>
@@ -442,6 +475,8 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="8018"
+          data-name="三共生興" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
       <tr data-code="8158">
         <td class="code">8158</td>
@@ -465,10 +500,13 @@ td.cmt{position:relative;text-align:center}
             </div>
           </span>
         </td>
+        <td class="del"><button type="button" class="del-btn" data-code="8158"
+          data-name="ソーダニッカ" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
     </tbody>
   </table>
 </div>
+<div class="restore-bar"></div>
 
 <div class="legend">
   <div><h3>レバー</h3><p>P 稼ぐ ／ A 資産を入れ替える ／ G 投じる ／ R 返す ／ E 資本を絞る。
@@ -515,32 +553,76 @@ td.cmt{position:relative;text-align:center}
 </div>
 </div>
 
+
 <script>
 (function(){
   var CODES = ["3151","4547","4619","4973","5290","5482","5563","5901","6309","6737","7305","8018","8158"];
+  var NAMES = {"3151":"バイタルケーエスケー・ホールディングス","4547":"キッセイ薬品工業","4619":"日本特殊塗料","4973":"日本高純度化学","5290":"ベルテクスコーポレーション","5482":"愛知製鋼","5563":"新日本電工","5901":"東洋製罐グループホールディングス","6309":"巴工業","6737":"EIZO","7305":"新家工業","8018":"三共生興","8158":"ソーダニッカ"};
+  var IMPORTANCE_PRIORITY = {"": 0, "高": 1, "中": 2, "低": 3};
+  var loaded = {};
 
   function currentState(code){
     var sel = document.querySelector('select.importance[data-code="' + code + '"]');
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
-    return {importance: sel ? sel.value : "", comment: ta ? ta.value : ""};
+    var tr = document.querySelector('tr[data-code="' + code + '"]');
+    return {importance: sel ? sel.value : "", comment: ta ? ta.value : "",
+            deleted: tr ? tr.dataset.deleted === "1" : false};
   }
 
   function applyRowData(code, data){
     var sel = document.querySelector('select.importance[data-code="' + code + '"]');
     if (sel && document.activeElement !== sel) sel.value = data.importance || "";
     var tr = document.querySelector('tr[data-code="' + code + '"]');
-    if (tr) tr.dataset.importance = data.importance || "";
+    if (tr) {
+      tr.dataset.importance = data.importance || "";
+      tr.dataset.deleted = data.deleted ? "1" : "0";
+      tr.classList.toggle("row-deleted", !!data.deleted);
+    }
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
     if (ta && document.activeElement !== ta) ta.value = data.comment || "";
     var btn = document.querySelector('button.cmt-btn[data-code="' + code + '"]');
     if (btn) btn.classList.toggle("has-comment", !!(data.comment && data.comment.trim()));
+    loaded[code] = true;
   }
 
   function applyFilter(){
     var active = document.querySelector(".filter-btn.active");
     var val = active ? active.dataset.filter : "";
     document.querySelectorAll("tbody tr[data-code]").forEach(function(tr){
+      if (tr.dataset.deleted === "1") { tr.style.display = "none"; return; }
       tr.style.display = (!val || tr.dataset.importance === val) ? "" : "none";
+    });
+  }
+
+  function resortRows(){
+    var tbody = document.querySelector("tbody");
+    if (!tbody) return;
+    var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
+    trs.sort(function(a, b){
+      var pa = IMPORTANCE_PRIORITY[a.dataset.importance || ""];
+      var pb = IMPORTANCE_PRIORITY[b.dataset.importance || ""];
+      if (pa !== pb) return pa - pb;
+      return a.dataset.code < b.dataset.code ? -1 : 1;
+    });
+    trs.forEach(function(tr){ tbody.appendChild(tr); });
+  }
+
+  function updateRestoreBar(){
+    var bar = document.querySelector(".restore-bar");
+    if (!bar) return;
+    var deleted = CODES.filter(function(c){
+      var tr = document.querySelector('tr[data-code="' + c + '"]');
+      return tr && tr.dataset.deleted === "1";
+    });
+    if (!deleted.length) { bar.classList.remove("show"); bar.innerHTML = ""; return; }
+    bar.classList.add("show");
+    bar.innerHTML = "削除済み（" + deleted.length + "件）：" +
+      deleted.map(function(c){
+        return '<button type="button" class="restore-btn" data-code="' + c + '">'
+          + (NAMES[c] || c) + ' を元に戻す</button>';
+      }).join(" ");
+    bar.querySelectorAll(".restore-btn").forEach(function(b){
+      b.addEventListener("click", function(){ setDeleted(b.dataset.code, false); });
     });
   }
 
@@ -569,40 +651,69 @@ td.cmt{position:relative;text-align:center}
     p.addEventListener("click", function(e){ e.stopPropagation(); });
   });
 
-  // 保存はdb capabilityがある場合のみ。無ければ入力欄は動くが保存されない。
+  var dbRef = null;
+  function setDeleted(code, val){
+    var tr = document.querySelector('tr[data-code="' + code + '"]');
+    if (tr) { tr.dataset.deleted = val ? "1" : "0"; tr.classList.toggle("row-deleted", val); }
+    applyFilter();
+    updateRestoreBar();
+    if (dbRef) dbRef.doc("stocks/" + code).update({deleted: val}).catch(function(){});
+  }
+
+  document.querySelectorAll(".del-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var code = btn.dataset.code;
+      var name = btn.dataset.name || code;
+      if (!window.confirm(name + "（" + code + "）を一覧から削除しますか？\n"
+        + "（台帳ファイル自体は消えません。一覧から非表示にするだけで、下のバーから元に戻せます）")) return;
+      setDeleted(code, true);
+    });
+  });
+
+  // 重要度・コメントの操作自体はdbが無くても効く（そのセッション内だけ、
+  // 保存されずに）。db capabilityがある場合だけ、変更を永続化し、他の
+  // 端末・再訪問時にも反映する（2026-09-15: 削除ボタンと同じ設計に統一）。
+  function save(code){
+    if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code)).catch(function(){});
+  }
+
+  document.querySelectorAll("select.importance").forEach(function(sel){
+    sel.addEventListener("change", function(){
+      var code = sel.dataset.code;
+      var tr = document.querySelector('tr[data-code="' + code + '"]');
+      if (tr) tr.dataset.importance = sel.value;
+      applyFilter();
+      resortRows();
+      save(code);
+    });
+  });
+
+  document.querySelectorAll("textarea.cmt-text").forEach(function(ta){
+    var t;
+    ta.addEventListener("input", function(){
+      clearTimeout(t);
+      var code = ta.dataset.code;
+      t = setTimeout(function(){ save(code); }, 600);
+    });
+  });
+
+  applyFilter();
+
   (async function(){
     var db = null;
     try { db = await claude.use("db"); } catch (e) { db = null; }
     if (!db) return;
+    dbRef = db;
 
-    function save(code){
-      db.doc("stocks/" + code).set(currentState(code)).catch(function(){});
-    }
-
+    var pending = CODES.length;
     CODES.forEach(function(code){
       db.doc("stocks/" + code).onSnapshot(function(snap){
         applyRowData(code, snap.data() || {});
         applyFilter();
+        updateRestoreBar();
+        pending -= 1;
+        if (pending <= 0) resortRows();
       }, function(err){ console.error("db watch failed", code, err); });
-    });
-
-    document.querySelectorAll("select.importance").forEach(function(sel){
-      sel.addEventListener("change", function(){
-        var code = sel.dataset.code;
-        var tr = document.querySelector('tr[data-code="' + code + '"]');
-        if (tr) tr.dataset.importance = sel.value;
-        applyFilter();
-        save(code);
-      });
-    });
-
-    document.querySelectorAll("textarea.cmt-text").forEach(function(ta){
-      var t;
-      ta.addEventListener("input", function(){
-        clearTimeout(t);
-        var code = ta.dataset.code;
-        t = setTimeout(function(){ save(code); }, 600);
-      });
     });
   })();
 })();
