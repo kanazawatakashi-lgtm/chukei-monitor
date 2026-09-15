@@ -1,0 +1,508 @@
+<title>新家工業 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">7305 ・ 東証スタンダード ・ 日本基準</div>
+    <h1>新家工業<br>中期経営計画2026 達成度検証</h1>
+    <p class="mh-sub">3か年計画の2年終了時点。稼ぐ力は失速し、還元は強化。自己資本の増減は年によって真逆に動いている</p>
+  </div>
+  <div class="mh-right">
+    計画期間　<b>2025/3期 － 2027/3期 </b><br>
+     公表日　<b>2024年5月14日 </b><br>
+     基準日　<b>2026年9月6日 </b><br>
+     金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<section style="margin-top:36px">
+  <p class="eyebrow">00　中期経営計画の履歴</p>
+  <h2>いつ発表され、いつ修正されたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
+      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2020〜2023年度</td>
+          <td><span class="chip c-skip">終了</span></td>
+          <td class="item">中期経営計画2023</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2024年5月14日</td>
+          <td><span class="chip c-ok">公表</span></td>
+          <td class="item">中期経営計画2026</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">2024〜2026年度</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">01　判定サマリー</p>
+  <h2>稼ぐ力は失速、還元は強化。それでも自己資本は増えている</h2>
+
+<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
+  <div class="tablewrap" style="margin-bottom:24px">
+    <table style="min-width:660px">
+      <thead><tr>
+        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
+        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
+      </tr></thead>
+      <tbody><tr>
+        <td><span class="chip c-crit">E</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-good">A</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td style="font-weight:700;white-space:nowrap"><b>P</b> 稼ぐ</td>
+        <td><span class="chip c-skip">開示なし</span><small style="display:block;color:var(--ink-muted);font-size:11px">計算に必要な数値が非開示</small></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
+    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
+      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
+      判定できたのは2本で、<b>「未判定」は良好という意味ではありません。</b>
+      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
+      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
+    </p>
+  </div>
+
+</section>
+
+<section>
+  <p class="eyebrow">02　現プランの進捗状況</p>
+  <h2>レバー別に並べた達成状況</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程67%。別建て期間のKPIはその期間の工程）</caption>
+      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
+        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr class="spot">
+          <td class="item">売上高(目標467億・2026年度)</td><td>PG</td>
+          <td class="num">404.47</td><td class="num">-191.7%</td>
+          <td class="num">-258pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">営業利益(目標35億・2026年度)</td><td>P</td>
+          <td class="num">18.85</td><td class="num">-11.6%</td>
+          <td class="num">-78pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">純利益(目標26億・2026年度)</td><td>P</td>
+          <td class="num">15.21</td><td class="num">-18.7%</td>
+          <td class="num">-85pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">ROE(目標7.7%・2026年度)</td><td>PE</td>
+          <td class="num">4.6</td><td class="num">-19.2%</td>
+          <td class="num">-86pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr><td class="item">成長戦略投資(3年累計20億円)</td><td>G</td>
+          <td class="num">—</td><td class="num">—</td>
+          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">実績未取得</td>
+          <td><span class="chip c-warn">未判定</span></td></tr>
+        <tr><td class="item">サステナビリティ投資(3年累計10億円)</td><td>G</td>
+          <td class="num">—</td><td class="num">—</td>
+          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">実績未取得</td>
+          <td><span class="chip c-warn">未判定</span></td></tr>
+        <tr>
+          <td class="item">配当性向(50%以上)</td><td>R</td>
+          <td class="num">100.9</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">閾値方式</td>
+          <td class="num">—</td>
+          <td><div class="meter"><div class="fill f-good" style="width:100%"></div></div></td>
+          <td><span class="chip c-good">A</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
+  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
+</section>
+
+<section>
+  <p class="eyebrow">03　旧プランの結果</p>
+  <h2>前の計画は達成できたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>前計画（2020〜2023年度）の最終実績</b></caption>
+      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th>
+        <th class="num">達成率</th><th>判定</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="item">rev</td><td class="num">—</td>
+          <td class="num">—</td><td class="num">—</td>
+          <td><span class="chip c-good">達成</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">会社の説明：『売上高は目標達成』。最終年度実績445.56億円（irbank）。 目標の絶対値はグラフのテキスト抽出が崩れており未確定</td></tr>
+        <tr><td class="item">opm</td><td class="num">8.3</td>
+          <td class="num">4.6</td><td class="num">55%</td>
+          <td><span class="chip c-crit">未達</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">営業利益率。最終年度（2024年3月期）のみ目標未達</td></tr>
+        <tr><td class="item">roe</td><td class="num">9.4</td>
+          <td class="num">5.0</td><td class="num">53%</td>
+          <td><span class="chip c-crit">未達</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">ROE。最終年度のみ目標未達</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">会社の総括：「売上高は目標達成したものの、営業利益は資源高や慢性的な
+人手不足による工期遅れの発生等が影響し、最終年度の2023年度（2024年3月期）
+は目標を下回った」。営業利益率・ROEとも最終年度のみ目標未達で、
+原因（資源高・人手不足による工期遅れ）を明確に特定している。</p>
+</section>
+
+
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　ボトルネックの深掘り　—　P レバーと、隠れていた E レバー</p>
+  <h2>稼ぐ力の失速と、還元しても縮まない自己資本</h2>
+  <p class="deck">エンジン上のボトルネックは判定できた中で最も悪いP（稼ぐ）ですが、より重要な論点はA・Gと並んで未判定のEレバーにあります。自己資本の動きを年度別に分解します。</p>
+
+  <h3>Pレバー ─ 4指標そろって目標未達</h3>
+  <p class="prose">2年目（2026年3月期）は売上高・営業利益・経常利益・純利益・ROEの5指標中4指標（ROEを含む）が目標を下回りました。唯一プラス材料だった1年目の純利益超過（目標17億円に対し21.28億円）は、決算短信・有報で確認できる<strong>投資有価証券売却益10.14億円と有価証券償還益0.22億円の特別利益合計10.36億円</strong>によるもので、本業の稼ぐ力の改善ではありませんでした。2年目にはこの特別利益の押し上げがなくなり、経常利益ベースの弱さがそのまま純利益に表れています。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table style="min-width:600px">
+      <caption><b>1年目と2年目の自己資本の動き</b>　方向が逆になっている</caption>
+      <thead><tr><th>年度</th><th class="num">自己資本（期首→期末）</th><th class="num">増減</th><th>主因</th><th class="num">自己株式取得</th></tr></thead>
+      <tbody>
+        <tr><td class="item">1年目<small>2025年3月期</small></td>
+          <td class="num">355.97 → 311.15</td><td class="num" style="color:var(--good-ink)">−44.82</td>
+          <td>自己株式44.17億円の大型取得</td><td class="num">44.17</td></tr>
+        <tr class="spot"><td class="item">2年目<small>2026年3月期</small></td>
+          <td class="num">311.15 → 344.10</td><td class="num" style="color:var(--crit-ink)">+32.95</td>
+          <td>含み益等33.63億円の増加</td><td class="num">0.01</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <p class="fig-title">自己資本ブリッジ　2025年3月期末 → 2026年3月期末</p>
+    <p class="fig-note">単位：億円　／　縦軸は300億円から。棒はいずれも差分であり、両端の2本のみ残高。会社は自己資本の数値目標を開示していないため、目標線は引いていない</p>
+    <div class="legend">
+      <span><i style="background:var(--wf-total)"></i>残高</span>
+      <span><i style="background:var(--wf-up)"></i>増加要因（方針から遠ざかる）</span>
+      <span><i style="background:var(--wf-down)"></i>減少要因（方針に近づく）</span>
+    </div>
+    <div class="svgbox">
+      <svg viewBox="0 0 880 400" width="880" height="400" role="img" aria-label="自己資本ブリッジ。2025年3月期末311.15億円に純利益15.21億円とその他有価証券評価差額金等27.66億円、退職給付調整5.97億円が加わり、配当14.39億円とその他1.50億円が差し引かれ、2026年3月期末は344.10億円。前期は自己株式取得44.17億円が主因で355.97億円から311.15億円へ減少しており、今期は方向が逆転している。">
+        <g stroke="var(--grid)" stroke-width="1">
+          <line x1="70" y1="51.5"  x2="860" y2="51.5"/>
+          <line x1="70" y1="94.6"  x2="860" y2="94.6"/>
+          <line x1="70" y1="137.7" x2="860" y2="137.7"/>
+          <line x1="70" y1="180.8" x2="860" y2="180.8"/>
+          <line x1="70" y1="223.9" x2="860" y2="223.9"/>
+          <line x1="70" y1="267.0" x2="860" y2="267.0"/>
+          <line x1="70" y1="310"   x2="860" y2="310"/>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--ink-muted)" text-anchor="end">
+          <text x="62" y="55.5">360</text><text x="62" y="98.6">350</text>
+          <text x="62" y="141.7">340</text><text x="62" y="184.8">330</text>
+          <text x="62" y="227.9">320</text><text x="62" y="271.0">310</text>
+          <text x="62" y="314">300</text>
+        </g>
+        <g stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="3 3">
+          <line x1="157.5" y1="262.0" x2="208.3" y2="262.0"/>
+          <line x1="270.3" y1="196.5" x2="321.2" y2="196.5"/>
+          <line x1="383.2" y1="77.3"  x2="434.1" y2="77.3"/>
+          <line x1="496.1" y1="51.5"  x2="547.0" y2="51.5"/>
+          <line x1="609.0" y1="113.6" x2="659.9" y2="113.6"/>
+          <line x1="721.9" y1="120.0" x2="772.8" y2="120.0"/>
+        </g>
+        <rect x="95.5"  y="262.0" width="62" height="48.0"  fill="var(--wf-total)"/>
+        <rect x="208.3" y="196.5" width="62" height="65.5"  fill="var(--wf-up)"/>
+        <rect x="321.2" y="77.3"  width="62" height="119.2" fill="var(--wf-up)"/>
+        <rect x="434.1" y="51.5"  width="62" height="25.8"  fill="var(--wf-up)"/>
+        <rect x="547.0" y="51.5"  width="62" height="62.1"  fill="var(--wf-down)"/>
+        <rect x="659.9" y="113.6" width="62" height="6.4"   fill="var(--wf-down)"/>
+        <rect x="772.8" y="120.0" width="62" height="190.0" fill="var(--wf-total)"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="600" text-anchor="middle">
+          <text x="126.5" y="256"   fill="var(--ink)">311.15</text>
+          <text x="239.3" y="190.7" fill="var(--wf-up)">+15.21</text>
+          <text x="352.2" y="71.5"  fill="var(--wf-up)">+27.66</text>
+          <text x="465.1" y="45.7"  fill="var(--wf-up)">+5.97</text>
+          <text x="578.0" y="45.7"  fill="var(--wf-down)">−14.39</text>
+          <text x="690.9" y="107.8" fill="var(--wf-down)">−1.50</text>
+          <text x="803.8" y="114.2" fill="var(--ink)">344.10</text>
+        </g>
+        <g font-family="Noto Sans JP, sans-serif" font-size="11.5" fill="var(--ink-2)" text-anchor="middle">
+          <text x="126.5" y="330">2025年度末</text>
+          <text x="239.3" y="330">純利益</text>
+          <text x="352.2" y="330">評価差額金</text><text x="352.2" y="346" font-size="10" fill="var(--ink-muted)">等</text>
+          <text x="465.1" y="330">退職給付</text><text x="465.1" y="346" font-size="10" fill="var(--ink-muted)">調整</text>
+          <text x="578.0" y="330">配当</text>
+          <text x="690.9" y="330">その他</text>
+          <text x="803.8" y="330">2026年度末</text>
+        </g>
+        <line x1="70" y1="310" x2="860" y2="310" stroke="var(--border-strong)" stroke-width="1"/>
+      </svg>
+    </div>
+    <figcaption>「評価差額金等」はその他有価証券評価差額金の変動（税効果後、+27.66億円）。「その他」は退職給付に係る調整累計額を除く残差（自己株式取得▲0.01億円・非支配株主持分の変動等）の合計。参考：前期（2025年3月期）は自己株式取得44.17億円が主因で355.97億円→311.15億円へ44.82億円減少しており、今期とは方向が逆。</figcaption>
+  </figure>
+
+  <h3>Rレバー ─ 還元は強化されている。ただし利益を上回る水準に</h3>
+  <p class="prose">配当性向（連結、台帳側の計算値）は2023年度51.0%→2024年度76.6%→2025年度<strong>100.9%</strong>と急上昇しています。「総還元性向100%（配当性向50%以上）」という基本方針そのものには沿っていますが、<strong>配当だけで純利益を上回る水準</strong>に達したのは今回が初めてです。1年目は自己株式取得（44.17億円）を主軸に還元しつつ自己資本を圧縮できていましたが、2年目は還元の中心が配当に移り、かつ自己資本はむしろ拡大しました。稼ぐ力の悪化を還元の強化で覆い隠していないか、次年度以降の配当性向と自己株式取得の実額を継続して確認する必要があります。</p>
+
+  <h3>Aレバー・Gレバー ─ どちらも判定材料が開示されていない</h3>
+  <p class="prose"><strong>Aレバー（資産を入れ替える）</strong>は判定していません。中期経営計画2026には政策保有株式の削減や含み益の処分に関する数値目標がなく（5482・4547のような閾値目標が無い）、検証不能です。ただし2027-2033年度の投資戦略スライドには「不動産セグメント等のキャッシュインを活用して下限配当100円を実施」という記載があり、不動産の売却・収益化が将来の還元原資として位置づけられている可能性があります。含み益・処分計画の実額は未取得です（gaps参照）。</p>
+  <p class="prose"><strong>Gレバー（投じる）</strong>も判定していません。中計は「成長戦略投資3年累計20億円」「サステナビリティ投資3年累計10億円」という金額目標を掲げていますが、有報の設備投資概要は総額（2026年3月期2,503百万円）のみで、このカテゴリ別の実績が開示されていません。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>経営陣が何を言い、何をしたか</h2>
+
+  <ul class="tl">
+    <li>
+      <div class="date">2024.05.14</div>
+      <p class="ev">中期経営計画2026（2024-2026年度）および長期ビジョン2033を同時公表</p>
+      <p class="note">配当性向50%以上・総還元性向100%の株主還元方針を明確化。「自己資本の拡大を抑制し、機動的な株主還元を実施する」と表明しました。</p>
+    </li>
+    <li class="good">
+      <div class="date">2025.05.13</div>
+      <p class="ev">2025年3月期決算短信　／　1年目、純利益・ROEは超過も自己資本は圧縮</p>
+      <p class="note">売上高はほぼ目標達成。営業利益・経常利益は未達でしたが、政策保有株式売却等の特別利益10.36億円で純利益・ROEは目標を上回りました。<strong>自己株式80万株・44.17億円を取得</strong>し、配当性向76.6%と合わせ、自己資本は355.97億円→311.15億円へ44.82億円減少しました。</p>
+    </li>
+    <li>
+      <div class="date">2025.12.23</div>
+      <p class="ev">自己株式845,326株の消却を決議（2026年1月30日付）</p>
+    </li>
+    <li>
+      <div class="date">2026.02.10</div>
+      <p class="ev">普通株式1株につき2株の株式分割を決議（2026年4月1日付）</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.06.22</div>
+      <p class="ev">有価証券報告書（第162期）提出　／　2年目、自己資本は逆方向に増加</p>
+      <p class="note">売上高404.47億円・営業利益18.85億円等、中計2年目の目標をほぼ全項目で下回りました。自己資本は311.15億円→<strong>344.10億円へ32.95億円「増加」</strong>しており、総還元性向100%方針とは逆方向に動いています（その他有価証券評価差額金の増加が主因）。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.08.07</div>
+      <p class="ev">2027年3月期第1四半期決算短信　／　増収増益もフルイヤー予想は中計目標未達を前提</p>
+      <p class="note">第1四半期は増収増益（売上高+5.6%・純利益+52.3%）で回復。ただし<strong>通期会社予想（売上高420億・営業利益24億・純利益17億）は、中期経営計画2026の最終年度目標（467億・35億・26億）を依然として大きく下回る水準</strong>で据え置かれています。</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===================== §6 ===================== -->
+<section>
+  <p class="eyebrow">06　会社予想の精度</p>
+  <h2>年度別目標に対し、着地は年によって真逆</h2>
+  <p class="deck">中期経営計画2026は珍しく3年度分の年度別目標を開示している。目標と実績（最終年度は現時点の会社予想）を並べる。</p>
+
+  <div class="tablewrap">
+    <table style="min-width:720px">
+      <caption><b>中期経営計画2026　年度別目標と実績・予想の対比</b></caption>
+      <thead><tr><th>年度</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">経常利益</th><th class="num">純利益</th><th class="num">ROE</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2024年度<small>目標</small></td>
+          <td class="num">427</td><td class="num">22</td><td class="num">24</td><td class="num">17</td><td class="num">5.1</td></tr>
+        <tr><td class="item">2024年度<small>実績</small></td>
+          <td class="num">428.45</td><td class="num">16.41</td><td class="num">19.05</td><td class="num">21.28</td><td class="num">6.4</td></tr>
+        <tr><td class="item">2025年度<small>目標</small></td>
+          <td class="num">456</td><td class="num">29</td><td class="num">31</td><td class="num">21</td><td class="num">6.4</td></tr>
+        <tr class="spot"><td class="item">2025年度<small>実績</small></td>
+          <td class="num">404.47</td><td class="num">18.85</td><td class="num">23.06</td><td class="num">15.21</td><td class="num">4.6</td></tr>
+        <tr><td class="item">2026年度<small>目標（2024年5月公表時）</small></td>
+          <td class="num">467</td><td class="num">35</td><td class="num">37</td><td class="num">26</td><td class="num">7.7</td></tr>
+        <tr class="spot"><td class="item">2026年度<small>会社予想（2026年8月・Q1時点）</small></td>
+          <td class="num">420.00</td><td class="num">24.00</td><td class="num">25.00</td><td class="num">17.00</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="prose" style="margin-top:18px">1年目（2024年度）は<strong>売上高・純利益・ROEが目標を上回る</strong>一方、営業利益・経常利益は未達という混在した着地でした。2年目（2025年度）は一転して<strong>5指標中4指標が目標を下回る</strong>着地です。そして最終年度（2026年度）は、期初の会社予想の時点で既に売上高467億→420億（▲10.1%）、営業利益35億→24億（▲31.4%）、純利益26億→17億（▲34.6%）と、<strong>当初の中計目標を大きく下回る水準</strong>が織り込まれています。</p>
+  <p class="pull">好調と不調が交互に来ているのではなく、目標そのものが年を追うごとに遠ざかっている。</p>
+  <p class="prose">前中計（中期経営計画2023）でも、会社は「売上高は目標達成したが、最終年度に営業利益率・ROEが失速して未達に終わった」と総括しています。今回はそれよりも早い段階、しかも最終年度に入る前の第1四半期時点で、会社自身がフルイヤーの未達をほぼ確定的なものとして織り込んでいる点が異なります。</p>
+</section>
+
+<!-- ===================== §7 ===================== -->
+<section>
+  <p class="eyebrow">07　次の検証条件</p>
+  <h2>何が起きれば結論が変わるか</h2>
+  <p class="deck">株価データが未取得のため、株価対比（PBR・イベントスタディ）は含めていません。以下はいずれも、次の四半期・年次の開示で機械的に判定できる条件です。</p>
+
+  <ul class="tests">
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>2027年3月期の実績が、Q1後の会社予想（下方）ではなく当初の中計目標に近づくか</h4>
+      <p>第1四半期は増収増益でした。この勢いが続けば、8月時点の保守的な会社予想（売上高420億・純利益17億）を上回り、当初目標（467億・26億）に近づく余地があります。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>自己資本が再び減少に転じるか</h4>
+      <p>1年目は自己株式取得44.17億円で自己資本を圧縮できました。2年目に止まった自己株式取得が再開され、含み益の増加を上回る規模で実行されれば、方針通りの動きに戻ったと判定できます。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>不動産・政策保有株式の含み益処分計画が開示されるか</h4>
+      <p>2027-2033年度の投資戦略スライドにある「不動産等のキャッシュインを活用した下限配当」の具体的な計画や実額が開示されれば、未判定のAレバーが動きます。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>配当性向100%超の状態が続くか</h4>
+      <p>2025年度は配当だけで純利益を上回る水準（100.9%）に達しました。純利益が回復しないままこの状態が続けば、還元の持続可能性そのものが論点になります。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>前中計と同型の「最終年度失速」パターンを繰り返すか</h4>
+      <p>前中計（中期経営計画2023）は最終年度に営業利益率・ROEが目標未達に終わりました。現中計は2年目で既に主要指標が総崩れになっており、同じパターンの再現、あるいはそれ以上の未達で終わる可能性があります。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>売上高の減少が3年連続になるか</h4>
+      <p>2025年度は前年比▲5.6%の減収でした。2026年度の会社予想（420億円）も2025年度実績（404.47億円）からの回復幅は小さく、鋼管関連の建築需要低迷が続く限り、減収基調から抜け出せない可能性があります。</p></div></li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：中期経営計画2026 説明資料（2024年5月14/15日）、有価証券報告書 第162期（2026年3月期、2026年6月22日提出、EDINET）、決算短信 2025年3月期（2025年5月13日発表）、2027年3月期第1四半期決算短信（2026年8月7日発表）。</li>
+    <li>自己資本は連結貸借対照表の「純資産の部の合計額」から非支配株主持分を控除した金額（普通株式に係る期末の純資産額）。2025年3月期末311.15億円、2026年3月期末344.10億円は、いずれも有報・決算短信の1株当たり情報または「(参考)自己資本」欄で確認した値。</li>
+    <li><b>2026-09-06のデータ訂正について：</b>本台帳が従来irbank.net集計値として持っていた自己資本は、FY2022〜FY2025の4期連続で開示された自己資本比率・総資産から逆算した値と一致しなかった。有報・決算短信の連結貸借対照表・連結株主資本等変動計算書で裏取りし、FY2022 289.55→318.65億円、FY2023 300.90→355.97億円、FY2024 264.63→311.15億円、FY2025 265.25→344.10億円に訂正した。あわせてDPS（全年度が実際の約半分だった。株式分割後の値を分割前の年度に誤って当てはめていたことが原因）とROE（FY2023〜FY2025）も訂正している。詳細は台帳（plans/7305_araya.yaml）の各actualsのflagsを参照。</li>
+    <li>自己資本ブリッジの内訳は、有報の連結株主資本等変動計算書に記載された当期変動額をそのまま用いている。2026年3月期：純利益+15.21億円、その他有価証券評価差額金+27.66億円、退職給付に係る調整累計額+5.97億円、剰余金の配当−14.39億円、その他−1.50億円（自己株式の取得▲0.01億円・非支配株主持分の変動等の残差）＝合計+32.95億円。2025年3月期：純利益+21.28億円、その他有価証券評価差額金−8.80億円、為替換算調整勘定+1.76億円、退職給付に係る調整累計額−1.51億円、剰余金の配当−14.25億円、自己株式の取得−44.17億円、自己株式の処分+0.87億円＝合計−44.82億円（いずれも百万円単位の開示を億円換算）。</li>
+    <li>配当性向（連結、2025年度100.9%）は台帳側の計算値（配当金総額15.34億円÷親会社株主に帰属する当期純利益15.21億円）。会社は連結ベースの配当性向を短信・有報のどこにも明示しておらず、個別（非連結）ベースでは96.1%と有報に開示がある（参考値）。</li>
+    <li>前中計（中期経営計画2023、2020-2023年度）の絶対額目標はPDFの棒グラフのテキスト抽出が崩れ、確実に読み取れたのは営業利益率・ROEの最終年度目標対実績のみ。売上高は会社の説明文（「目標達成」）で裏取りしている。</li>
+    <li>C1（初年度ジャンプ）は年度別内訳が3年分そろっているため計画公表値のみで精度高く計算できる。C2（ROE分母の原資）・C3（セグメント集中度）は、自己資本の数値目標と3年累計の純利益・還元額の内訳が非開示のため入力なし＝スキップとしている。</li>
+    <li>成長戦略投資（3年累計20億円）・サステナビリティ投資（3年累計10億円）は、有報の設備投資概要が総額のみでカテゴリ別実績を開示していないため未判定。</li>
+    <li>株価対比は株価データが未取得のため含めていない。</li>
+    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）・中計の履歴（§00）・前計画の結果（§03の前段）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+
+</div>

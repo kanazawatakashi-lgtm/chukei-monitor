@@ -1,0 +1,414 @@
+<title>日本高純度化学 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">4973 ・ 東証プライム ・ 日本基準</div>
+    <h1>日本高純度化学<br>中期経営計画 FY2025-2027（RDD2030フェーズ2）達成度検証</h1>
+    <p class="mh-sub">P/Lの数値目標を持たない「資本構成型」の中計。判定できるのはA・Rのみで、Aは「売っているのに悪化する」逆行が続いている</p>
+  </div>
+  <div class="mh-right">
+    計画期間　<b>2026/3期 － 2028/3期 </b><br>
+     公表日　<b>2025年4月28日 </b><br>
+     基準日　<b>2026年9月6日 </b><br>
+     金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<section style="margin-top:36px">
+  <p class="eyebrow">00　中期経営計画の履歴</p>
+  <h2>いつ発表され、いつ修正されたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
+      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2022〜2024年度</td>
+          <td><span class="chip c-skip">終了</span></td>
+          <td class="item">中期経営計画 FY2022-2024（RDD2030 フェーズ1）</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2025年4月28日</td>
+          <td><span class="chip c-ok">公表</span></td>
+          <td class="item">中期経営計画 FY2025-2027（RDD2030 フェーズ2）</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">2025〜2027年度</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">01　判定サマリー</p>
+  <h2>判定できるのはA・Rのみ。Rは良好、Aは「売っても悪化」の逆行中</h2>
+
+<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
+  <div class="tablewrap" style="margin-bottom:24px">
+    <table style="min-width:660px">
+      <thead><tr>
+        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
+        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
+      </tr></thead>
+      <tbody><tr>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-crit">E</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-good">A</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td style="font-weight:700;white-space:nowrap"><b>A</b> 資産を入れ替える</td>
+        <td><span class="chip c-skip">対象外</span><small style="display:block;color:var(--ink-muted);font-size:11px">自己資本の数値目標が無い計画</small></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
+    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
+      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
+      判定できたのは2本で、<b>「未判定」は良好という意味ではありません。</b>
+      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
+      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
+    </p>
+  </div>
+
+</section>
+
+<section>
+  <p class="eyebrow">02　現プランの進捗状況</p>
+  <h2>レバー別に並べた達成状況</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程33%。別建て期間のKPIはその期間の工程）</caption>
+      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
+        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr class="spot">
+          <td class="item">政策保有株式(純資産比20%未満へ)</td><td>A</td>
+          <td class="num">59.50</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">閾値方式</td>
+          <td class="num">—</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:20%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr>
+          <td class="item">配当性向(50%目安)</td><td>R</td>
+          <td class="num">64.1</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">閾値方式</td>
+          <td class="num">—</td>
+          <td><div class="meter"><div class="fill f-good" style="width:100%"></div></div></td>
+          <td><span class="chip c-good">A</span></td></tr>
+        <tr>
+          <td class="item">DOE(5%下限)</td><td>R</td>
+          <td class="num">5.2</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">閾値方式</td>
+          <td class="num">—</td>
+          <td><div class="meter"><div class="fill f-good" style="width:100%"></div></div></td>
+          <td><span class="chip c-good">A</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
+  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
+</section>
+
+
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　ボトルネックの深掘り　—　売っているのに悪化するAレバー</p>
+  <h2>含み益の拡大速度が、売却のペースを上回り続けている</h2>
+  <p class="deck">P（稼ぐ）・G（投じる）・E（自己資本の目標水準）はこの中計にそもそも数値目標が無く未判定です。判定できるA・Rのうち、最も重要な論点はAレバーの逆行にあります。</p>
+
+  <h3>Aレバー（E）─ 四半期ごとの推移</h3>
+  <p class="prose">中計は「政策保有株式の純資産比率をフェーズ2期間内（2028年3月期末）に20%未満へ縮減する」という数値目標を明示しています。5901・5290のようにAレバーの判定材料が無いケースとは違い、この銘柄は会社自身が閾値を宣言しているため機械的に判定できます。ところが、2027年3月期第1四半期決算短信（2026年7月24日）が開示した四半期推移を見ると、比率は悪化を続けています。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table style="min-width:680px">
+      <caption><b>政策保有株式の推移</b>　単位：百万円（比率は％）</caption>
+      <thead><tr><th>時点</th><th class="num">保有株式時価</th><th class="num">純資産額</th>
+        <th class="num">比率</th><th class="num">当該四半期の売却額</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2025年6月</td><td class="num">6,740</td><td class="num">13,891</td>
+          <td class="num">48.5%</td><td class="num">－</td></tr>
+        <tr><td class="item">2025年9月</td><td class="num">8,416</td><td class="num">15,566</td>
+          <td class="num">54.1%</td><td class="num">493</td></tr>
+        <tr><td class="item">2025年12月</td><td class="num">9,308</td><td class="num">16,659</td>
+          <td class="num">55.9%</td><td class="num">933</td></tr>
+        <tr class="spot"><td class="item">2026年3月（FY2025期末）</td><td class="num">10,743</td><td class="num">18,064</td>
+          <td class="num">59.5%</td><td class="num">315</td></tr>
+        <tr class="spot"><td class="item">2026年6月</td><td class="num">17,956</td><td class="num">22,315</td>
+          <td class="num">80.5%</td><td class="num">－（ゼロ）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">1年間で3四半期にわたり合計17.41億円を売却しているにもかかわらず、保有株式の時価は6,740百万円→17,956百万円へ約2.7倍に膨らみました。半導体パッケージ向けAIサーバ需要の拡大を背景に、保有銘柄（イビデン・フジクラ・山一電機・シチズン時計など、いずれも当社の取引先でもある電子部品関連株）の株価自体が大きく上昇したためです。会社の本業（貴金属めっき薬品の販売）を押し上げているのと同じAI需要の追い風が、皮肉にもAレバーの分子（保有株式の時価）を押し上げているという構図です。純資産（分母）も含み益の計上で同時に拡大するため、比率は「売っても縮まない」状態が続いています。design判断2-bが警告する「含み益は両刃」という構造が、そのまま数字に表れた実例です。</p>
+
+  <h3>データ訂正：自己資本・ROEのirbank.net由来の誤り</h3>
+  <p class="prose">本カルテの作成にあたり有価証券報告書（第55期、2026年6月17日提出）を確認したところ、台帳が使っていた「自己資本」が実際には株主資本合計（その他有価証券評価差額金等を除く額）であり、真の自己資本（純資産合計から新株予約権を除いた額）とは別物であることが判明しました。政策保有株式の含み益が近年急拡大しているこの銘柄では、両者の差は年々開いています。</p>
+
+  <div class="tablewrap">
+    <table style="min-width:640px">
+      <caption><b>自己資本・ROEの訂正（台帳の旧値 → 有報ベースの正しい値）</b></caption>
+      <thead><tr><th>年度</th><th class="num">自己資本（旧）</th><th class="num">自己資本（訂正後）</th>
+        <th class="num">ROE（旧）</th><th class="num">ROE（訂正後）</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2022年3月期</td><td class="num">96.06</td><td class="num">142.44</td>
+          <td class="num">6.89%</td><td class="num">7.2%</td></tr>
+        <tr><td class="item">2023年3月期</td><td class="num">93.86</td><td class="num">135.05</td>
+          <td class="num">4.25%</td><td class="num">4.1%</td></tr>
+        <tr><td class="item">2024年3月期</td><td class="num">94.91</td><td class="num">145.38</td>
+          <td class="num">3.79%</td><td class="num">3.9%</td></tr>
+        <tr><td class="item">2025年3月期</td><td class="num">104.11</td><td class="num">135.08</td>
+          <td class="num">11.3%</td><td class="num">11.3%</td></tr>
+        <tr class="spot"><td class="item">2026年3月期</td><td class="num">115.66</td><td class="num">179.78</td>
+          <td class="num">10.03%</td><td class="num">11.5%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">自己資本比率（％）自体は台帳の旧値も正しかった（有報と一致）ため、この誤りは「自己資本比率は合っているのに自己資本の絶対額だけ違う」という内部矛盾から発覚しました。ROEは2025年3月期こそ結果的に一致していましたが、2026年3月期は誤差が大きく（10.03%→11.5%）、単純な期末値ベースの計算（会社は期首期末平均を採用）だったことも一因です。</p>
+
+  <h3>Rレバー（A）─ 増配は続くが、配当性向は読み方に注意</h3>
+  <p class="prose">1株配当は90円→80円（減配）→101円→126円→200円と、5年間で見れば2倍以上に増えています。ただし配当性向（公表値）は54.0%→81.8%→106.0%→46.0%→64.1%と激しく上下しており、性向の水準だけを見ると誤読します。2024年3月期の106.0%は純利益が薄い年に配当水準を維持した結果、2025年3月期の46.0%はROE急回復による純利益急増の結果で、いずれも「増配・減配の方向」とは逆に振れています。DOE実績5.2%（2025年3月期）は新方針の下限5%をすでに上回っています。</p>
+
+  <h3>P・G・Eレバー ─ この中計に数値目標が無い理由</h3>
+  <p class="prose">この中計はP/Lの数値目標を開示していないため、P（稼ぐ）は判定していません。ただし参考情報として、2026年3月期は増収増益（売上高+43.3%・営業利益+14.7%）と好調でした。一方、直近の2027年3月期第1四半期（2026年4-6月）は増収減益（売上高+80.6%・営業利益▲66.3%）で、売上総利益率が11.9%（前年同期）→6.3%（当期）へ大きく低下しています。会社は貴金属の仕入・販売を同日建値で連動させており価格変動の影響は限定的と説明していますが、それでも粗利率が半減した要因は開示からは特定できていません。通期予想（営業利益6.10億円）に対し第1四半期はわずか0.31億円（5.1%）の進捗で、下期にかなりの加速が必要な計算です。</p>
+  <p class="prose">G（投じる）も判定していません。中計は「戦略投資枠（M&A・技術施設拡張・電池材料R&D等）に3年で50〜60億円」という記載がありますが、2026年3月期の設備投資実績は159,598千円（研究開発設備・分析機器等の通常投資）にとどまり、戦略投資枠の執行は有報からは確認できません。Eレバー（自己資本の目標水準）も、会社が具体的な自己資本の数値目標を示していないため判定していません。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>経営陣が何を言い、何をしたか</h2>
+
+  <ul class="tl">
+    <li>
+      <div class="date">2022</div>
+      <p class="ev">中期経営計画 FY2022-2024（RDD2030フェーズ1）公表</p>
+    </li>
+    <li>
+      <div class="date">2024.03.22</div>
+      <p class="ev">「資本コストや株価を意識した経営の実現に向けた対応について」開示</p>
+      <p class="note">政策保有株式を「今後1〜2年以内に純資産比20%未満」へ縮減する目標を初めて表明。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2025.04.25</div>
+      <p class="ev">2025年3月期決算発表　／　前中計最終年度</p>
+      <p class="note">ROE3.9%→11.3%へ急回復、政策保有株式比率も60.5%→43.9%まで改善。ただし業績目標自体は未達成と会社は総括。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2025.04.28</div>
+      <p class="ev">中期経営計画 FY2025-2027（RDD2030フェーズ2）公表</p>
+      <p class="note">政策保有株式の縮減期限を「Ph.2期間内（2028年3月期末）に20%未満」へ見直し、配当方針にDOE5%下限を正式採用。</p>
+    </li>
+    <li>
+      <div class="date">2026.05.22</div>
+      <p class="ev">期末配当を1株137円（74円増額）に決定</p>
+      <p class="note">中間63円と合わせ年間200円へ増額。政策保有株式の売却進捗を踏まえた株主還元方針に基づく。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.06.17</div>
+      <p class="ev">有価証券報告書（第55期）提出　／　政策保有株式比率の悪化が判明</p>
+      <p class="note">2026年3月期末の比率は59.5%（前期43.9%から悪化）。台帳が使用していた自己資本・ROEのirbank.net由来の誤りもここで判明し訂正。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.07.24</div>
+      <p class="ev">2027年3月期第1四半期決算短信　／　増収減益、比率はさらに悪化</p>
+      <p class="note">売上高+80.6%・営業利益▲66.3%。政策保有株式比率は2026年6月末で80.5%まで悪化（当四半期の売却額はゼロ）。</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===================== §6 ===================== -->
+<section>
+  <p class="eyebrow">06　会社予想の精度</p>
+  <h2>数値目標が無い分、精度検証もできない</h2>
+  <p class="deck">前中計（フェーズ1）は具体的な目標値が本カルテの情報源からは確認できず、C4（前計画の達成履歴）は入力なし＝判定不能のままです。現中計もP/Lの年度別目標を開示していないため、他銘柄のような「目標と実績の対比」による予想精度の検証はできません。ここでは唯一の定量的な手がかりである四半期の進捗を見ます。</p>
+
+  <div class="tablewrap">
+    <table style="min-width:680px">
+      <caption><b>2027年3月期・通期予想と第1四半期実績</b>　単位：百万円</caption>
+      <thead><tr><th>項目</th><th class="num">通期予想</th><th class="num">第1四半期実績</th>
+        <th class="num">進捗率</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">24,000</td><td class="num">6,152</td><td class="num">25.6%</td></tr>
+        <tr class="spot"><td class="item">営業利益</td><td class="num">610</td><td class="num">31</td><td class="num">5.1%</td></tr>
+        <tr><td class="item">経常利益</td><td class="num">800</td><td class="num">122</td><td class="num">15.3%</td></tr>
+        <tr><td class="item">当期純利益</td><td class="num">2,170</td><td class="num">88</td><td class="num">4.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">売上高は四半期の目安（25%）どおりに進んでいますが、営業利益・当期純利益の進捗率は5%前後にとどまっています。通期予想（2026年4月24日公表、第1四半期短信時点で修正なし）を満たすには、残り3四半期で大幅な増益が必要な計算です。会社は業績予想に修正がない旨を明言していますが、その根拠（下期にどのような利益改善要因を見込んでいるか）は開示から確認できていません。</p>
+</section>
+
+<!-- ===================== §7 ===================== -->
+<section>
+  <p class="eyebrow">07　次の検証条件</p>
+  <h2>何が起きれば結論が変わるか</h2>
+  <p class="deck">株価データは株主総利回り・最高株価/最低株価の年次推移のみ有価証券報告書で取得済みだが、対TOPIX超過リターンの日次計算には別途データが必要なため含めていない。</p>
+
+  <ul class="tests">
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>政策保有株式比率が低下に転じるか</h4>
+      <p>直近5四半期は一貫して悪化（48.5%→80.5%）している。次の四半期開示で比率が低下に転じれば、「売却が含み益の拡大に追いついた」という転換点になる。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>戦略投資枠（3年50〜60億円）の具体的な執行が開示されるか</h4>
+      <p>現状は通常の設備投資（1.6億円規模）のみで、M&Aや技術施設拡張の実行は確認できていない。具体的な案件が開示されれば、未判定のGレバーの評価材料が増える。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>下期に営業利益が回復し、通期予想610百万円を達成するか</h4>
+      <p>第1四半期の進捗率はわずか5.1%だった。売上総利益率が前年同期の11.9%から6.3%へ低下した要因が解消されれば、Pレバー（現状は目標が無く未判定）の実勢が改善する。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>政策保有株式比率が80%台からさらに悪化するか</h4>
+      <p>2026年6月末時点で80.5%に達している。保有銘柄（電子部品関連株）の株価上昇がさらに続けば、「20%未満」という中計目標との乖離は一段と広がる。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>配当性向・DOEが新方針の下限を割り込むか</h4>
+      <p>DOEは2025年3月期時点で5.2%と下限5%をわずかに上回るのみ。純利益が伸び悩めば、増配ペースを維持したまま下限を割り込む可能性がある。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>売上総利益率の低下が定着するか</h4>
+      <p>第1四半期の粗利率は前年同期の約半分だった。一過性の要因（製品ミックス変化等）か構造的な変化かは、次の四半期開示で判別できる。</p></div></li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：中期経営計画 FY2025-2027 説明資料（2025年4月28日）、有価証券報告書 第55期（2025年4月1日〜2026年3月31日、2026年6月17日提出、EDINET）、2027年3月期第1四半期決算短信〔日本基準〕（非連結）（2026年7月24日）。</li>
+    <li><b>2026-09-06のデータ訂正について：</b>台帳が保持していた自己資本（irbank.net由来）は、実際には貸借対照表の「株主資本合計」（その他有価証券評価差額金・繰延ヘッジ損益を除いた額）に相当しており、真の自己資本（純資産合計から新株予約権を除いた額）とは別物だった。有価証券報告書の主要な経営指標等の推移・貸借対照表・株主資本等変動計算書で裏取りし、2022〜2026年3月期の5期分すべてを訂正した（詳細は§04の対比表、および台帳plans/4973_jpc.yamlの各actualsのflags）。あわせてROEも、期末値ベースの単純計算ではなく会社の開示方式（期首期末平均純資産ベース）に整合する値に訂正している。</li>
+    <li>本銘柄は単一セグメント（貴金属めっき薬品製造事業）のため、セグメント別の分析は行っていない。連結子会社が無く、財務諸表は非連結（個別）のみ。</li>
+    <li>政策保有株式の純資産比率は、有価証券報告書の投資有価証券残高（特定投資株式）÷訂正後の自己資本で算出。2027年3月期第1四半期決算短信の「政策保有株式の推移」表（四半期ごとの保有株式時価・純資産額・売却額）は、同短信の「（５）政策保有株式に関する方針」に記載された数値をそのまま引用している。</li>
+    <li>前中計（RDD2030フェーズ1、2023年3月期〜2025年3月期）の具体的な数値目標は、本カルテが参照した資料からは確認できていない。有価証券報告書には「業績目標は未達成」という定性的な総括のみが記載されており、C4（前計画の達成履歴）は入力なし＝判定不能のままとしている。</li>
+    <li>戦略投資枠（M&A・技術施設拡張・電池材料R&D等、3年50〜60億円）の実行状況は、有価証券報告書の「設備投資等の概要」「設備の新設、除却等の計画」からは確認できず、Gレバーは未判定としている。</li>
+    <li>C1（初年度ジャンプ）・C2（ROE分母の原資）・C3（セグメント集中度）は、いずれもこの中計がP/Lの年度別数値目標を開示していないため、入力なし＝スキップとしている。</li>
+    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）・中計の履歴（§00）・前計画の結果（§03の前段、本銘柄は該当データなしのため非表示）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+
+</div>

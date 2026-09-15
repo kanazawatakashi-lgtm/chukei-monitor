@@ -1,0 +1,390 @@
+<title>中期経営計画 追跡プロジェクト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895; --accent:#8FB0DA;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895; --accent:#8FB0DA;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;margin:6px 0 0;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;max-width:56ch}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+.warnbar{margin-top:28px;padding:14px 18px;background:var(--surface);
+  border:1px solid var(--border);border-left:3px solid var(--warn);font-size:13.5px;color:var(--ink-2);line-height:1.8}
+.warnbar b{color:var(--ink)}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface);margin-top:22px}
+table{border-collapse:collapse;width:100%;min-width:820px;font-size:13px}
+thead th{font-size:10.5px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);background:var(--surface-2);
+  padding:9px 8px;text-align:left;white-space:nowrap;vertical-align:bottom}
+thead th.lv{text-align:center;width:34px}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td{padding:10px 8px;vertical-align:middle}
+td.code{font-family:var(--f-data);font-weight:600;font-size:13.5px}
+td.nm{min-width:150px;font-weight:500}
+td.nm small{display:block;font-weight:400;font-size:11px;color:var(--ink-muted);line-height:1.5}
+td.nm a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
+td.nm a:hover{color:var(--accent)}
+td.nm a::after{content:" →";color:var(--accent);font-size:11px}
+.nolink{display:inline-block;margin-left:6px;font-size:10px;color:var(--ink-muted);
+  border:1px solid var(--border);border-radius:2px;padding:1px 5px}
+.upd{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:var(--ontrack-ink);
+  background:var(--ontrack-tint);border-radius:2px;padding:1px 5px;letter-spacing:.03em;vertical-align:2px}
+td.num{font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-2);white-space:nowrap}
+td.lev{text-align:center;font-family:var(--f-display);font-weight:700;font-size:17px;width:34px}
+td.tot{text-align:center;font-family:var(--f-display);font-weight:700;font-size:17px;background:var(--surface-2)}
+td.tot small{display:block;font-family:var(--f-data);font-weight:400;font-size:10.5px;color:var(--ink-muted);line-height:1.4}
+td.bn{white-space:nowrap;font-size:12.5px;color:var(--ink-2)}
+td.bn b{font-family:var(--f-display);font-size:15px}
+td.ct{white-space:nowrap}
+td.meta{font-size:11.5px;color:var(--ink-muted);white-space:nowrap}
+td.meta small{display:block;font-family:var(--f-data);font-size:10.5px}
+.g-a{color:var(--good-ink)} .g-b{color:var(--ontrack-ink)} .g-c{color:var(--warn-ink)}
+.g-d{color:var(--crit-ink)} .g-e{color:var(--crit-ink)}
+td.lev.none{color:var(--ink-muted);font-family:var(--f-data);font-size:13px;font-weight:400}
+.p{display:inline-block;font-size:11px;font-weight:600;line-height:1;padding:4px 7px;border-radius:2px;white-space:nowrap}
+.p-ok{background:var(--good-tint);color:var(--good-ink)}
+.p-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.p-red{background:var(--crit-tint);color:var(--crit-ink)}
+.p-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+td.mkt{font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12px;white-space:nowrap}
+td.mkt b{font-size:13px;color:var(--ink)}
+td.mkt .mkt-sub{display:block;font-size:10.5px;color:var(--ink-muted);margin-top:1px}
+.mkt-empty{color:var(--ink-muted)}
+.filter-bar{margin-top:22px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-label{font-size:12.5px;color:var(--ink-muted);margin-right:2px}
+.filter-btn{font-family:var(--f-body);font-size:12.5px;font-weight:500;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:5px 14px;cursor:pointer}
+.filter-btn:hover{border-color:var(--border-strong)}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+td.imp{white-space:nowrap}
+select.importance{font-family:var(--f-body);font-size:12.5px;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--border);border-radius:3px;
+  padding:4px 6px;min-width:56px}
+td.cmt{position:relative;text-align:center}
+.cmt-wrap{position:relative;display:inline-block}
+.cmt-btn{font-size:15px;line-height:1;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--ink-muted)}
+.cmt-btn:hover{border-color:var(--border-strong)}
+.cmt-btn.has-comment{background:var(--warn-tint);border-color:var(--warn);color:var(--warn-ink)}
+.cmt-pop{display:none;position:absolute;top:calc(100% + 6px);right:0;width:240px;z-index:20;
+  background:var(--surface);border:1px solid var(--border-strong);box-shadow:0 6px 18px rgba(0,0,0,.14);
+  border-radius:4px;padding:8px}
+.cmt-pop.open{display:block}
+.cmt-pop textarea{width:100%;box-sizing:border-box;font-family:var(--f-body);font-size:12.5px;
+  color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:3px;
+  padding:6px;resize:vertical;line-height:1.6}
+.legend{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1px;background:var(--border);border:1px solid var(--border)}
+.legend>div{background:var(--surface);padding:14px 16px}
+.legend h3{font-family:var(--f-display);font-size:14px;font-weight:700;margin:0 0 6px}
+.legend p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:44px;padding-top:20px;border-top:1px solid var(--border)}
+.notes h2{font-family:var(--f-display);font-size:15px;margin:0 0 10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.disclaimer{margin-top:22px;padding:14px 16px;background:var(--surface-2);
+  border:1px solid var(--border);font-size:12px;color:var(--ink-muted);line-height:1.7}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){h1{font-size:23px}.mh-right{text-align:left}}
+
+
+.section{margin-top:52px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--ink-muted);text-transform:uppercase;margin:0 0 8px}
+.section h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0 0 10px;
+  letter-spacing:.01em}
+.section .deck{font-size:13.5px;color:var(--ink-2);line-height:1.8;max-width:72ch;margin:0 0 18px}
+.statusline{margin-top:0;margin-bottom:16px;padding:10px 14px;font-size:12.5px;
+  color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border);
+  display:inline-block}
+.statusline b{color:var(--ink)}
+.feed{list-style:none;margin:0;padding:0;border:1px solid var(--border);background:var(--surface)}
+.feed li{display:grid;
+  grid-template-columns:96px 52px 1fr 1.6fr auto;gap:10px;align-items:baseline;
+  padding:9px 12px;font-size:12.5px}
+.feed li+li{border-top:1px solid var(--border)}
+.feed .fd{font-family:var(--f-data);color:var(--ink-muted);white-space:nowrap}
+.feed .fd small{display:block;font-size:10.5px}
+.feed .fc{font-family:var(--f-data);font-weight:600;color:var(--ink)}
+.feed .fn{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed .fk{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 6px;
+  border-radius:2px;background:var(--ontrack-tint);color:var(--ontrack-ink);white-space:nowrap;
+  justify-self:start}
+.feed .ft a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
+.feed .ft a:hover{color:var(--accent)}
+.feed .ff{font-size:11px;color:var(--ink-muted);white-space:nowrap}
+.empty{padding:16px;border:1px dashed var(--border-strong);color:var(--ink-muted);font-size:13px;background:var(--surface)}
+.placeholder{padding:24px;border:1px dashed var(--border-strong);color:var(--ink-muted);
+  font-size:13px;background:var(--surface);line-height:1.8}
+@media (max-width:640px){
+  .feed li{grid-template-columns:1fr 1fr;grid-template-areas:"d c" "n n" "k k" "t t" "f f"}
+  .feed .fd{grid-area:d}.feed .fc{grid-area:c}.feed .fn{grid-area:n}
+  .feed .fk{grid-area:k}.feed .ft{grid-area:t}.feed .ff{grid-area:f}
+}
+
+</style>
+
+<div class="wrap">
+<header class="masthead">
+  <div>
+    <div class="ticker">中期経営計画 追跡プロジェクト</div>
+    <h1>中計 追跡ダッシュボード</h1>
+    <p class="mh-sub">経営陣が掲げた目標を、達成手段（レバー）に分解して機械的に追う。総合判定は置かない。</p>
+  </div>
+  <div class="mh-right">
+    掲載　　　　<b>13銘柄 / 最大30</b><br>
+    判定エンジン<b>仕様 v1.3</b><br>
+    総合判定　　<b>置かない</b><br>
+    基準日　　　<b>2026年9月14日</b>
+  </div>
+</header>
+
+<section class="section">
+  <p class="eyebrow">L1</p>
+  <h2>銘柄一覧</h2>
+  <p class="deck">レバー5列を潰さずに並べる。読むのは<b>レバー5列そのもの</b>と<b>ボトルネック</b>、
+    <b>追加還元の必要度</b>の3点。銘柄名から各カルテへ飛べる。
+    <span class="upd" style="margin-left:2px">更新</span> は台帳が直近7日以内に
+    実際に更新された銘柄の印。</p>
+<div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th>コード</th><th>銘柄 / 計画</th><th>時価総額 / PER / PBR</th><th>期間</th><th>工程</th>
+        <th class="lv">P</th><th class="lv">A</th><th class="lv">G</th><th class="lv">R</th><th class="lv">E</th>
+        <th>ボトルネック</th>
+        <th>追加還元<br>の必要度</th>
+        <th>ｶﾊﾞﾚｯｼﾞ / 基準</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="code">3151</td>
+        <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a><span class="upd" title="台帳更新 2026-09-07">更新</span><small>中期経営計画2027－Move on to the Next Stage－</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>835</b>億円<br><span class="mkt-sub">10.4倍 ／ 0.68倍</span></td>
+        <td class="num">2025-2027</td>
+        <td class="num">1/3</td>
+        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-d">D</td><td class="lev g-a">A</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">4547</td>
+        <td class="nm"><a href="4547_scorecard.html">キッセイ薬品工業</a><small>新中期5ヵ年経営計画「Beyond 80」</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>1,876</b>億円<br><span class="mkt-sub">12.6倍 ／ 0.73倍</span></td>
+        <td class="num">2025-2029</td>
+        <td class="num">1/5</td>
+        <td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
+        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">4619</td>
+        <td class="nm"><a href="4619_scorecard.html">日本特殊塗料</a><span class="upd" title="台帳更新 2026-09-13">更新</span><small>中期経営計画（2026年3月期－2030年3月期）「変革と挑戦」</small></td>
+        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">10.5倍 ／ 0.92倍</span></td>
+        <td class="num">2025-2029</td>
+        <td class="num">1/5</td>
+        <td class="lev g-e">E</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-a">A</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">4973</td>
+        <td class="nm"><a href="4973_scorecard.html">日本高純度化学</a><small>中期経営計画 FY2025-2027（RDD2030 フェーズ2）</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>290</b>億円<br><span class="mkt-sub">12.8倍 ／ 1.25倍</span></td>
+        <td class="num">2025-2027</td>
+        <td class="num">1/3</td>
+        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-e">E</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
+        <td class="bn"><b class="g-e">A</b> 入れ替える</td>
+        <td class="ct"><span class="p p-skip" title="この中計は自己資本の数値目標を持たない">対象外</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">5290</td>
+        <td class="nm"><a href="vertex_scorecard.html">ベルテクスコーポレーション</a><small>第3次中期経営計画</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>641</b>億円<br><span class="mkt-sub">12.3倍 ／ 1.33倍</span></td>
+        <td class="num">2024-2026</td>
+        <td class="num">2/3</td>
+        <td class="lev g-b">B</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-e">E</td>
+        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        <td class="ct"><span class="p p-red" title="自己資本の21.6%＝70">大</span></td>
+        <td class="meta">thin<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">5482</td>
+        <td class="nm"><a href="aichisteel_scorecard.html">愛知製鋼</a><small>2024-26年度 中期経営計画</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>2,123</b>億円<br><span class="mkt-sub">18.6倍 ／ 0.89倍</span></td>
+        <td class="num">2024-2026</td>
+        <td class="num">2/3</td>
+        <td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
+        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        <td class="ct"><span class="p p-ok" title="自己資本の0.0%＝-131">不要</span></td>
+        <td class="meta">covered<small>IFRS</small></td>
+      </tr>
+      <tr>
+        <td class="code">5563</td>
+        <td class="nm"><a href="5563_scorecard.html">新日本電工</a><span class="upd" title="台帳更新 2026-09-12">更新</span><small>第9次中期経営計画（2024-2027）／中長期経営計画（2024-2030）</small></td>
+        <td class="mkt"><span class="mkt-empty">—</span></td>
+        <td class="num">2024-2027</td>
+        <td class="num">2/4</td>
+        <td class="lev g-e">E</td><td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev g-a">A</td><td class="lev g-c">C</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">5901</td>
+        <td class="nm"><a href="toyoseikan_scorecard.html">東洋製罐グループホールディングス</a><small>中期経営計画2030「Open Up! 2030 〜飛躍的な成長と革新〜」</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>6,921</b>億円<br><span class="mkt-sub">21.6倍 ／ 0.96倍</span></td>
+        <td class="num">2026-2030</td>
+        <td class="num">0/5</td>
+        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
+        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        <td class="ct"><span class="p p-red" title="自己資本の16.0%＝1,135">大</span></td>
+        <td class="meta">none<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">6309</td>
+        <td class="nm"><a href="6309_scorecard.html">巴工業</a><small>第14回中期経営計画「Create The New Future ～新たな未来の創造～」</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">13.8倍 ／ 1.38倍</span></td>
+        <td class="num">2026-2028</td>
+        <td class="num">0/3</td>
+        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
+        <td class="bn"><b class="g-e">R</b> 返す</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">6737</td>
+        <td class="nm"><a href="6737_scorecard.html">EIZO</a><span class="upd" title="台帳更新 2026-09-14">更新</span><small>第8次中期経営計画「Visual Technology Evolution」</small></td>
+        <td class="mkt" title="2026-09-14時点・Yahoo!ファイナンス"><b>1,278</b>億円<br><span class="mkt-sub">18.4倍 ／ 0.59倍</span></td>
+        <td class="num">2024-2026</td>
+        <td class="num">2/3</td>
+        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">7305</td>
+        <td class="nm"><a href="7305_scorecard.html">新家工業</a><small>中期経営計画2026</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>289</b>億円<br><span class="mkt-sub">15.6倍 ／ 0.77倍</span></td>
+        <td class="num">2024-2026</td>
+        <td class="num">2/3</td>
+        <td class="lev g-e">E</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">thin<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">8018</td>
+        <td class="nm"><a href="8018_scorecard.html">三共生興</a><span class="upd" title="台帳更新 2026-09-14">更新</span><small>第2次中期経営計画「CHALLENGE NEXT 100」（2025-2027）</small></td>
+        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>380</b>億円<br><span class="mkt-sub">15.5倍 ／ 0.51倍</span></td>
+        <td class="num">2024-2026</td>
+        <td class="num">2/3</td>
+        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-d">D</td><td class="lev g-e">E</td>
+        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+      <tr>
+        <td class="code">8158</td>
+        <td class="nm"><a href="8158_scorecard.html">ソーダニッカ</a><span class="upd" title="台帳更新 2026-09-12">更新</span><small>中期経営計画「Go forward STAGE3」</small></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>304</b>億円<br><span class="mkt-sub">12.3倍 ／ 0.83倍</span></td>
+        <td class="num">2023-2026</td>
+        <td class="num">3/4</td>
+        <td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-a">A</td>
+        <td class="bn"><b class="g-e">A</b> 入れ替える</td>
+        <td class="ct"><span class="p p-red" title="自己資本の25.4%＝86">大</span></td>
+        <td class="meta">covered<small>日本基準</small></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<section class="section">
+  <p class="eyebrow">TDnet</p>
+  <h2>取得済み開示</h2>
+  <p class="deck">追跡銘柄についてTDnetの巡回で見つけ、保存した開示。TDnetは開示から31日で
+    消えるため、ここに載るのは既に手元に確保できたものだけ。リンクはTDnet自身のページで、
+    ファイルそのものはこのプロジェクトから再配布していない。</p>
+  <p class="statusline">前回成功から9日。</p>
+  <ul class="feed">
+      <li>
+        <span class="fd">2026-09-01<small>16:00</small></span>
+        <span class="fc">5901</span>
+        <span class="fn">洋缶ＨＤ</span>
+        <span class="fk">自己株式の取得状況</span>
+        <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529289.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ（会社法第165条第2項の規定による定款の定めに基づく自己株式の取得）</a></span>
+        <span class="ff">保存済み</span>
+      </li>
+      <li>
+        <span class="fd">2026-09-01<small>13:00</small></span>
+        <span class="fc">5290</span>
+        <span class="fn">ベルテクス</span>
+        <span class="fk">自己株式の取得状況</span>
+        <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529309.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ</a></span>
+        <span class="ff">保存済み</span>
+      </li>
+  </ul>
+</section>
+
+<section class="section">
+  <p class="eyebrow">Next</p>
+  <h2>今後</h2>
+  <div class="placeholder">
+    残り27銘柄の台帳追加を予定している。準備が整い次第、ここに新着・注目トリガーなどの
+    セクションが増えていく。
+  </div>
+</section>
+
+<div class="notes">
+  <h2>注記</h2>
+  <ol>
+    <li>L1一覧の数値は台帳（<code>plans/*.yaml</code>）から実行時に再計算している。台帳の <code>scores.engine</code> が古くても影響を受けない。</li>
+    <li>整合性テストC1〜C4の判定は各銘柄のカルテ内にのみ表記している。この一覧には載せていない。</li>
+    <li>TDnetの掲載内容は東京証券取引所の著作物であり、このプロジェクトは自分の分析のために手元へ保存しているだけで、一覧やファイルそのものを再配布しない。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、企業の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+</div>

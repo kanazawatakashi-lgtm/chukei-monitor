@@ -1,0 +1,481 @@
+<title>新日本電工 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">5563 ・ 東証プライム ・ 日本基準</div>
+    <h1>新日本電工<br>第9次中期経営計画（2024-2027）達成度検証</h1>
+    <p class="mh-sub">実力ベース経常利益が2年連続で横ばい。海外合金鉄JVへの「赤字資産への追い貸し」が実力利益を下押ししている</p>
+  </div>
+  <div class="mh-right">
+    計画期間　<b>2024年12月期 － 2027年12月期（暦年） </b><br>
+     公表日　<b>2023年11月29日 </b><br>
+     基準日　<b>2026年9月12日 </b><br>
+     金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<section style="margin-top:36px">
+  <p class="eyebrow">00　中期経営計画の履歴</p>
+  <h2>いつ発表され、いつ修正されたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
+      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2021〜2023年度</td>
+          <td><span class="chip c-skip">終了</span></td>
+          <td class="item">第8次中期経営計画（2021-2023）"10年後へつながる成長基盤の確立 4 Cores + Growth"</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2023年11月29日</td>
+          <td><span class="chip c-ok">公表</span></td>
+          <td class="item">第9次中期経営計画（2024-2027）／中長期経営計画（2024-2030）</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">2024〜2027年度</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">01　判定サマリー</p>
+  <h2>ボトルネックはP（稼ぐ）。目標未達の原因は自己資本ではなく実力利益の停滞</h2>
+
+<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
+  <div class="tablewrap" style="margin-bottom:24px">
+    <table style="min-width:660px">
+      <thead><tr>
+        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
+        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
+      </tr></thead>
+      <tbody><tr>
+        <td><span class="chip c-crit">E</span></td>
+        <td><span class="chip c-good">A</span></td>
+        <td><span class="chip c-warn">C</span></td>
+        <td><span class="chip c-good">A</span></td>
+        <td><span class="chip c-warn">C</span></td>
+        <td style="font-weight:700;white-space:nowrap"><b>P</b> 稼ぐ</td>
+        <td><span class="chip c-skip">開示なし</span><small style="display:block;color:var(--ink-muted);font-size:11px">計算に必要な数値が非開示</small></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
+    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
+      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
+      判定できたのは5本で、<b>「未判定」は良好という意味ではありません。</b>
+      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
+      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
+    </p>
+  </div>
+
+  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--crit)">
+    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">Rは実行されている（グレードA）のに、Eには効いていません（グレードC）。理由は§04参照。</p>
+  </div>
+
+</section>
+
+<section>
+  <p class="eyebrow">02　現プランの進捗状況</p>
+  <h2>レバー別に並べた達成状況</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程50%。別建て期間のKPIはその期間の工程）</caption>
+      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
+        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr class="spot">
+          <td class="item">連結売上高</td><td>PG</td>
+          <td class="num">772.77</td><td class="num">-6.7%</td>
+          <td class="num">-57pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">連結経常利益（実力ベース）</td><td>P</td>
+          <td class="num">53.00</td><td class="num">-4.4%</td>
+          <td class="num">-54pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">ROE</td><td>PE</td>
+          <td class="num">2.0</td><td class="num">-110.5%</td>
+          <td class="num">-161pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr>
+          <td class="item">自己資本（ROE10%目標からの逆算・会社非開示）</td><td>ARE</td>
+          <td class="num">710.25</td><td class="num">28.6%</td>
+          <td class="num">-21pt</td>
+          <td><div class="meter"><div class="fill f-warn" style="width:28.6%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-warn">C</span></td></tr>
+        <tr>
+          <td class="item">配当性向（実力ベース純利益の40%程度）</td><td>R</td>
+          <td class="num">42.0</td><td class="num">100.0%</td>
+          <td class="num">+50pt</td>
+          <td><div class="meter"><div class="fill f-good" style="width:100.0%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-good">A</span></td></tr>
+        <tr>
+          <td class="item">研究開発費（第9次中計4年累計32億円）</td><td>G</td>
+          <td class="num">12.71</td><td class="num">39.7%</td>
+          <td class="num">-10pt</td>
+          <td><div class="meter"><div class="fill f-warn" style="width:39.7%"></div>
+            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
+          <td><span class="chip c-warn">C</span></td></tr>
+        <tr>
+          <td class="item">政策保有株式の含み益（自己資本比・規模のみ定性グレード）</td><td>A</td>
+          <td class="num">4.10</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">規模判定</td>
+          <td class="num">—</td>
+          <td><div class="meter"><div class="fill f-good" style="width:100%"></div></div></td>
+          <td><span class="chip c-good">A</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
+  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
+</section>
+
+<section>
+  <p class="eyebrow">03　旧プランの結果</p>
+  <h2>前の計画は達成できたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>前計画（2021〜2023年度）の最終実績</b></caption>
+      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th>
+        <th class="num">達成率</th><th>判定</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="item">rev</td><td class="num">600</td>
+          <td class="num">780</td><td class="num">130%</td>
+          <td><span class="chip c-good">達成</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">2023年見通し。目標600億を大幅超過（達成）</td></tr>
+        <tr><td class="item">op</td><td class="num">60</td>
+          <td class="num">55</td><td class="num">92%</td>
+          <td><span class="chip c-crit">未達</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">実力ベース経常利益。2023年見通し57億→実際55億で 目標60億に未達。会社は『実力ベースの経常利益では第8次中計の目標水準をほぼ達成』と総括</td></tr>
+        <tr><td class="item">roe</td><td class="num">8.0</td>
+          <td class="num">7.0</td><td class="num">88%</td>
+          <td><span class="chip c-crit">未達</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)">実力ベースROE。2023年見通し7%で目標8%に未達</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">第8次中計の振り返り（中長期経営計画 概要資料 p7）で会社は「新型コロナ／ウクライナ侵攻／
+欧米の金融引き締め等で厳しいビジネス環境となったが、在庫影響等を除いた実力ベースの
+経常利益では第8次中計の目標水準をほぼ達成」と総括（未達項目に言及あり）。
+独立に見ると3目標中 売上のみ明確達成、実力経常利益57/60億・実力ROE 7/8%は未達
+（C4は達成率1/3で信頼度『低』）。設備投資は前中計年平均40億→2023年見通し53億、
+研究開発費は年平均4億→8億へ増額。総株主還元性向（第8次中計期間）52%。</p>
+</section>
+
+
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　ボトルネックの深掘り　—　なぜ実力ベース経常利益は伸びないのか</p>
+  <h2>「稼ぐ」の中身：海外合金鉄JVへの追い貸しと、国内合金鉄の在庫影響</h2>
+  <p class="deck">Pレバー（稼ぐ）がボトルネックです。会社が重視する実力ベース経常利益で見ても、公表経常利益で見ても、2年目は前進していません。原因をセグメント別に見ます。</p>
+
+  <h3>Pレバー（E）─ 実力ベース経常利益は2年連続で横ばい、公表経常利益は海外JV損失で急落</h3>
+  <p class="prose">2025年12月期の実力ベース経常利益は53億円で、起点（2023年12月期、55億円）からほぼ動いていません。2027年目標100億円まで残り2年で+47億円の急伸が必要です。会計上の経常利益は27.03億円（前期比▲44.4%）とさらに悪化しており、主因は合金鉄事業の在庫影響マイナス（2024年7月以降のマンガン鉱石市況大幅下落）と、海外合金鉄JV（Pertama・Kudumane）への持分法投資損失の拡大です。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table style="min-width:760px">
+      <caption><b>実力ベース経常利益の推移（セグメント別）</b>　単位：億円</caption>
+      <thead><tr><th>セグメント</th><th class="num">2024年12月期</th><th class="num">2025年12月期</th><th class="num">増減</th></tr></thead>
+      <tbody>
+        <tr class="spot"><td class="item">合金鉄事業</td><td class="num">11（国内17／海外△6）</td><td class="num">2（国内12／海外△10）</td><td class="num">▲9</td></tr>
+        <tr><td class="item">機能材料事業</td><td class="num">20</td><td class="num">22</td><td class="num">+2</td></tr>
+        <tr><td class="item">焼却灰資源化事業</td><td class="num">14</td><td class="num">21</td><td class="num">+7</td></tr>
+        <tr><td class="item">アクアソリューション事業</td><td class="num">1</td><td class="num">1</td><td class="num">±0</td></tr>
+        <tr><td class="item">電力事業</td><td class="num">4</td><td class="num">4</td><td class="num">±0</td></tr>
+        <tr><td class="item">その他</td><td class="num">2</td><td class="num">3</td><td class="num">+1</td></tr>
+        <tr><td class="item"><b>合計</b></td><td class="num"><b>52</b></td><td class="num"><b>53</b></td><td class="num"><b>+1</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">合金鉄以外の事業（機能材料+2億円・焼却灰資源化+7億円）は着実に拡大していますが、連結の柱である合金鉄事業が9億円悪化し、ほぼ相殺しています。特に海外合金鉄事業は実力ベースでも△6億円から△10億円へ損失が拡大しました。中長期経営計画が掲げる「国内合金鉄売上比率を2023年64%→2030年45%程度へ縮小」という事業ポートフォリオ転換の方向性自体は正しいとしても、転換の途中で合金鉄事業（特に海外）の損益が悪化しているのが現状です。</p>
+
+  <h3>海外合金鉄JV（Pertama・Kudumane）─ 赤字資産への追い貸しが続く</h3>
+  <p class="prose">中長期経営計画は「合金鉄海外事業強化（Pertamaプロジェクト）」を成長戦略の柱の一つに掲げ、水力発電による安価なグリーン電力を武器にした最適生産体制の確立と、当社取扱高の拡大・生産性改善による黒字化を目指すとしていました。しかし実際には、投資額を積み増しながら損失が拡大しています。</p>
+
+  <div class="tablewrap">
+    <table style="min-width:700px">
+      <caption><b>持分法投資損益と投資額の推移</b>　単位：百万円</caption>
+      <thead><tr><th>時点</th><th class="num">持分法投資損益</th><th class="num">持分法適用会社への投資額</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2024年12月期</td><td class="num">△1,096</td><td class="num">8,487</td></tr>
+        <tr class="spot"><td class="item">2025年12月期</td><td class="num">△1,392</td><td class="num">13,129</td></tr>
+        <tr class="spot"><td class="item">2026年12月期（中間のみ）</td><td class="num">△7,733</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">投資額は8,487百万円から13,129百万円へ55%増加した一方、持分法投資損失も1,096百万円から1,392百万円へ拡大しました。さらに2026年12月期は中間期だけで7,733百万円の損失を計上しており、通期の会計上経常利益は当初予想60億円からわずか15億円へ大幅下方修正されています（フェロシリコン等の製品市況悪化が要因）。これは「含み益のある資産を入れ替える」というAレバーの物差しには乗らない、赤字化した持分法投資への追加出資という資本配分の問題です。2030年に向けた成長戦略投資（450〜500億円/7年）の中に、こうした損失拡大中の資産への追加投資がどこまで含まれ続けるのかは、この中計最大のリスク要因です。</p>
+
+  <h3>Gレバー（C）─ 研究開発費は工程比でやや遅れ、含み益はこの銘柄の主戦場ではない</h3>
+  <p class="prose">中長期経営計画は研究開発費を第9次中計（2024-2027）4年累計で32億円規模と掲げています（第8次中計は3年で17億円）。実績は2024年12月期5.88億円＋2025年12月期6.83億円＝累計12.71億円で、工程50%に対し進捗39.7%とやや遅れています。一方、政策保有株式の含み益（その他有価証券評価差額金）は29.09億円で自己資本の4.1%にとどまり、8158（ソーダニッカ、38.5%）とは対照的にAレバーの主戦場ではありません。この銘柄の資本配分上の主戦場は含み益ではなく、海外合金鉄JVへの追加出資です。</p>
+
+  <h3>Eレバー（C）・Rレバー（A）─ 自己資本は逆算目標にほぼ一致、自己株買いも実行済み</h3>
+  <p class="prose">ROE10%目標が要求する自己資本（2027年目標の実力ベース純利益70億円÷ROE10%＝700億円）を逆算すると、2025年12月期末の自己資本710.25億円とほぼ一致しています。8158と異なり含み益の膨張が小さいため、自己資本の逆算目標からの乖離は限定的です。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table style="min-width:680px">
+      <caption><b>自己資本の推移と逆算目標</b>　単位：億円</caption>
+      <thead><tr><th>時点</th><th class="num">自己資本</th><th class="num">逆算目標との差</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2023年12月期末（起点）</td><td class="num">714.36</td><td class="num">+14.36</td></tr>
+        <tr><td class="item">2024年12月期末</td><td class="num">736.77</td><td class="num">+36.77</td></tr>
+        <tr class="spot"><td class="item">2025年12月期末</td><td class="num">710.25</td><td class="num">+10.25</td></tr>
+        <tr><td class="item">逆算目標（ROE10%が要求する水準）</td><td class="num"><b>700.00</b></td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">2025年12月期に自己株式取得40.31億円（2025年8月6日〜10月27日実施）＋11,948,808株の消却を実行し、自己資本を736.77億円から710.25億円へ圧縮しました。逆算目標700億円との差は+10.25億円まで縮まっています。実力配当性向（配当金総額÷実力ベース純利益）も32.1%→41.5%→42.0%と目標「40%程度」に到達しており、Rレバーは実行姿勢を維持しています。しかし、これらは資産（自己株消却）を原資とした還元であって、利益成長を伴うものではありません。ROE10%（公表2.0%、実力ベース概算5.2%）が届かない理由は分母ではなく分子＝実力利益の停滞にあり、EレバーとRレバーの実行だけでは解決しません。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>経営陣が何を言い、何をしたか</h2>
+
+  <ul class="tl">
+    <li class="mark">
+      <div class="date">2023.11.29</div>
+      <p class="ev">中長期経営計画（2024年〜2030年）を策定</p>
+      <p class="note">2027年計画（第9次中期経営計画）: 連結売上高950億円／連結経常利益100億円／ROE10%。2030年「あるべき姿」: 売上1,100億円以上／経常130億円以上／ROE10%以上。成長分野への戦略投資450〜500億円/7年、GX投資50億・DX投資40億（2030まで）、ネットDEレシオ0.20→0.30-0.45。</p>
+    </li>
+    <li>
+      <div class="date">2024.01</div>
+      <p class="ev">「環境事業」を「焼却灰資源化事業」と「アクアソリューション事業」に分割し5コア事業体制へ</p>
+      <p class="note">インターナルカーボンプライシング制度（社内炭素価格10,000円/t-CO2）も導入。</p>
+    </li>
+    <li>
+      <div class="date">2024.07.01</div>
+      <p class="ev">連結子会社の中央電気工業㈱（焼却灰資源化事業）を吸収合併</p>
+      <p class="note">共通支配下の取引。事業戦略のスピード化・規模拡大が目的。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2024.08.07</div>
+      <p class="ev">株主還元方針を強化</p>
+      <p class="note">配当性向を「純利益の30%」→「実力ベース損益（実力ベース経常利益×0.7）の40%程度」へ変更、1株当たり年間配当下限10円を設定、自己株式取得は配当を補完する位置づけ。</p>
+    </li>
+    <li>
+      <div class="date">2025.08.05</div>
+      <p class="ev">自己株式取得を決議、2025年8月6日〜10月27日に4,031百万円を取得</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.02.12</div>
+      <p class="ev">2025年12月期決算　／　公表経常利益27.03億円（▲44.4%）へ急落</p>
+      <p class="note">実力ベース経常利益は53億円で横ばい＝2027年目標100億円に全く近づかず。創業100周年記念配当1円（年間12円）。自己株式11,948,808株を消却。年間配当下限を2026年12月期から11円へ引き上げ。FY2026予想: 売上750億円／経常60億円／実力経常60億円。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.08.05</div>
+      <p class="ev">2026年12月期中間決算　／　中間期で経常△29.13億円の赤字</p>
+      <p class="note">Pertama持分法投資損失7,733百万円が直撃。通期見通しを修正: 売上750→811億円・営業→110億円・実力経常60→75億円（上方）だが、会計上の経常利益は60→15億円・純利益→5億円へ大幅下方修正。</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===================== §6 ===================== -->
+<section>
+  <p class="eyebrow">06　会社予想の精度</p>
+  <h2>実力ベースは上方修正、会計上は大幅下方修正という異例の乖離</h2>
+  <p class="deck">第9次中計は年度別の内訳を開示していない（has_annual_breakdown: none）ため、通常の精度検証はできません。ただし2026年12月期（第9次中計3年目）については、期初予想（2026年2月）と中間期時点の修正予想（2026年8月）を並べることで、期中の変化を追えます。</p>
+
+  <div class="tablewrap">
+    <table style="min-width:760px">
+      <caption><b>2026年12月期：期初予想と中間期修正予想</b>　単位：億円</caption>
+      <thead><tr><th>項目</th><th class="num">期初予想<br><small>（2026-02-12公表）</small></th>
+        <th class="num">中間期修正予想<br><small>（2026-08-05時点）</small></th><th class="num">修正</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">750</td><td class="num">811</td><td class="num">+8.1%</td></tr>
+        <tr><td class="item">営業利益</td><td class="num">—</td><td class="num">110</td><td class="num">—</td></tr>
+        <tr class="spot"><td class="item">経常利益（会計上）</td><td class="num">60</td><td class="num">15</td><td class="num">▲75.0%</td></tr>
+        <tr class="spot"><td class="item">実力ベース経常利益</td><td class="num">60</td><td class="num">75</td><td class="num">+25.0%</td></tr>
+        <tr><td class="item">純利益</td><td class="num">—</td><td class="num">5</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">売上高・実力ベース経常利益は上方修正された一方、会計上の経常利益は60億円→15億円へ75%下方修正されるという異例の乖離が生じました。原因はPertamaの持分法投資損失が中間期だけで77.33億円に拡大したことで、事業自体（実力ベース）は改善しているのに、海外合金鉄JVへの追い貸しが会計上の利益を丸ごと吹き飛ばしている構図が、期初予想の段階では見えていなかったことを示しています。純利益予想はわずか5億円で、前期（14.18億円）をさらに下回る見通しです。</p>
+</section>
+
+<!-- ===================== §7 ===================== -->
+<section>
+  <p class="eyebrow">07　次の検証条件</p>
+  <h2>何が起きれば結論が変わるか</h2>
+  <p class="deck">対TOPIX超過リターン等の株価分析は未実施（coverage=coveredのため2軸マトリクスの対象外）。</p>
+
+  <ul class="tests">
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>海外合金鉄JV（Pertama）の持分法投資損失が縮小に転じるか</h4>
+      <p>フェロシリコン等の製品市況次第。損失縮小が確認できれば、公表経常利益と実力ベースの乖離は解消に向かう。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>合金鉄以外の事業（機能材料・焼却灰資源化）の拡大が続くか</h4>
+      <p>2025年12月期は機能材料+2億円・焼却灰資源化+7億円と実力ベースで拡大した。この拡大が続けば、国内合金鉄売上比率縮小という中長期戦略の方向性が実力利益にも表れる。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>2027年12月期（最終年度）に向け、実力ベース経常利益が急伸する兆しが出るか</h4>
+      <p>2027年目標100億円まで残り2年で+47億円必要。2026年12月期の実力経常が75億円の予想どおり着地すれば、最終年度は+25億円で到達可能な水準まで縮む。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>海外合金鉄JVへの投資額がさらに積み増されるか</h4>
+      <p>8,487→13,129百万円と増加が続いている。損失が拡大したまま追加出資が続けば、「赤字資産への追い貸し」が長期化する。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>合金鉄事業（国内）の在庫影響がさらに悪化するか</h4>
+      <p>マンガン鉱石市況・欧州/米国高炭素フェロマンガン市況次第で在庫影響が振れる。市況の一段の悪化は実力ベースにも波及しうる。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>2027年12月期の会社予想が開示された時点で、なお100億円と距離があるか</h4>
+      <p>C1（初年度ジャンプ、赤）はすでに実績で裏付けられている。次の会社予想でも100億円への道筋が見えなければ、中計目標そのものの実現可能性への疑問が強まる。</p></div></li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：中長期経営計画（2024年〜2030年）に関するお知らせ・概要資料（2023年11月29日、全34ページ）、株主還元方針の強化及び配当予想の修正に関するお知らせ（2024年8月7日）、2024年12月期決算短信〔日本基準〕(連結)（2025年2月12日）、2025年12月期決算短信〔日本基準〕(連結)（2026年2月12日）、2026年12月期第2四半期(中間期)決算短信（2026年8月5日）。</li>
+    <li>本カルテは有価証券報告書 第126期（2025年12月期、2026年3月26日提出）を精読していない。5年主要経営指標・政策保有株式一覧・買収防衛策の満了・監査等委員会移行等は台帳（plans/5563_nippondenko.yaml）のgaps参照。</li>
+    <li>「実力ベース経常利益」「実力ベース純利益」は会社独自の指標（在庫影響や一過性要因を除いた経常利益、およびそれに0.7を乗じた実力ベース純利益）であり、design判断3が定義する実力値分解（特別損益控除）とは算定方法が異なる。両者を混同しないよう表記を分けている。</li>
+    <li>Eレバー（自己資本）の目標値700.00億円は、会社が公式に開示した目標ではなく、5290・3151・8158と同じ手法で第9次中計の財務目標（実力ベース経常利益100億円・ROE10%）から逆算した参考値（実力ベース純利益＝実力経常×0.7＝70億円として算定）。</li>
+    <li>経常利益はengineのDIRECT辞書に含まれないため、kpi_id=opに実力ベース経常利益をマップしてPレバーに直結させている（3151のop/ni追加と同型の措置）。</li>
+    <li>C2（ROE分母の原資）は配当・自己株買いの計画累計額が非開示のため「入力なし＝スキップ」（追加還元の必要度は「開示なし」）。ただし自己資本が逆算目標にほぼ一致しているため、埋まっても結果は「不要」に近いとみられる（詳細は台帳のconsistency_inputs.c2_roe_denominator.note参照）。</li>
+    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）・中計の履歴（§00）・前計画の結果（§03の前段）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+
+</div>
