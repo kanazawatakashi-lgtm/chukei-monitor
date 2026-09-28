@@ -1,0 +1,389 @@
+<title>ネツレン 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">5976 ・ 東証プライム ・ 日本基準</div>
+    <h1>高周波熱錬（ネツレン）<br>第16次中期経営計画「Aggressive Challenge One NETUREN 2026」達成度検証</h1>
+    <p class="mh-sub">工程67%（2年終了）時点で全指標が大幅下方修正。前中計の未達目標をさらに下回る水準まで切り下げた</p>
+  </div>
+  <div class="mh-right">
+    計画期間　<b>2025/3期 － 2027/3期 </b><br>
+     公表日　<b>2024年5月9日 </b><br>
+     基準日　<b>2026年9月28日 </b><br>
+     金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<section style="margin-top:36px">
+  <p class="eyebrow">00　中期経営計画の履歴</p>
+  <h2>いつ発表され、いつ修正されたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
+      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2020〜2023年度</td>
+          <td><span class="chip c-skip">終了</span></td>
+          <td class="item">第15次中期経営計画</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2024年5月9日</td>
+          <td><span class="chip c-ok">公表</span></td>
+          <td class="item">第16次中期経営計画「Aggressive Challenge One NETUREN 2026」</td>
+          <td style="font-size:12.5px;color:var(--ink-2)">2024〜2026年度</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">01　判定サマリー</p>
+  <h2>ハードルを上げてから、前中計の未達水準より低いところへ下げ直した</h2>
+
+<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
+  <div class="tablewrap" style="margin-bottom:24px">
+    <table style="min-width:660px">
+      <thead><tr>
+        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
+        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
+      </tr></thead>
+      <tbody><tr>
+        <td><span class="chip c-crit">D</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td><span class="chip c-warn">未判定</span></td>
+        <td style="font-weight:700;white-space:nowrap"><b>P</b> 稼ぐ</td>
+        <td><span class="chip c-warn">未確認</span><small style="display:block;color:var(--ink-muted);font-size:11px">台帳に未転記</small></td>
+      </tr></tbody>
+    </table>
+  </div>
+
+  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
+    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
+      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
+      判定できたのは1本で、<b>「未判定」は良好という意味ではありません。</b>
+      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
+      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
+    </p>
+  </div>
+
+</section>
+
+<section>
+  <p class="eyebrow">02　現プランの進捗状況</p>
+  <h2>レバー別に並べた達成状況</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程67%。別建て期間のKPIはその期間の工程）</caption>
+      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
+        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr class="spot">
+          <td class="item">売上高</td><td>PG</td>
+          <td class="num">582.77</td><td class="num">8.4%</td>
+          <td class="num">-58pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:8.4%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">D</span></td></tr>
+        <tr class="spot">
+          <td class="item">営業利益</td><td>P</td>
+          <td class="num">18.92</td><td class="num">8.8%</td>
+          <td class="num">-58pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:8.8%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">D</span></td></tr>
+        <tr class="spot">
+          <td class="item">ROE（自己資本当期純利益率）</td><td>PE</td>
+          <td class="num">2.3</td><td class="num">-7.7%</td>
+          <td class="num">-74pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">E</span></td></tr>
+        <tr class="spot">
+          <td class="item">ROIC（投下資本利益率）</td><td>PAE</td>
+          <td class="num">2.7</td><td class="num">0.0%</td>
+          <td class="num">-67pt</td>
+          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
+            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
+          <td><span class="chip c-crit">D</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
+  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
+</section>
+
+<section>
+  <p class="eyebrow">03　旧プランの結果</p>
+  <h2>前の計画は達成できたか</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>前計画（2020〜2023年度）の最終実績</b></caption>
+      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th>
+        <th class="num">達成率</th><th>判定</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td class="item">roe</td><td class="num">5.0</td>
+          <td class="num">2.6</td><td class="num">52%</td>
+          <td><span class="chip c-crit">未達</span></td>
+          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">会社自身が個人投資家向け説明会で「ROE目標（最低ライン5.0%以上）になかなか
+到達できなかった」と明言（2024-06logmi記事）。EDINET DB実績でもFY2022(2022年3月期)
+4.6%→FY2023(2023年3月期)0.6%→FY2024(2024年3月期)2.6%と、3期とも5.0%を
+下回り続けた。標本がROE1項目のみのためC4は判定材料不足（人に回す）。
+振り返りでの言及は明確（未達を隠していない）。</p>
+</section>
+
+
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　ボトルネックの深掘り　—　P レバー</p>
+  <h2>「上げてから下げる」の一年半</h2>
+  <p class="deck">売上高・営業利益とも起点からほぼ横ばいのまま2年が経過し、資本効率3指標（ROE・ROA・ROIC）を含む全目標が下方修正された。何が起きたかを時系列で追う。</p>
+
+  <div class="tablewrap">
+    <table>
+      <caption><b>連結経営目標の推移</b>　会社IR「中期経営計画」ページより（2026-09-28取得）</caption>
+      <thead><tr><th>指標</th><th class="num">起点<small>2024年3月期実績</small></th>
+        <th class="num">初年度<small>2025年3月期実績</small></th>
+        <th class="num">2年目<small>2026年3月期実績</small></th>
+        <th class="num">最終年度<small>当初目標</small></th>
+        <th class="num">最終年度<small>修正目標</small></th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高（億円）</td><td class="num">572.05</td><td class="num">575.63</td>
+          <td class="num">582.77</td><td class="num">700.00</td><td class="num spot">640.00</td></tr>
+        <tr><td class="item">営業利益（億円）</td><td class="num">16.32</td><td class="num">16.17</td>
+          <td class="num">18.92</td><td class="num">46.00</td><td class="num spot">21.00</td></tr>
+        <tr><td class="item">営業利益率</td><td class="num">2.8%</td><td class="num">2.8%</td>
+          <td class="num">3.2%</td><td class="num">6.5%</td><td class="num spot">3.3%</td></tr>
+        <tr><td class="item">ROE</td><td class="num">2.6%</td><td class="num">3.0%</td>
+          <td class="num">2.3%</td><td class="num">6.5%以上</td><td class="num spot">2.5%以上</td></tr>
+        <tr><td class="item">ROA（総資産経常利益率）</td><td class="num">2.8%</td><td class="num">2.8%</td>
+          <td class="num">3.1%</td><td class="num">5.5%以上</td><td class="num spot">3.1%以上</td></tr>
+        <tr><td class="item">ROIC</td><td class="num">2.7%</td><td class="num">2.7%</td>
+          <td class="num">2.7%</td><td class="num">5.5%以上</td><td class="num spot">3.1%以上</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>ROE 6.5%以上という目標は、なぜ立てられたのか</h3>
+  <p class="prose">個人投資家向け会社説明会（2024年6月）で会社自身が「ROE目標（最低ライン5.0%以上）になかなか到達できていない」と説明している。第16次中期経営計画がそのハードルを6.5%以上へさらに引き上げたのは、前中計の未達を教訓に、より踏み込んだ目標で経営の緊張感を高める狙いだったと読める。<strong>しかし2年経過した時点での実績はROE2.3〜3.0%で、前中計が届かなかった5.0%にすら遠い。</strong></p>
+
+  <h3>修正目標は「前より低い」</h3>
+  <p class="prose">2026年5月13日の下方修正で、ROE目標は「2.5%以上」となった。これは前中計の目標下限（5.0%以上）の半分以下であり、<strong>「目標を上げて届かず、前より低い目標へ下げ直す」という構図</strong>になっている。ROA・ROICも同様の下方修正パターンで、いずれも当初目標の半分程度まで切り下げられた。営業利益率に至っては6.5%→3.3%と、こちらも半減に近い。</p>
+  <p class="pull">目標が「ゴールポストの後退」ではなく「そもそも届く場所への引き直し」になっていないか。</p>
+
+  <h3>会社が挙げる下方修正の理由</h3>
+  <p class="prose">新商品の市場投入の遅れ、国内の人手不足・物価上昇、中国経済の減速、エネルギーコストの高止まりが理由として挙げられている。いずれも外部環境要因を含むが、<strong>「新商品の市場投入の遅れ」は内部要因</strong>でもあり、q4（未達の原因帰属）としては「両方」に分類するのが妥当と考えられる。次回四半期の定性記述で会社自身の説明トーンを確認する必要がある。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>経営陣が何を言い、何をしたか</h2>
+
+  <ul class="tl">
+    <li>
+      <div class="date">2021.05</div>
+      <p class="ev">長期経営ビジョン「NETUREN VISION 2030」を策定</p>
+      <p class="note">「進化と躍進」をスローガンに、IH熱処理技術を核とする2030年の目指す姿を提示。第15次・第16次中期経営計画はこのビジョン達成に向けた第1・第2フェーズと位置付けられている。</p>
+    </li>
+    <li>
+      <div class="date">2024.05.09</div>
+      <p class="ev">第16次中期経営計画「Aggressive Challenge One NETUREN 2026」を公表</p>
+      <p class="note">2024年4月〜2027年3月の3ヵ年計画。前中計でROE目標(5.0%以上)に届かなかった反省から、ROE6.5%以上・ROA5.5%以上・ROIC5.5%以上・営業利益46億円(利益率6.5%)という、より踏み込んだ数値目標を掲げてスタートした。</p>
+    </li>
+    <li class="mark">
+      <div class="date">2026.05.13</div>
+      <p class="ev">★第16次中期経営計画の数値目標を大幅下方修正</p>
+      <p class="note">最終年度(2027年3月期)目標を、売上高700→640億円、営業利益46→21億円(利益率6.5%→3.3%)、ROE6.5%以上→2.5%以上、ROA5.5%以上→3.1%以上、ROIC5.5%以上→3.1%以上へ一斉に下方修正。理由は新商品の市場投入遅れ、国内人手不足・物価上昇、中国経済減速、エネルギーコスト高止まり。</p>
+    </li>
+    <li>
+      <div class="date">2026.08.06</div>
+      <p class="ev">2027年3月期第1四半期決算短信</p>
+      <p class="note">会社予想（売上高650億・営業利益28億）は修正後目標（640億・21億）をやや上回る水準で設定。第1四半期実績は売上高153.16億(通期予想比進捗率23.6%)・営業利益7.06億(進捗率25.2%)で、工程比おおむね順調なペース。</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===================== §6 ===================== -->
+<section>
+  <p class="eyebrow">06　会社予想の精度</p>
+  <h2>下方修正後の目標は達成できるか</h2>
+  <p class="prose">修正後の最終年度目標（売上高640億・営業利益21億・ROE2.5%以上）に対し、直近の会社予想（2026年8月6日公表、2027年3月期通期）は売上高650億・営業利益28億と、修正目標をやや上回る水準に設定されている。第1四半期の進捗率（23.6%・25.2%）は工程比（25%）とほぼ整合しており、<strong>この修正目標自体は射程内</strong>と見られる。焦点は、この目標水準そのものが前中計の未達ラインを下回っているという事実をどう評価するかである。</p>
+</section>
+
+<!-- ===================== §7 ===================== -->
+<section>
+  <p class="eyebrow">07　次の検証条件</p>
+  <h2>何が起きれば結論が変わるか</h2>
+  <p class="deck">株価データ・実力値分解が未取得のため、株価対比とP/Lの特別損益分離は含めていません。以下はいずれも、次の四半期・年次の開示で機械的に判定できる条件です。</p>
+
+  <ul class="tests">
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>修正後目標（ROE2.5%以上）を最終年度に達成するか</h4>
+      <p>第1四半期の進捗は工程比どおり。このペースが年度末まで続けば、切り下げられた目標自体は届く可能性がある。</p></div></li>
+    <li><span class="tag t-buy">達成の証拠</span>
+      <div><h4>純利益の金額目標を会社が開示するか</h4>
+      <p>現状、中計本体に純利益の金額目標が無く、C1判定は概算値に依存している。決算説明資料等で開示されれば、より精度の高い判定に切り替える。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>次期中計でもROE目標が前中計未満に設定されるか</h4>
+      <p>「目標を上げて届かず、下げ直す」が2周目に入るようだと、目標設定そのものの信頼性が問われる局面になる。</p></div></li>
+    <li><span class="tag t-sell">未達の兆候</span>
+      <div><h4>自己資本の減少が自己株式取得によるものか、含み損によるものか</h4>
+      <p>自己資本は517.85億(初年度末)→491.41億(2年目末)へ減少している。株主還元（Rレバー）の強化によるものであれば前進材料だが、実額は未取得。</p></div></li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：第16次中期経営計画「Aggressive Challenge One NETUREN 2026」策定資料（2024年5月9日）、同計画の見直しに関するお知らせ（2026年5月13日付適時開示）、2027年3月期第1四半期決算短信（2026年8月6日）、同社IR「中期経営計画」ページ（www.k-neturen.co.jp/ja/ir/management/strategy.html、連結経営目標の実績・当初目標・修正目標一覧表、2026年9月28日取得）。財務系列はEDINET DBコネクタ（get_financials、design判断7）。</li>
+    <li>ROE・ROA・ROICは会社公表の連結経営目標表の数値をそのまま用いている。実力値（design判断3、特別損益を除いた値）への分解は未実施。</li>
+    <li>C1（初年度ジャンプ）の判定はkpi_id=ni（純利益）で実施。中計本体に純利益の金額目標が無いため、final_targetは前中計終値近傍の概算値（20億円）を参考値として置いている。営業利益・ROEでは初年度・2年目ともほぼ横ばい〜悪化しており、純利益の伸び（起点比+36.6%）は特別損益等の影響を含む可能性がある。</li>
+    <li>前中計（第15次）の達成履歴（C4）はROE1項目のみのサンプルで判定不能（人に回す）。前中計の他KPI（売上高・営業利益等の目標値）は未取得。</li>
+    <li>C2（ROE分母の原資）・C3（セグメント集中度）は入力なしのためスキップ。</li>
+    <li>市場データ（時価総額・PER・PBR）はEDINET DBのget_financials算出値（2026年3月期実績ベース）。Yahoo!ファイナンス等での裏取りは未実施。</li>
+    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）は台帳から自動生成している。§04以降は人が書いている。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、企業の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
