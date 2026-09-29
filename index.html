@@ -149,17 +149,21 @@ tr.row-deleted{display:none}
    固定高＋縦スクロールにする（2026-09-29ユーザー指示）。 */
 .feed-scroll{max-height:420px;overflow-y:auto;border:1px solid var(--border)}
 .feed{list-style:none;margin:0;padding:0;background:var(--surface)}
+/* 2026-09-30修正：spanは5個（日付・ティッカー・社名・種類・タイトル）なのに
+   列定義が4つしかなく、タイトルが次の行へ落ちて折り返す不具合があった。
+   日付・ティッカー・社名・種類は折り返さない最小幅の固定値、残りは
+   すべてタイトルへ（1fr）というユーザー指定の配分にする。 */
 .feed li{display:grid;text-align:left;
-  grid-template-columns:88px 52px 1fr 1.6fr;gap:10px;align-items:start;
+  grid-template-columns:84px 44px 250px 116px 1fr;gap:10px;align-items:start;
   padding:9px 12px;font-size:12.5px}
 .feed li+li{border-top:1px solid var(--border)}
 .feed .fd{font-family:var(--f-data);color:var(--ink-muted);white-space:nowrap;text-align:left}
-.feed .fc{font-family:var(--f-data);font-weight:600;color:var(--ink);text-align:left}
+.feed .fc{font-family:var(--f-data);font-weight:600;color:var(--ink);white-space:nowrap;text-align:left}
 .feed .fn{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
 .feed .fk{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 6px;
   border-radius:2px;background:var(--ontrack-tint);color:var(--ontrack-ink);white-space:nowrap;
-  justify-self:start}
-.feed .ft{text-align:left}
+  overflow:hidden;text-overflow:ellipsis;justify-self:start;max-width:100%}
+.feed .ft{text-align:left;min-width:0}
 .feed .ft a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
 .feed .ft a:hover{color:var(--accent)}
 .empty{padding:16px;border:1px dashed var(--border-strong);color:var(--ink-muted);font-size:13px;background:var(--surface)}
@@ -193,7 +197,7 @@ tr.row-deleted{display:none}
     掲載　　　　<b>15銘柄 / 最大30</b><br>
     判定エンジン<b>仕様 v1.3</b><br>
     総合判定　　<b>置かない</b><br>
-    基準日　　　<b>2026年9月29日</b>
+    基準日　　　<b>2026年9月30日</b>
   </div>
 </header>
 
