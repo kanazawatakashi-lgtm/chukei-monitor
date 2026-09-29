@@ -140,41 +140,44 @@ tr.row-deleted{display:none}
   color:var(--ink-muted);text-transform:uppercase;margin:0 0 8px}
 .section h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0 0 10px;
   letter-spacing:.01em}
-.section .deck{font-size:13.5px;color:var(--ink-2);line-height:1.8;max-width:72ch;margin:0 0 18px}
+.section .deck{font-size:13.5px;color:var(--ink-2);line-height:1.8;max-width:none;margin:0 0 18px}
 .statusline{margin-top:0;margin-bottom:16px;padding:10px 14px;font-size:12.5px;
   color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border);
   display:inline-block}
 .statusline b{color:var(--ink)}
-.feed{list-style:none;margin:0;padding:0;border:1px solid var(--border);background:var(--surface)}
-.feed li{display:grid;
-  grid-template-columns:96px 52px 1fr 1.6fr auto;gap:10px;align-items:baseline;
+/* 取得済み開示・更新履歴とも、件数が増えてもページ全体が縦に伸びないよう
+   固定高＋縦スクロールにする（2026-09-29ユーザー指示）。 */
+.feed-scroll{max-height:420px;overflow-y:auto;border:1px solid var(--border)}
+.feed{list-style:none;margin:0;padding:0;background:var(--surface)}
+.feed li{display:grid;text-align:left;
+  grid-template-columns:88px 52px 1fr 1.6fr;gap:10px;align-items:start;
   padding:9px 12px;font-size:12.5px}
 .feed li+li{border-top:1px solid var(--border)}
-.feed .fd{font-family:var(--f-data);color:var(--ink-muted);white-space:nowrap}
-.feed .fd small{display:block;font-size:10.5px}
-.feed .fc{font-family:var(--f-data);font-weight:600;color:var(--ink)}
-.feed .fn{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed .fd{font-family:var(--f-data);color:var(--ink-muted);white-space:nowrap;text-align:left}
+.feed .fc{font-family:var(--f-data);font-weight:600;color:var(--ink);text-align:left}
+.feed .fn{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
 .feed .fk{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 6px;
   border-radius:2px;background:var(--ontrack-tint);color:var(--ontrack-ink);white-space:nowrap;
   justify-self:start}
+.feed .ft{text-align:left}
 .feed .ft a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
 .feed .ft a:hover{color:var(--accent)}
-.feed .ff{font-size:11px;color:var(--ink-muted);white-space:nowrap}
 .empty{padding:16px;border:1px dashed var(--border-strong);color:var(--ink-muted);font-size:13px;background:var(--surface)}
 .placeholder{padding:24px;border:1px dashed var(--border-strong);color:var(--ink-muted);
   font-size:13px;background:var(--surface);line-height:1.8}
-.updlist{list-style:none;margin:0;padding:0;border:1px solid var(--border);background:var(--surface)}
+.updlist-scroll{max-height:420px;overflow-y:auto;border:1px solid var(--border)}
+.updlist{list-style:none;margin:0;padding:0;background:var(--surface)}
 .updlist li{padding:12px 14px;font-size:13px}
 .updlist li+li{border-top:1px solid var(--border)}
 .upd-head{display:flex;gap:10px;align-items:baseline;margin-bottom:5px}
 .upd-date{font-family:var(--f-data);color:var(--ink-muted);font-size:11.5px}
 .upd-code{font-family:var(--f-data);font-weight:600;color:var(--ink)}
 .upd-name{color:var(--ink-2);font-weight:500}
-.upd-body{margin:0;color:var(--ink-2);line-height:1.8}
+.upd-body{margin:0;color:var(--ink-2);line-height:1.8;max-width:none}
 @media (max-width:640px){
-  .feed li{grid-template-columns:1fr 1fr;grid-template-areas:"d c" "n n" "k k" "t t" "f f"}
+  .feed li{grid-template-columns:1fr 1fr;grid-template-areas:"d c" "n n" "k k" "t t"}
   .feed .fd{grid-area:d}.feed .fc{grid-area:c}.feed .fn{grid-area:n}
-  .feed .fk{grid-area:k}.feed .ft{grid-area:t}.feed .ff{grid-area:f}
+  .feed .fk{grid-area:k}.feed .ft{grid-area:t}
 }
 
 </style>
@@ -190,18 +193,20 @@ tr.row-deleted{display:none}
     掲載　　　　<b>15銘柄 / 最大30</b><br>
     判定エンジン<b>仕様 v1.3</b><br>
     総合判定　　<b>置かない</b><br>
-    基準日　　　<b>2026年9月28日</b>
+    基準日　　　<b>2026年9月29日</b>
   </div>
 </header>
 
 <section class="section">
   <p class="eyebrow">L1</p>
   <h2>銘柄一覧</h2>
-  <p class="deck">レバー5列を潰さずに並べる。読むのは<b>レバー5列そのもの</b>と<b>ボトルネック</b>、
-    <b>追加還元の必要度</b>の3点。銘柄名から各カルテへ飛べる。
+  <p class="deck">銘柄名から各カルテへ飛べる。<b>追加還元の必要度</b>はカルテ§04の評価を反映する
+    （カルテがまだ書いていない銘柄は機械判定の値）。
     <span class="upd" style="margin-left:2px">更新</span> は台帳が直近7日以内に
-    実際に更新された銘柄の印。重要度（🔽で絞り込み）は<b>未選択＞高＞中＞低</b>の順で自動的に
-    並び替わる。🗑で一覧から除外できる（確認あり。台帳ファイル自体は消えず、下のバーから戻せる）。
+    実際に更新された銘柄の印。重要度は後で入力する欄で、選ぶと保存され、次に開いたときも
+    同じ内容を表示する（🔽で絞り込み）。未選択＞高＞中＞低の順で自動的に並び替わる。
+    削除で一覧から外せる（確認あり。台帳ファイル自体は消えず、下のバーから戻せる）。
+    レバー内訳（P/A/G/R/E）とボトルネックはL1一覧表（別ページ）で確認できる。
     最大30銘柄まで。</p>
 
   <div class="filter-bar">
@@ -215,24 +220,24 @@ tr.row-deleted{display:none}
   <table>
     <thead>
       <tr>
-        <th>コード</th><th>銘柄 / 計画</th><th>時価総額 / PER / PBR</th><th>期間</th><th>工程</th>
-        <th class="lv">P</th><th class="lv">A</th><th class="lv">G</th><th class="lv">R</th><th class="lv">E</th>
-        <th>ボトルネック</th>
+        <th>コード</th><th>銘柄</th><th>時価総額 / PER / PBR</th><th>期間</th><th>工程</th>
+        
+        
         <th>追加還元<br>の必要度</th>
-        <th>ｶﾊﾞﾚｯｼﾞ / 基準</th><th>重要度</th><th>コメント</th><th>操作</th>
+        <th>基準</th><th>重要度</th><th>コメント</th><th>削除</th>
       </tr>
     </thead>
     <tbody>
       <tr data-code="3151">
         <td class="code">3151</td>
-        <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a><small>中期経営計画2027－Move on to the Next Stage－</small></td>
+        <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>835</b>億円<br><span class="mkt-sub">10.4倍 ／ 0.68倍</span></td>
         <td class="num">2025-2027</td>
         <td class="num">1/3</td>
-        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-d">D</td><td class="lev g-a">A</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-warn" title="付録ROICツリー(調整後ROE7.5%・NI81.00億)から逆算した自己資本1,080.00億に対し実績1,172.23億で7.9%（92.23億）超過。前期末は逆算目標を下回っていたため1年で符号が反転した。含み益拡大（その他有価証券評価差額金）が主因">中</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="3151">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -250,14 +255,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="4547">
         <td class="code">4547</td>
-        <td class="nm"><a href="4547_scorecard.html">キッセイ薬品工業</a><small>新中期5ヵ年経営計画「Beyond 80」</small></td>
+        <td class="nm"><a href="4547_scorecard.html">キッセイ薬品工業</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>1,876</b>億円<br><span class="mkt-sub">12.6倍 ／ 0.73倍</span></td>
         <td class="num">2025-2029</td>
         <td class="num">1/5</td>
-        <td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
-        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-warn" title="会社公表の自己資本目標2,000億円未満に対し実績2,301.46億で301.46億(13.1%)超過。主因はその他有価証券評価差額金の拡大(+153.23億、非現金)。60億円の自己株買い枠は8月末消化率5.1%（按分47.6%を42.5pt下回り本プロジェクト13銘柄中最大の遅れ）">中</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="4547">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -275,14 +280,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="4619">
         <td class="code">4619</td>
-        <td class="nm"><a href="4619_scorecard.html">日本特殊塗料</a><small>中期経営計画（2026年3月期－2030年3月期）「変革と挑戦」</small></td>
+        <td class="nm"><a href="4619_scorecard.html">日本特殊塗料</a></td>
         <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">10.5倍 ／ 0.92倍</span></td>
         <td class="num">2025-2029</td>
         <td class="num">1/5</td>
-        <td class="lev g-e">E</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-a">A</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-ok" title="会社公表のROE目標10%から逆算した自己資本650.00億に対し実績602.32億でまだ47.68億下回る。8158/8018のような『既に超過』構造には至っていない。ただし含み益が年+5.61億のペースで拡大しており、政策保有株式の純増が続けば将来リスクは残る">不要</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="4619">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -300,14 +305,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="4973">
         <td class="code">4973</td>
-        <td class="nm"><a href="4973_scorecard.html">日本高純度化学</a><small>中期経営計画 FY2025-2027（RDD2030 フェーズ2）</small></td>
+        <td class="nm"><a href="4973_scorecard.html">日本高純度化学</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>290</b>億円<br><span class="mkt-sub">12.8倍 ／ 1.25倍</span></td>
         <td class="num">2025-2027</td>
         <td class="num">1/3</td>
-        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-e">E</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">A</b> 入れ替える</td>
+        
+        
         <td class="ct"><span class="p p-skip" title="この中計は自己資本の数値目標を持たない">対象外</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="4973">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -325,14 +330,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="5290">
         <td class="code">5290</td>
-        <td class="nm"><a href="vertex_scorecard.html">ベルテクスコーポレーション</a><small>第3次中期経営計画</small></td>
+        <td class="nm"><a href="5290_scorecard.html">ベルテクスコーポレーション</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>641</b>億円<br><span class="mkt-sub">12.3倍 ／ 1.33倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-b">B</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-e">E</td>
-        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        
+        
         <td class="ct"><span class="p p-red" title="自己資本の21.6%＝70">大</span></td>
-        <td class="meta">thin<small>日本基準</small></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="5290">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -350,14 +355,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="5482">
         <td class="code">5482</td>
-        <td class="nm"><a href="aichisteel_scorecard.html">愛知製鋼</a><small>2024-26年度 中期経営計画</small></td>
+        <td class="nm"><a href="5482_scorecard.html">愛知製鋼</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>2,123</b>億円<br><span class="mkt-sub">18.6倍 ／ 0.89倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
-        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        
+        
         <td class="ct"><span class="p p-ok" title="自己資本の0.0%＝-131">不要</span></td>
-        <td class="meta">covered<small>IFRS</small></td>
+        <td class="meta">IFRS</td>
         <td class="imp"><select class="importance" data-code="5482">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -375,14 +380,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="5563">
         <td class="code">5563</td>
-        <td class="nm"><a href="5563_scorecard.html">新日本電工</a><small>第9次中期経営計画（2024-2027）／中長期経営計画（2024-2030）</small></td>
+        <td class="nm"><a href="5563_scorecard.html">新日本電工</a></td>
         <td class="mkt"><span class="mkt-empty">—</span></td>
         <td class="num">2024-2027</td>
         <td class="num">2/4</td>
-        <td class="lev g-e">E</td><td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev g-a">A</td><td class="lev g-c">C</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-warn" title="会社公表のROE目標10%から逆算した自己資本700.00億に対し実績710.25億で1.4%（10.25億）超過のみ。含み益は自己資本比4.1%と小さく8158のような膨張は無い。ROE10%（公表2.0%）が届かない理由は分母ではなく分子（実力ベース経常利益が55→53億で横ばい）にある">小</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="5563">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -400,14 +405,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="5901">
         <td class="code">5901</td>
-        <td class="nm"><a href="toyoseikan_scorecard.html">東洋製罐グループホールディングス</a><small>中期経営計画2030「Open Up! 2030 〜飛躍的な成長と革新〜」</small></td>
+        <td class="nm"><a href="5901_scorecard.html">東洋製罐グループホールディングス</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>6,921</b>億円<br><span class="mkt-sub">21.6倍 ／ 0.96倍</span></td>
         <td class="num">2026-2030</td>
         <td class="num">0/5</td>
-        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-b">B</td><td class="lev g-e">E</td>
-        <td class="bn"><b class="g-e">E</b> 資本を絞る</td>
+        
+        
         <td class="ct"><span class="p p-red" title="自己資本の16.0%＝1,135">大</span></td>
-        <td class="meta">none<small>日本基準</small></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="5901">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -425,14 +430,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="5976">
         <td class="code">5976</td>
-        <td class="nm"><a href="5976_scorecard.html">ネツレン（高周波熱錬）</a><span class="upd" title="台帳更新 2026-09-28">更新</span><small>第16次中期経営計画「Aggressive Challenge One NETUREN 2026」</small></td>
+        <td class="nm"><a href="5976_scorecard.html">ネツレン（高周波熱錬）</a><span class="upd" title="台帳更新 2026-09-28">更新</span></td>
         <td class="mkt" title="2026-09-28時点・EDINET DB（get_financials、2026年3月期実績ベース）"><b>412</b>億円<br><span class="mkt-sub">31.6倍 ／ 0.70倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        
+        
         <td class="ct"><span class="p p-warn" title="台帳にまだ転記していない（要確認）">未確認</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="5976">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -450,14 +455,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="6309">
         <td class="code">6309</td>
-        <td class="nm"><a href="6309_scorecard.html">巴工業</a><small>第14回中期経営計画「Create The New Future ～新たな未来の創造～」</small></td>
+        <td class="nm"><a href="6309_scorecard.html">巴工業</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">13.8倍 ／ 1.38倍</span></td>
         <td class="num">2026-2028</td>
         <td class="num">0/3</td>
-        <td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">R</b> 返す</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-ok" title="ROE目標10.5%から逆算した自己資本476.2億に対し実績427.37億〜436.01億(Q3)でまだ下回る。5901/5290/8158型の「圧縮が必要」構造とは逆に、利益成長で届かせる設計のため追加還元の必要性は数値上生じない">不要</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="6309">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -475,14 +480,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="6737">
         <td class="code">6737</td>
-        <td class="nm"><a href="6737_scorecard.html">EIZO</a><small>第8次中期経営計画「Visual Technology Evolution」</small></td>
+        <td class="nm"><a href="6737_scorecard.html">EIZO</a></td>
         <td class="mkt" title="2026-09-14時点・Yahoo!ファイナンス"><b>1,278</b>億円<br><span class="mkt-sub">18.4倍 ／ 0.59倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-ok" title="公表純利益ベースの総還元率109.3%は既に目標70%+αを上回る。実力純利益（design判断3、概算26.17億）ベースでは約306%に達し、むしろ過剰還元気味。不足しているのは還元ではなく稼ぐ力。ROE目標からの単純な自己資本逆算（約2,096.77億、実績比+53%）は前提が不明確なため正式採用していない">不要</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="6737">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -500,14 +505,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="7305">
         <td class="code">7305</td>
-        <td class="nm"><a href="7305_scorecard.html">新家工業</a><small>中期経営計画2026</small></td>
+        <td class="nm"><a href="7305_scorecard.html">新家工業</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>289</b>億円<br><span class="mkt-sub">15.6倍 ／ 0.77倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-e">E</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
+        
+        
         <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">thin<small>日本基準</small></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="7305">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -525,14 +530,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="7485">
         <td class="code">7485</td>
-        <td class="nm"><a href="7485_scorecard.html">岡谷鋼機</a><span class="upd" title="台帳更新 2026-09-28">更新</span><small>中期経営計画「Global Innovation Challenge 2025（GIC 2025）」</small></td>
+        <td class="nm"><a href="7485_scorecard.html">岡谷鋼機</a><span class="upd" title="台帳更新 2026-09-28">更新</span></td>
         <td class="mkt" title="2026-09-24時点・野村證券／SMBC日興証券 銘柄情報ページ"><b>1,948</b>億円<br><span class="mkt-sub">6.2倍 ／ 0.38倍</span></td>
         <td class="num">2021-2025</td>
         <td class="num">5/5</td>
-        <td class="lev g-b">B</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-warn" title="台帳にまだ転記していない（要確認）">未確認</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-ok" title="自己計算ROE10.9%（2025年度）は資本コスト目安8%を上回る。ROE8%に必要な自己資本3,813億に対し実際2,810億で、必要水準を約1,003億下回る＝資本が過大とは言えない。会社自身はROE目標を持たないため、8%は本カルテが仮に置いた一般的な目安（会社公表値ではない）">不要</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="7485">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -550,14 +555,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="8018">
         <td class="code">8018</td>
-        <td class="nm"><a href="8018_scorecard.html">三共生興</a><small>第2次中期経営計画「CHALLENGE NEXT 100」（2025-2027）</small></td>
+        <td class="nm"><a href="8018_scorecard.html">三共生興</a></td>
         <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>380</b>億円<br><span class="mkt-sub">15.5倍 ／ 0.51倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
-        <td class="lev g-e">E</td><td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-d">D</td><td class="lev g-e">E</td>
-        <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-skip" title="計算に必要な数値を会社が開示していない">開示なし</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-red" title="会社公表のROE目標6.5%から逆算した自己資本307.69億に対し、起点年度(2024年3月期)時点で既に54.0%超過。2026年3月期には557.83億(81.3%超過)まで拡大。他行と異なり計画の出発点から超過しており、本プロジェクトで確認された中でも最大級の逆行。3年累計の配当・自己株買い計画は非開示のため機械判定は「開示なし」のままだが、規模から見て「大」に該当する">大</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="8018">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -575,14 +580,14 @@ tr.row-deleted{display:none}
       </tr>
       <tr data-code="8158">
         <td class="code">8158</td>
-        <td class="nm"><a href="8158_scorecard.html">ソーダニッカ</a><small>中期経営計画「Go forward STAGE3」</small></td>
+        <td class="nm"><a href="8158_scorecard.html">ソーダニッカ</a></td>
         <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>304</b>億円<br><span class="mkt-sub">12.3倍 ／ 0.83倍</span></td>
         <td class="num">2023-2026</td>
         <td class="num">3/4</td>
-        <td class="lev g-a">A</td><td class="lev g-c">C</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev g-a">A</td><td class="lev g-a">A</td>
-        <td class="bn"><b class="g-e">A</b> 入れ替える</td>
-        <td class="ct"><span class="p p-red" title="自己資本の25.4%＝86">大</span></td>
-        <td class="meta">covered<small>日本基準</small></td>
+        
+        
+        <td class="ct"><span class="p p-red" title="会社公表のROE目標8%以上から逆算した自己資本300.00億に対し実績337.74億で12.6%超過。計画期間中の純利益(88.07億)が計画中の株主還元(40.00億)を上回って積み上がる設計のため、ROE8%達成には追加還元が約85.81億（自己資本の25.4%）必要。現預金81.16億ではカバー率0.95で不足（原資不足）">大</span></td>
+        <td class="meta">日本基準</td>
         <td class="imp"><select class="importance" data-code="8158">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
         </select></td>
@@ -610,80 +615,72 @@ tr.row-deleted{display:none}
   <p class="deck">追跡銘柄についてTDnetの巡回で見つけ、保存した開示。TDnetは開示から31日で
     消えるため、ここに載るのは既に手元に確保できたものだけ。リンクはTDnet自身のページで、
     ファイルそのものはこのプロジェクトから再配布していない。</p>
-  <p class="statusline">更新日時：2026/09/27 11:03</p>
-  <ul class="feed">
+  <p class="statusline">更新日時：2026/09/29 19:00</p>
+  <div class="feed-scroll"><ul class="feed">
       <li>
-        <span class="fd">2026-09-18<small>15:30</small></span>
+        <span class="fd">2026-09-18</span>
         <span class="fc">5290</span>
         <span class="fn">ベルテクス</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260918538683.pdf" target="_blank" rel="noopener">自己株式の取得状況および取得終了に関するお知らせ</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-14<small>16:00</small></span>
+        <span class="fd">2026-09-14</span>
         <span class="fc">6309</span>
         <span class="fn">巴工業</span>
         <span class="fk">決算短信</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260910534266.pdf" target="_blank" rel="noopener">2026年10月期 第３四半期決算短信〔日本基準〕(連結)</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-03<small>15:30</small></span>
+        <span class="fd">2026-09-03</span>
         <span class="fc">4547</span>
         <span class="fn">キッセイ薬</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260903531088.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-02<small>17:00</small></span>
+        <span class="fd">2026-09-02</span>
         <span class="fc">8018</span>
         <span class="fn">三共生興</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260902530446.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ（会社法165条第２項の規定による定款の定めに基づく自己株式の取得）</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-01<small>16:00</small></span>
+        <span class="fd">2026-09-01</span>
         <span class="fc">5901</span>
         <span class="fn">洋缶ＨＤ</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529289.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ（会社法第165条第2項の規定による定款の定めに基づく自己株式の取得）</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-01<small>16:00</small></span>
+        <span class="fd">2026-09-01</span>
         <span class="fc">6737</span>
         <span class="fn">ＥＩＺＯ</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529229.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-01<small>14:00</small></span>
+        <span class="fd">2026-09-01</span>
         <span class="fc">3151</span>
         <span class="fn">バイタルＫＳＫ</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529840.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ</a></span>
-        <span class="ff">保存済み</span>
       </li>
       <li>
-        <span class="fd">2026-09-01<small>13:00</small></span>
+        <span class="fd">2026-09-01</span>
         <span class="fc">5290</span>
         <span class="fn">ベルテクス</span>
         <span class="fk">自己株式の取得状況</span>
         <span class="ft"><a href="https://www.release.tdnet.info/inbs/140120260901529309.pdf" target="_blank" rel="noopener">自己株式の取得状況に関するお知らせ</a></span>
-        <span class="ff">保存済み</span>
       </li>
-  </ul>
+  </ul></div>
 </section>
 
 <section class="section">
-  <p class="eyebrow">Next</p>
-  <h2>今後</h2>
+  <p class="eyebrow">LOG</p>
+  <h2>更新履歴</h2>
   <p class="deck">上のTDnet巡回で新しい開示を見つけ、台帳・カルテを更新したときの変更点の要約。</p>
-  <ul class="updlist">
+  <div class="updlist-scroll"><ul class="updlist">
       <li>
         <div class="upd-head">
           <span class="upd-date">2026-09-28</span>
@@ -708,7 +705,7 @@ tr.row-deleted{display:none}
         </div>
         <p class="upd-body">2026年10月期第3四半期決算短信を検出・取り込み（daily.py巡回、初回はタスク スケジューラの不具合で2026-09-05から止まっていたため今回が10日ぶりの実行）。 累計売上高468.05億円（通期会社予想629億円に対し進捗74.4%）、実力純利益 概算32.84億円（通期予想44億円に対し進捗74.6%）で、工程比おおむね順調な ペース。取込時に「遡及修正の疑い」を検知したが、四半期短信の前年同期 （9か月累計）を台帳の前年度通期実績（12か月）と比較する配線ミスによる 誤検知と判明（src/ingest_xbrl.pyを修正済み）。実際の遡及修正はなし。</p>
       </li>
-  </ul>
+  </ul></div>
 </section>
 
 <div class="notes">

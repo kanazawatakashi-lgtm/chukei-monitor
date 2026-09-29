@@ -132,243 +132,123 @@ a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
 </style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
 
 <div class="wrap">
 
 <header class="masthead">
   <div class="mh-left">
     <div class="ticker">8158 ・ 東証プライム ・ 日本基準</div>
-    <h1>ソーダニッカ<br>中期経営計画「Go forward STAGE3」達成度検証</h1>
-    <p class="mh-sub">純利益は上方修正後の目標にほぼ到達（1年前倒し）。だが含み益の膨張で自己資本がROE目標の逆算値を超過している</p>
+    <h1>ソーダニッカ<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">「Go forward STAGE3」は工程75%。純利益は上方修正目標にほぼ到達したが、自己資本は含み益膨張でROE目標の逆算値を超過している</p>
   </div>
   <div class="mh-right">
-    計画期間　<b>2024/3期 － 2027/3期 </b><br>
-     公表日　<b>2023年5月10日（2025年5月8日に財務目標を上方修正） </b><br>
-     基準日　<b>2026年9月12日 </b><br>
-     金額単位　<b>億円（別記なき限り）</b>
+    基準日　<b>2026年9月29日</b><br>
+    会計年度　<b>3月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
   </div>
 </header>
 
+<!-- ===================== §1 ===================== -->
 <section style="margin-top:36px">
-  <p class="eyebrow">00　中期経営計画の履歴</p>
-  <h2>いつ発表され、いつ修正されたか</h2>
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
-      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <caption><b>発表・改定の経緯</b></caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
       <tbody>
-        <tr><td class="num" style="white-space:nowrap">2019〜2022年度</td>
-          <td><span class="chip c-skip">終了</span></td>
-          <td class="item">中期経営計画「Go forward STAGE2」</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
-        <tr><td class="num" style="white-space:nowrap">2023年5月10日</td>
-          <td><span class="chip c-ok">公表</span></td>
-          <td class="item">中期経営計画「Go forward STAGE3」</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">2023〜2026年度</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2023.04</td>
+          <td class="item">目﨑龍二 代表取締役社長執行役員に就任（経営企画・中計策定を長年担当）</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2023.05.10</td>
+          <td class="item">中期経営計画「Go forward STAGE3」（2024年3月期〜2027年3月期）を公表。
+            財務目標（2026年度末）：連結当期純利益20億円／ROE8%以上／配当性向40%以上</td></tr>
+        <tr class="spot"><td class="num" style="white-space:nowrap">2025.05.08</td>
+          <td class="item">財務目標を上方修正：連結当期純利益20億円→24億円以上
+            （ROE8%以上・配当性向40%以上は変更なし）</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.06.22</td>
+          <td class="item">有価証券報告書 第79期提出。STAGE3 3年目（工程75%）実績が判明</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年9月29日時点</td>
+          <td class="item">STAGE3は最終年度（2027年3月期）を残す。次期中計は未公表</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
+<!-- ===================== §2 ===================== -->
 <section>
-  <p class="eyebrow">01　判定サマリー</p>
-  <h2>ボトルネックはengine上A（資産を入れ替える）。だが本当の主戦場はEレバーの逆行</h2>
-
-<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
-  <div class="tablewrap" style="margin-bottom:24px">
-    <table style="min-width:660px">
-      <thead><tr>
-        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
-        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
-      </tr></thead>
-      <tbody><tr>
-        <td><span class="chip c-good">A</span></td>
-        <td><span class="chip c-warn">C</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-good">A</span></td>
-        <td><span class="chip c-good">A</span></td>
-        <td style="font-weight:700;white-space:nowrap"><b>A</b> 資産を入れ替える</td>
-        <td><span class="chip c-crit">大</span><small style="display:block;font-family:var(--f-data);color:var(--ink-muted);font-size:11px">86／自己資本の25.4%</small></td>
-      </tr></tbody>
-    </table>
-  </div>
-
-  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
-    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
-      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
-      判定できたのは4本で、<b>「未判定」は良好という意味ではありません。</b>
-      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
-      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
-    </p>
-  </div>
-
+  <p class="eyebrow">02　前計画の達成度　─　Go forward STAGE2（2019年度〜2022年度）</p>
+  <h2>会社は「二期連続で達成」と総括。個別KPIの一次資料は未取得</h2>
+  <p class="prose">STAGE3策定のお知らせ本文で、会社は前中期経営計画「Go forward STAGE2」について「成長軌道を切り開くステージと位置付け、目標とする経営指標を二期連続で達成いたしました」と総括している。ただしSTAGE2が掲げた具体的なKPIと各年度の達成状況は、本カルテでは独立に確認できていない（一次資料未取得）。有価証券報告書の株主総利回りは5年連続で配当込みTOPIXを上回っている（第79期214.5% vs TOPIX202.2%）。</p>
+  <p class="prose">STAGE2の最終年度（2023年3月期）はSTAGE3の起点でもある：売上高627.44億円・経常利益21.31億円・純利益15.06億円・ROE5.8%・自己資本264.37億円・配当性向60.3%（特別配当14円を含む）。</p>
 </section>
 
+<!-- ===================== §3 ===================== -->
 <section>
-  <p class="eyebrow">02　現プランの進捗状況</p>
-  <h2>レバー別に並べた達成状況</h2>
+  <p class="eyebrow">03　現計画の進捗　─　Go forward STAGE3（2024年3月期〜2027年3月期）</p>
+  <h2>純利益は上方修正目標にほぼ到達。ROEは公表値でも未達</h2>
+  <p class="prose">STAGE3は年度別の内訳を開示していないため、進捗は「2026年度末（2027年3月期）」の最終目標に対する実績の推移で見る。</p>
+
   <div class="tablewrap">
     <table>
-      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程75%。別建て期間のKPIはその期間の工程）</caption>
-      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
-        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <caption><b>財務目標と実績の推移</b>　単位：億円・%</caption>
+      <thead><tr><th>年度</th><th class="num">純利益</th><th class="num">ROE</th>
+        <th class="num">配当性向</th><th class="num">自己資本</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="item">連結当期純利益</td><td>P</td>
-          <td class="num">23.62</td><td class="num">95.7%</td>
-          <td class="num">+21pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:95.7%"></div>
-            <div class="pace" style="left:75%" data-l="75%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr>
-          <td class="item">ROE</td><td>PE</td>
-          <td class="num">7.5</td><td class="num">77.3%</td>
-          <td class="num">+2pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:77.3%"></div>
-            <div class="pace" style="left:75%" data-l="75%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr>
-          <td class="item">配当性向（40%以上）</td><td>R</td>
-          <td class="num">42.7</td><td class="num">86.7%</td>
-          <td class="num">+12pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:86.7%"></div>
-            <div class="pace" style="left:75%" data-l="75%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr>
-          <td class="item">自己資本（ROE目標からの逆算・会社非開示）</td><td>ARE</td>
-          <td class="num">337.74</td><td class="num">205.9%</td>
-          <td class="num">+131pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:100.0%"></div>
-            <div class="pace" style="left:75%" data-l="75%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr>
-          <td class="item">政策保有株式の売却（STAGE3累計 約40億円）</td><td>A</td>
-          <td class="num">20.63</td><td class="num">51.6%</td>
-          <td class="num">-23pt</td>
-          <td><div class="meter"><div class="fill f-warn" style="width:51.6%"></div>
-            <div class="pace" style="left:75%" data-l="75%"></div></div></td>
-          <td><span class="chip c-warn">C</span></td></tr>
-        <tr><td class="item">投資枠（STAGE3累計 100億円）</td><td>G</td>
-          <td class="num">—</td><td class="num">—</td>
-          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">基準不一致＝判定保留（目標:STAGE3累計（2023-2026・基盤整備＋成長投資枠） / 実績:連結設備投資額（有形・無形固定資産の取得による支出の累計））</td>
-          <td><span class="chip c-warn">未判定</span></td></tr>
+        <tr><td class="item">2023年3月期（起点）</td><td class="num">15.06</td><td class="num">5.8%</td>
+          <td class="num">60.3%</td><td class="num">264.37</td></tr>
+        <tr><td class="item">2024年3月期（初年度）</td><td class="num">18.50</td><td class="num">6.6%</td>
+          <td class="num">44.4%</td><td class="num">294.57</td></tr>
+        <tr><td class="item">2025年3月期（2年目）</td><td class="num">21.95</td><td class="num">7.4%</td>
+          <td class="num">41.4%</td><td class="num">295.35</td></tr>
+        <tr class="spot"><td class="item">2026年3月期（3年目、工程75%）</td><td class="num">23.62</td><td class="num">7.5%</td>
+          <td class="num">42.7%</td><td class="num">337.74</td></tr>
+        <tr><td class="item">目標（2027年3月期末）</td><td class="num"><b>24.00以上</b></td><td class="num"><b>8%以上</b></td>
+          <td class="num"><b>40%以上</b></td><td class="num">—</td></tr>
       </tbody>
     </table>
   </div>
-
-  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
-  <div class="tablewrap">
-    <table>
-      <caption><b>整合性テスト</b>　カルテではC2（ROE分母の原資）のみ表示する。
-        計画公表時の数値だけで走り、実績を待たずに「この計画には無理がある」と
-        言えるのが価値</caption>
-      <thead><tr><th>ID</th><th>テスト</th><th>判定</th><th>内訳</th></tr></thead>
-      <tbody>
-        <tr><td class="item">C2</td><td>ROE分母の原資</td>
-          <td><span class="chip c-crit">原資不足（現預金だけでは届かない）</span></td>
-          <td style="font-size:12.5px;color:var(--ink-2);font-family:var(--f-data)">必要圧縮額              38  (現在338 → 目標300)<br>計画上の増減           +48  (純利益88 − 還元40)<br>必要な追加還元          86   計画に書かれていない分<br>還元浸食率        2.73  (非現金性の自己資本増加28 ÷ 株主還元10)　※参考値<br>現預金                  81   カバー率 0.95</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-
-
-<!-- ===================== §4 ===================== -->
-<section>
-  <p class="eyebrow">04　ボトルネックの深掘り　—　純利益は目標に届くのに、なぜROEは届かないのか</p>
-  <h2>「入れ替える」と「絞る」：売っているのに、自己資本が膨らむ構造</h2>
-  <p class="deck">純利益目標（Pレバー）は達成が視野に入っているのに、ROE目標（複数レバーの合成）は届いていません。原因をA・Eレバーで分解します。</p>
-
-  <h3>Aレバー（C）─ 政策保有株式の売却は「約40億円」に対し工程比で遅れ</h3>
-  <p class="prose">STAGE3のキャッシュ・アロケーション想定（2023年度〜2026年度累計）は、キャッシュ・インとして「政策保有株式売却 約40億円」を明示し、これを株主還元（約30〜50億円）・成長投資（約70〜90億円）の原資に充てる設計です。連結キャッシュ・フロー計算書の「投資有価証券の売却による収入」で代用すると、累計売却額は工程75%に対し進捗51.6%で遅れています。</p>
+  <p class="prose" style="margin-top:16px">純利益は23.62億円で、上方修正後の目標24.00億円以上に進捗率95.7%まで到達しており、最終年度を待たずほぼ射程に入った（1年前倒し）。整合性テストC1（初年度ジャンプ）も正常で、純利益は15.06→18.50→21.95→23.62億円と毎年着実に伸びている。一方ROEは7.5%で目標8%以上にわずかに届いておらず、後述のとおり自己資本の膨張が主因になっている。</p>
 
   <div class="tablewrap" style="margin-top:18px">
-    <table style="min-width:680px">
-      <caption><b>政策保有株式の累計売却額（投資有価証券売却による収入）</b>　単位：億円</caption>
-      <thead><tr><th>年度</th><th class="num">単年度売却額</th><th class="num">累計</th><th class="num">工程</th></tr></thead>
+    <table>
+      <caption><b>政策保有株式の累計売却額</b>（投資有価証券売却による収入で代用）　単位：億円</caption>
+      <thead><tr><th>年度</th><th class="num">単年度</th><th class="num">累計</th><th class="num">工程</th></tr></thead>
       <tbody>
         <tr><td class="item">2024年3月期</td><td class="num">2.66</td><td class="num">2.66</td><td class="num">1/4</td></tr>
         <tr><td class="item">2025年3月期</td><td class="num">10.59</td><td class="num">13.25</td><td class="num">2/4</td></tr>
-        <tr class="spot"><td class="item">2026年3月期（FY2025）</td><td class="num">7.38</td><td class="num">20.63</td><td class="num">3/4</td></tr>
-        <tr><td class="item">目標（2027年3月期末）</td><td class="num">—</td><td class="num"><b>40.00</b></td><td class="num">4/4</td></tr>
+        <tr class="spot"><td class="item">2026年3月期（3年目）</td><td class="num">7.38</td><td class="num">20.63</td><td class="num">3/4</td></tr>
+        <tr><td class="item">目標（STAGE3累計）</td><td class="num">—</td><td class="num"><b>40.00</b></td><td class="num">4/4</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="prose" style="margin-top:12px">工程75%時点で累計20.63億円、目標40.00億円に対する進捗率は51.6%にとどまり、23.4ポイント遅れています。最終年度に残り1年で19.37億円を売却する必要があり、これまでの年平均（約6.9億円）の3倍近いペースが要ります。</p>
+  <p class="prose" style="margin-top:12px">工程75%時点で累計売却額20.63億円、目標40.00億円に対する進捗率は51.6%にとどまり、23.4ポイント遅れている。投資枠（STAGE3累計100億円）は目標の基準（基盤整備＋成長投資の広義の枠）と実績（連結の有形無形固定資産取得）が揃わず未判定（基準不一致）。</p>
+</section>
 
-  <h3>含み益の膨張 ─ 売っているのに、残高はむしろ増えている</h3>
-  <p class="prose">より重要なのは、個別銘柄を売却しているにもかかわらず、政策保有株式のBS計上額（投資有価証券）が減っていないことです。有価証券報告書第79期によれば、当期は特定投資株式4銘柄（売却価額687百万円）を売却する一方、5銘柄（取得価額22百万円、取引先持株会経由等）を取得しています。</p>
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　注目すべき点</p>
 
-  <div class="tablewrap">
-    <table style="min-width:680px">
-      <caption><b>投資有価証券とその他有価証券評価差額金の推移</b>　単位：億円</caption>
-      <thead><tr><th>時点</th><th class="num">BS投資有価証券</th><th class="num">その他有価証券評価差額金</th></tr></thead>
-      <tbody>
-        <tr><td class="item">2024年3月期末</td><td class="num">157.76</td><td class="num">75.52</td></tr>
-        <tr><td class="item">2025年3月期末</td><td class="num">137.94</td><td class="num">62.11</td></tr>
-        <tr class="spot"><td class="item">2026年3月期末（FY2025）</td><td class="num">177.13</td><td class="num">89.65</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">FY2024からFY2025にかけて投資有価証券は137.94億円から177.13億円へ+39.19億円増加しました。長期貸付金5.37億円の投資有価証券への振替という技術的な要因もありますが、その他有価証券評価差額金も62.11億円から89.65億円へ+27.53億円増えており、残存銘柄の時価上昇（含み益の拡大）が売却額を上回ったことが読み取れます。design判断2-bが警告する「含み益は両刃で、売らなければ時価変動で自己資本を膨らませEレバーを悪化させる」構造が、4973（日本高純度化学）に続きここでも観測されています。政策保有株式の含み益（税引前）は130.05億円で自己資本の38.5%に達し、Aレバーの重要度は高い状態が続いています。</p>
+  <h3>1. 純利益は上方修正目標にほぼ到達。ただし実力ベースでは届いていない可能性</h3>
+  <p class="prose">毎年、政策保有株式の売却益を特別利益に計上している（161→850→655百万円）。実効税率30.62%で税引後控除すると、実力純利益は2026年3月期で概算19.56億円（公表23.62億円の83%）、実力ROEは概算6.2%（公表7.5%）にとどまる。修正後目標24億円は公表ベースでは射程に入っているが、実力ベースではまだ距離がある。ただし、この売却益自体はSTAGE3が明示的に狙う「政策保有株式売却→株主還元＋成長投資」という設計の一部であり、単なる一過性益の水増しとは性格が異なる。</p>
 
-  <h3>Eレバー（engine上A、ただし要注意）─ 自己資本がROE目標の逆算値を超過</h3>
-  <p class="prose">会社は自己資本の絶対水準を目標にしておらず（目標はROE・純利益・配当性向という比率と絶対額のみ）。5290・3151と同じ手法で、修正後目標（純利益24億円・ROE8%以上）から自己資本の逆算値（24.00÷0.08＝300.00億円）を立てています。この項目はengine上グレードA・進捗率206%という機械的な出力になりますが、<b>これは「良い」という意味ではありません。</b></p>
+  <h3>2. 株主還元：配当性向は目標クリア。だが追加還元の必要性は数値上「大」</h3>
+  <p class="prose">連結配当性向は44.4%→41.4%→42.7%と目標「40%以上」を3年連続でクリアしている。DPSは特別配当の有無で振れるが、普通配当ベースでは16→26→30→34→44円と一貫増配。2026年3月期には特別配当を廃止し全額普通配当化した（恒常的な還元水準の引き上げ）。一方、自己株式取得は2024年3月期の2.48億円以降3年連続ほぼゼロで、STAGE3のキャッシュ・アロケーション想定「株主還元約30〜50億円（4年累計）」に対し配当偏重になっている。</p>
+  <p class="prose"><strong>追加還元の必要性を会社公表のROE目標（8%以上）で評価する。</strong>ROE8%が算術的に要求する自己資本は、修正後純利益目標24.00億円÷8%＝300.00億円。実績の自己資本は2026年3月期末で337.74億円まで拡大しており、逆算目標を37.74億円（12.6%）上回っている。主因は純利益の内部留保ではなく、その他有価証券評価差額金（政策保有株式の含み益）が52.79億円→89.65億円へ膨張したことにある。計画期間中も純利益（4年累計88.07億円）が計画中の株主還元（配当37.50億円＋自己株買い2.50億円＝40.00億円）を48.07億円上回って積み上がる設計であるため、<strong>当初目標のROE8%を達成するには計画に無い追加還元が約85.81億円（自己資本の25.4%＝「大」）必要</strong>という計算になる。現預金81.16億円はこれをカバーしきれず（カバー率0.95）、判定は「原資不足」。含み益の実現（追加の政策保有株式売却）を組み合わせない限り、ROE8%は構造的に届きにくい。</p>
 
-  <div class="tablewrap" style="margin-top:18px">
-    <table style="min-width:680px">
-      <caption><b>自己資本の推移と逆算目標</b>　単位：億円</caption>
-      <thead><tr><th>時点</th><th class="num">自己資本</th><th class="num">逆算目標との差</th></tr></thead>
-      <tbody>
-        <tr><td class="item">2023年3月期末（起点）</td><td class="num">264.37</td><td class="num">▲35.63</td></tr>
-        <tr><td class="item">2025年3月期末</td><td class="num">295.35</td><td class="num">▲4.65</td></tr>
-        <tr class="spot"><td class="item">2026年3月期末（FY2025）</td><td class="num">337.74</td><td class="num">+37.74</td></tr>
-        <tr><td class="item">逆算目標（ROE8%が要求する水準）</td><td class="num"><b>300.00</b></td><td class="num">—</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose">自己資本はFY2024末時点でまだ逆算目標を下回っていましたが（▲4.65億円）、FY2025末には+37.74億円（12.6%）上回りました。1年で42.39億円増加した内訳は、純利益+23.62億円のうち内部留保に回った分に加え、その他有価証券評価差額金の+27.53億円という非現金の増加が大きく寄与しています。進捗率の絶対値は読みませんが、符号の向きが「不要気味」から「超過」へ転じた点は、5290・3151と同じ悪化方向のシグナルです。</p>
-
-  <h3>C2（ROE分母の原資）─ 追加還元「大」、現預金だけでは届かない</h3>
-  <p class="prose">計画期間中も純利益（4年累計88.07億円）が計画中の株主還元（配当37.50億円＋自己株買い2.50億円＝40.00億円）を上回って積み上がる設計であるため、当初目標のROE8%を達成するには計画に書かれていない追加還元が必要になります。</p>
-
-  <div class="tablewrap">
-    <table style="min-width:680px">
-      <caption><b>C2 ROE分母の原資　─　追加還元の必要額</b>　単位：億円</caption>
-      <thead><tr><th>項目</th><th class="num">金額</th></tr></thead>
-      <tbody>
-        <tr><td class="item">必要圧縮額（現在337.74 − 目標300.00）</td><td class="num">37.74</td></tr>
-        <tr><td class="item">計画上の増減（純利益88.07 − 還元40.00）</td><td class="num">+48.07</td></tr>
-        <tr class="spot"><td class="item"><b>必要な追加還元</b>（計画に書かれていない分）</td><td class="num"><b>85.81</b></td></tr>
-        <tr><td class="item">自己資本比</td><td class="num">25.4%（＝「大」）</td></tr>
-        <tr class="spot"><td class="item">現預金（カバー率0.95）</td><td class="num">81.16</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">現預金81.16億円は必要額85.81億円のカバー率0.95で、わずかに不足します（判定「原資不足」）。ROE8%を追加還元だけで達成しようとすると現預金の取り崩しだけでは足りず、含み益の実現（追加の政策保有株式売却）を組み合わせる必要があることになります。逆に言えば、Aレバー（政策保有株式売却の加速）とEレバー（追加還元）は同じ問題の表裏です。</p>
-
-  <h3>実力値への分解（design判断3）─ 修正目標は公表ベースでは射程、実力ベースでは未達の可能性</h3>
-  <div class="tablewrap">
-    <table style="min-width:680px">
-      <caption><b>公表値と実力値の乖離</b>　単位：億円・%</caption>
-      <thead><tr><th>年度</th><th class="num">公表純利益</th><th class="num">実力純利益（概算）</th>
-        <th class="num">公表ROE</th><th class="num">実力ROE（概算）</th></tr></thead>
-      <tbody>
-        <tr><td class="item">2024年3月期</td><td class="num">18.50</td><td class="num">17.97</td><td class="num">6.6%</td><td class="num">6.4%</td></tr>
-        <tr><td class="item">2025年3月期</td><td class="num">21.95</td><td class="num">16.14</td><td class="num">7.4%</td><td class="num">5.5%</td></tr>
-        <tr class="spot"><td class="item">2026年3月期（FY2025）</td><td class="num">23.62</td><td class="num">19.56</td><td class="num">7.5%</td><td class="num">6.2%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">毎年、政策保有株式の売却益を特別利益に計上しており（161→850→655百万円）、実効税率30.62%で税引後控除すると実力純利益は概算19.56億円（公表の83%）にとどまります。修正後目標24億円は公表ベースでは射程に入っていますが、実力ベースではまだ距離があります。ただし売却益そのものはキャッシュ・アロケーションが明示的に狙う「削減→還元＋投資」の一部であり、5901の政策保有株売却とは異なりAレバーの前進としては評価できる点に注意してください（design判断2-b）。</p>
+  <h3>3. 政策保有株式：売っているのに、残高はむしろ増えている</h3>
+  <p class="prose">有価証券報告書第79期によれば、当期は特定投資株式4銘柄（売却価額687百万円）を売却する一方、5銘柄（取得価額22百万円、取引先持株会経由等）を取得した。それでもBS計上額（投資有価証券）は137.94億円→177.13億円へ+39.19億円増加している。長期貸付金5.37億円の投資有価証券への振替という技術的要因もあるが、残存銘柄（ADEKA・大阪ソーダ・AGC・東ソー等）の時価上昇が売却額を上回ったことが主因。含み益（その他有価証券評価差額金）は自己資本比38.5%（130.05億円）に達しており、Aレバーの重要度は高い状態が続く。</p>
 </section>
 
 <!-- ===================== §5 ===================== -->
 <section>
   <p class="eyebrow">05　記録</p>
-  <h2>経営陣が何を言い、何をしたか</h2>
-
+  <h2>業績と経営陣の動向</h2>
   <ul class="tl">
     <li>
       <div class="date">2021.11</div>
@@ -383,12 +263,12 @@ a{color:var(--accent)}
       <p class="ev">目﨑龍二 代表取締役社長執行役員に就任</p>
       <p class="note">経営企画・中期経営計画策定を長年担当してきた人物。翌月にSTAGE3を公表。</p>
     </li>
-    <li class="mark">
+    <li>
       <div class="date">2023.05.10</div>
       <p class="ev">中期経営計画「Go forward STAGE3」策定</p>
-      <p class="note">財務目標（2026年度末）: 連結当期純利益20億円／ROE8%以上／配当性向40%以上。投資枠（STAGE3累計）100億円。キャッシュ・アロケーション想定：イン=営業CF約70億＋政策保有株式売却約40億＋外部負債その他約30億／アウト=株主還元約30〜50億＋成長投資約70〜90億（最大100億）。</p>
+      <p class="note">財務目標（2026年度末）：連結当期純利益20億円／ROE8%以上／配当性向40%以上。投資枠（STAGE3累計）100億円。</p>
     </li>
-    <li class="mark">
+    <li>
       <div class="date">2025.05.08</div>
       <p class="ev">財務目標を上方修正　／　連結当期純利益20億円→24億円以上</p>
       <p class="note">ROE8%以上・配当性向40%以上は変更なし。理由は薬品貯蔵設備の増強効果・日用品受託生産仲介サービスの好調。</p>
@@ -398,74 +278,25 @@ a{color:var(--accent)}
       <p class="ev">連結子会社㈱日進の吸収合併を決議（2026年4月1日実施）</p>
       <p class="note">中部・関西・北陸地区の包装資材・機器販売。経営資源の集中と効率化が目的。</p>
     </li>
-    <li class="mark">
+    <li>
       <div class="date">2026.06.22</div>
       <p class="ev">有価証券報告書（第79期）提出　／　STAGE3 3年目実績が判明</p>
       <p class="note">純利益23.62億円は修正目標24.00億円以上にほぼ到達（進捗率95.7%）。自己資本は含み益膨張で337.74億円へ拡大し、ROE8%逆算値300億円を12.6%超過。政策保有株式は売却継続もBS計上額は純増。</p>
     </li>
   </ul>
-</section>
-
-<!-- ===================== §6 ===================== -->
-<section>
-  <p class="eyebrow">06　会社予想の精度</p>
-  <h2>年度別の内訳が無く、精度検証は限定的</h2>
-  <p class="deck">STAGE3は年度別の内訳を開示していない（has_annual_breakdown: none）ため、「計画→実績→翌年度の修正」という通常の精度検証はできません。唯一の修正イベントである2025年5月の財務目標上方修正を、その前後の実績とともに示します。</p>
-
-  <div class="tablewrap">
-    <table style="min-width:700px">
-      <caption><b>財務目標（2026年度末＝2027年3月期）の上方修正</b>　単位：億円・%</caption>
-      <thead><tr><th>項目</th><th class="num">当初目標<br><small>（2023-05-10公表）</small></th>
-        <th class="num">修正後目標<br><small>（2025-05-08公表）</small></th></tr></thead>
-      <tbody>
-        <tr class="spot"><td class="item">連結当期純利益</td><td class="num">20.00</td><td class="num">24.00以上</td></tr>
-        <tr><td class="item">ROE</td><td class="num">8%以上</td><td class="num">変更なし</td></tr>
-        <tr><td class="item">配当性向</td><td class="num">40%以上</td><td class="num">変更なし</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">上方修正の根拠として会社が挙げたのは、2025年3月期（修正発表と同時に公表した決算）で純利益が当初目標を上回る結果となったことです。修正発表から1年（2026年3月期）で純利益は修正後目標にほぼ到達しており、目標の上方修正自体は裏付けられた形です。ただし年度別の内訳が無いため、この先2027年3月期（最終年度）に向けた四半期ごとの進捗ペースを事前に検証することはできません。</p>
-</section>
-
-<!-- ===================== §7 ===================== -->
-<section>
-  <p class="eyebrow">07　次の検証条件</p>
-  <h2>何が起きれば結論が変わるか</h2>
-  <p class="deck">対TOPIX超過リターン等の株価分析は未実施（coverage=coveredのため2軸マトリクスの対象外）。</p>
-
-  <ul class="tests">
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>2027年3月期（最終年度）に純利益が24億円以上を確定させるか</h4>
-      <p>工程75%で修正目標にほぼ到達しており、最終年度で小幅な伸びがあれば公表ベースでの達成は堅い。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>政策保有株式の売却ペースが加速し、累計40億円に近づくか</h4>
-      <p>工程75%で進捗51.6%と遅れている。最終年度に19億円超という過去平均の3倍近い売却が実行されれば、Aレバーの遅れは解消される。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>自己資本の増加が減速し、逆算目標300億円との乖離が縮むか</h4>
-      <p>自己株式取得の再開や、含み益の実現（売却）を伴う株主還元の強化があれば、Eレバーの逆行は止まる。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>その他有価証券評価差額金がさらに拡大するか</h4>
-      <p>FY2025に+27.53億円増加した。市況次第でさらに拡大すれば、ROE8%は自己資本の分母膨張でますます遠のく。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>実力ベースの純利益・ROEが公表値との乖離を広げるか</h4>
-      <p>実力純利益は概算19.56億円（公表の83%）。政策保有株式売却益への依存度が上がれば、目標達成の「実質」が薄まる。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>2027年3月期の会社予想（開示され次第）が公表されるか</h4>
-      <p>本台帳作成時点では2026年5月開示予定の決算短信（2027年3月期会社予想を含む）を未取得。開示され次第、指標4（会社予想÷目標）で最終年度の織り込みを検証できる。</p></div></li>
-  </ul>
+  <p class="prose" style="margin-top:16px">2027年3月期（最終年度）の会社予想は本カルテ未取得（2026年5月開示予定の決算短信を要確認）。</p>
 </section>
 
 <div class="notes">
   <h2>注記と出典</h2>
   <ol>
-    <li>数値の出典：中期経営計画「Go forward STAGE3」策定のお知らせ・概要資料（2023年5月10日、全12ページ）、中期経営計画の財務目標上方修正に関するお知らせ（2025年5月8日）、2025年3月期決算短信〔日本基準〕(連結)（2025年5月8日）、有価証券報告書 第79期（2025年4月1日〜2026年3月31日、2026年6月22日提出、EDINET、全121ページ）。</li>
+    <li>数値の出典：中期経営計画「Go forward STAGE3」策定のお知らせ・概要資料（2023年5月10日）、中期経営計画の財務目標上方修正に関するお知らせ（2025年5月8日）、2025年3月期決算短信〔日本基準〕(連結)（2025年5月8日）、有価証券報告書 第79期（2026年6月22日提出、EDINET）。</li>
     <li>実力純利益・実力ROEの試算は設計判断3（公表値をそのまま使わず実力値に分解する）に基づく参考値。実効税率は有価証券報告書記載の法定実効税率30.62%を用い、特別損益（純額）を税引後で控除して算出している。</li>
-    <li>Eレバー（自己資本）の目標値300.00億円は、会社が公式に開示した目標ではなく、5290・3151と同じ手法で財務目標（純利益24億円以上・ROE8%以上）から逆算した参考値。この項目の進捗率・グレードの絶対値は読まず、符号の向き（自己資本が目標を上回ったこと自体）のみを情報として扱っている（詳細は§04）。</li>
-    <li>Gレバー（投資枠、STAGE3累計100億円）は、目標の基準（基盤整備＋成長投資の広義の投資枠）と実績basis（連結の有形無形固定資産取得）が異なるため、engineは基準不一致として扱い未判定としている。</li>
-    <li>政策保有株式の含み益（130.05億円、対自己資本38.5%）はその他有価証券評価差額金からの近似値で、有価証券報告書の特定投資株式一覧（個別銘柄別の取得原価対比）とは完全には一致しない。</li>
-    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）・中計の履歴（§00）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+    <li>§04の追加還元必要額（85.81億円）は、会社公表のROE目標（8%以上）から逆算した自己資本目標（300.00億円）を用いた本カルテの試算。会社は自己資本の絶対水準そのものは目標にしていない。</li>
+    <li>投資枠（STAGE3累計100億円）は目標の基準（基盤整備＋成長投資の広義の枠）と実績（連結の有形無形固定資産取得）が異なり、判定を保留している。</li>
+    <li>前中期経営計画「Go forward STAGE2」の個別KPIと各年度の達成状況は一次資料未取得。会社の総括（「二期連続達成」）のみ確認できている。</li>
+    <li>本カルテは2026年9月29日、5章構成（①中期経営計画の履歴／②前計画の達成度／③現計画の進捗／④注目すべき点／⑤記録）に全面改訂した。判定サマリー（旧§01のPAGREレバー・グレード表示）は廃止し、§04の分析に置き換えている。</li>
   </ol>
   <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
 </div>
-
 </div>

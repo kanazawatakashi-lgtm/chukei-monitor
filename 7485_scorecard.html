@@ -132,113 +132,75 @@ a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
 </style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
 
 <div class="wrap">
 
 <header class="masthead">
   <div class="mh-left">
     <div class="ticker">7485 ・ 名証プレミア ・ 日本基準</div>
-    <h1>岡谷鋼機<br>中期経営計画「Global Innovation Challenge 2025（GIC 2025）」達成度検証</h1>
-    <p class="mh-sub">5ヶ年計画は満了。売上高・純利益とも目標を大幅超過。ただし政策保有株式は5年でほぼ3倍に膨張した</p>
+    <h1>岡谷鋼機<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">GIC 2025は2026年2月期で満了。数値目標は2項目のみで、他は方針・重点テーマ（数値目標なし）だった</p>
   </div>
   <div class="mh-right">
-    計画期間　<b>2022/2期 － 2026/2期 </b><br>
-     公表日　<b>2021年（推定、一次資料未確認） </b><br>
-     基準日　<b>2026年9月28日 </b><br>
-     金額単位　<b>億円（別記なき限り）</b>
+    基準日　<b>2026年9月29日</b><br>
+    会計年度　<b>2月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
   </div>
 </header>
 
+<!-- ===================== §1 ===================== -->
 <section style="margin-top:36px">
-  <p class="eyebrow">00　中期経営計画の履歴</p>
-  <h2>いつ発表され、いつ修正されたか</h2>
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
-      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <caption><b>発表済みの中期経営計画</b>　事実の並びのみ</caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
       <tbody>
-
+        <tr><td class="num" style="white-space:nowrap">2021年（公表日未確認）</td>
+          <td class="item">中期経営計画「Global Innovation Challenge 2025（GIC 2025）」公表。
+            2025年度（2026年2月期）を最終年度とする5ヶ年計画</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年5月26日</td>
+          <td class="item">2025年度（最終年度）決算発表。GIC 2025の計画期間が満了</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年9月29日時点</td>
+          <td class="item">後継の中期経営計画は未公表</td></tr>
       </tbody>
     </table>
   </div>
+  <p class="prose" style="margin-top:16px">GIC 2025より前の中期経営計画の一次資料は未取得（gaps参照）。</p>
 </section>
 
+<!-- ===================== §2 ===================== -->
 <section>
-  <p class="eyebrow">01　判定サマリー</p>
-  <h2>目標は前倒しで達成された。ただし「稼ぐ力」の裏で自己資本が膨らみ続けた</h2>
+  <p class="eyebrow">02　前計画の達成度　─　GIC 2025（2021年度〜2025年度）</p>
+  <h2>数値目標は2つ。両方とも最終年度を待たず超過した</h2>
+  <p class="prose">GIC 2025の公表内容のうち、具体的な数値目標が設定されていたのは「業績目標」の2項目のみ。基本方針（Global／Innovation／Challenge）とセグメント別の重点テーマ、サステナビリティの活動テーマは、いずれも数値目標を伴わない方針・テーマの列挙だった。達成度として評価できるのはこの2項目にとどまる。</p>
 
-<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
-  <div class="tablewrap" style="margin-bottom:24px">
-    <table style="min-width:660px">
-      <thead><tr>
-        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
-        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
-      </tr></thead>
-      <tbody><tr>
-        <td><span class="chip c-ok">B</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td style="font-weight:700;white-space:nowrap"><b>P</b> 稼ぐ</td>
-        <td><span class="chip c-warn">未確認</span><small style="display:block;color:var(--ink-muted);font-size:11px">台帳に未転記</small></td>
-      </tr></tbody>
-    </table>
-  </div>
-
-  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
-    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
-      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
-      判定できたのは1本で、<b>「未判定」は良好という意味ではありません。</b>
-      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
-      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
-    </p>
-  </div>
-
-</section>
-
-<section>
-  <p class="eyebrow">02　現プランの進捗状況</p>
-  <h2>レバー別に並べた達成状況</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程100%。別建て期間のKPIはその期間の工程）</caption>
-      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
-        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <caption><b>業績目標と実績</b>　最終年度＝2025年度（2026年2月期）</caption>
+      <thead><tr><th>目標項目</th><th class="num">目標</th><th class="num">最終年度実績</th>
+        <th class="num">達成率</th><th>目標到達年度</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="item">連結売上高</td><td>PG</td>
-          <td class="num">11,557.74</td><td class="num">100.0%</td>
-          <td class="num">+0pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:100.0%"></div>
-            <div class="pace" style="left:100%" data-l="100%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr>
-          <td class="item">親会社株主に帰属する当期純利益</td><td>P</td>
-          <td class="num">305.06</td><td class="num">100.0%</td>
-          <td class="num">+0pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:100.0%"></div>
-            <div class="pace" style="left:100%" data-l="100%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
+        <tr><td class="item">連結売上高</td><td class="num">1兆円以上</td>
+          <td class="num">1兆1,557.74億円</td><td class="num">115.6%</td>
+          <td>2023年度（2024年2月期、実績1兆1,119.34億円）</td></tr>
+        <tr><td class="item">親会社株主に帰属する当期純利益</td><td class="num">200億円以上</td>
+          <td class="num">305.06億円</td><td class="num">152.5%</td>
+          <td>2022年度（2023年2月期、実績235.20億円）</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
-  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
-</section>
-
-
-
-<!-- ===================== §4 ===================== -->
-<section>
-  <p class="eyebrow">04　ボトルネックの深掘り　—　E レバー（文脈）</p>
-  <h2>稼ぐ力は目標超過。資本効率は逆に低下した</h2>
-  <p class="deck">GIC 2025はP（稼ぐ）レバー一本で判定できる、達成率の高い計画だった。だがその裏で自己資本と政策保有株式がどう動いたかを見ると、別の論点が浮かぶ。</p>
-
-  <div class="tablewrap">
+  <div class="tablewrap" style="margin-top:18px">
     <table>
-      <caption><b>GIC 2025 期間中の実績推移</b>　出典：EDINET DB（get_financials）</caption>
+      <caption><b>年度別の実績推移</b>　出典：EDINET DB（get_financials）</caption>
       <thead><tr><th>年度</th><th class="num">売上高</th><th class="num">純利益</th>
         <th class="num">公表ROE</th><th class="num">自己資本</th><th class="num">政策保有株式簿価</th></tr></thead>
       <tbody>
@@ -264,91 +226,119 @@ a{color:var(--accent)}
     </table>
     <p style="padding:10px 16px;font-size:12px;color:var(--ink-muted)">網掛け行＝各目標を初めて超過達成した年度。自己資本は親会社株主帰属分（shareholdersEquity）。</p>
   </div>
+</section>
 
-  <h3>目標超過は「稼ぐ力」だけで説明できる</h3>
-  <p class="prose">売上高は全セグメント（鉄鋼・情報電機・産業資材・生活産業）の伸長、純利益はAIサーバー投資や銅・アルミ価格高騰の恩恵を受けたエレクトロニクス・非鉄金属分野が牽引したとみられる（Yahoo!ファイナンス2026年9月時点の解説）。P（稼ぐ）レバー単体で、5年目標を2〜3年前倒しで達成した点は素直に評価できる。</p>
+<!-- ===================== §3 ===================== -->
+<section>
+  <p class="eyebrow">03　現計画の進捗</p>
+  <h2>後継計画は未公表。直近四半期の実績のみ</h2>
+  <p class="prose">2026年9月29日時点で、GIC 2025の後継となる中期経営計画は公表されていない。現時点で目標に対する進捗として示せるものはなく、直近の決算実績のみを参考情報として記載する。</p>
+  <div class="tablewrap">
+    <table>
+      <caption><b>2027年2月期 第1四半期実績</b>　2026年6月30日開示</caption>
+      <thead><tr><th>項目</th><th class="num">実績</th><th class="num">前年同期比</th>
+        <th class="num">通期会社予想</th><th class="num">進捗率</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">3,084.70</td><td class="num">+11.5%</td>
+          <td class="num">11,500.00</td><td class="num">26.8%</td></tr>
+        <tr><td class="item">営業利益</td><td class="num">119.21</td><td class="num">+20.1%</td>
+          <td class="num">350.00</td><td class="num">34.1%</td></tr>
+        <tr><td class="item">純利益</td><td class="num">97.88</td><td class="num">—</td>
+          <td class="num">280.00</td><td class="num">35.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-  <h3>ただし自己資本はそれ以上に膨らんだ</h3>
-  <p class="prose">純利益が124億円から305億円へ約2.5倍に増える一方、自己資本は1,693億円から2,810億円へ約1.7倍に増加した。<strong>分子（純利益）の伸びを分母（自己資本）の伸びが追いかけ、公表ROEはむしろ7.7%（初年度）から6.9%（最終年度）へ低下している。</strong>この分母膨張の主因の一つが政策保有株式で、5年で1,010億円から2,873億円へほぼ3倍。その他有価証券評価差額金（含み益）の拡大が、還元や事業投資に回らないまま自己資本に積み上がった可能性が高い。</p>
-  <p class="pull">利益は2.5倍になったのに、ROEは上がらなかった。</p>
-  <p class="prose">design判断2-bの原則どおり、<strong>GIC 2025には政策保有株式を削減する金額目標が無いため、この膨張自体を「未達」として評価することはできない。</strong>約束していないことは判定しない、というのがこのプロジェクトの一貫した立場である。ただし「なぜ資本効率の目標を持たなかったのか」「次期中計でこの論点が取り上げられるか」は、次の中計が公表された時点で確認すべき最重要ポイントになる。</p>
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　注目すべき点</p>
+
+  <h3>1. 目標は2つだけで、両方とも2〜3年目に到達した</h3>
+  <p class="prose">GIC 2025で数値化されていたのは連結売上高と純利益の2項目のみ。基本方針（Global／Innovation／Challenge）、セグメント別の重点テーマ、サステナビリティの活動テーマは、いずれも数値目標を伴わない。純利益200億円は5年計画の2年目（2022年度）、売上高1兆円は3年目（2023年度）に到達しており、残り2〜3年を残した時点で量的な目標としては到達済みだった。</p>
+
+  <h3>2. 株主還元：配当は増えたが、性向は下がった。追加還元の必要性は数値上は低い</h3>
+  <p class="prose">配当総額は21.66億円（2020年度）→31.00億円（2025年度）で+43%増加した。同じ期間の純利益は124.29億円→305.06億円で+145%増加しており、純利益の伸びに配当が追いついていない。結果として配当性向は17.4%→10.2%へ低下している。</p>
+
+  <div class="tablewrap">
+    <table>
+      <caption><b>配当・自己資本・自己計算ROEの推移</b>　自己計算ROE＝純利益÷期末自己資本（親会社株主帰属分）。公表ROEとは分母の取り方が異なるため一致しない（注記参照）</caption>
+      <thead><tr><th>年度</th><th class="num">配当総額</th><th class="num">配当性向</th>
+        <th class="num">期末自己資本</th><th class="num">自己計算ROE</th></tr></thead>
+      <tbody>
+        <tr><td class="item">2020年度（起点）</td><td class="num">21.66</td><td class="num">17.4%</td>
+          <td class="num">1,693.18</td><td class="num">7.3%</td></tr>
+        <tr><td class="item">2021年度</td><td class="num">22.62</td><td class="num">11.7%</td>
+          <td class="num">1,863.94</td><td class="num">10.4%</td></tr>
+        <tr><td class="item">2022年度</td><td class="num">23.59</td><td class="num">10.0%</td>
+          <td class="num">2,075.93</td><td class="num">11.3%</td></tr>
+        <tr><td class="item">2023年度</td><td class="num">25.04</td><td class="num">10.6%</td>
+          <td class="num">2,288.40</td><td class="num">10.3%</td></tr>
+        <tr><td class="item">2024年度</td><td class="num">27.44</td><td class="num">10.1%</td>
+          <td class="num">2,533.09</td><td class="num">10.7%</td></tr>
+        <tr class="spot"><td class="item">2025年度（最終）</td><td class="num">31.00</td><td class="num">10.2%</td>
+          <td class="num">2,810.10</td><td class="num">10.9%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="prose"><strong>追加還元の必要性を数値で評価する。</strong>会社自身はROE目標を掲げていないため、一般的な株主資本コストの目安として8%を仮に置き、2025年度実績（純利益305.06億円）から逆算すると、ROE8%に必要な自己資本は305.06÷8%＝3,813億円になる。実際の期末自己資本は2,810億円で、必要水準を約1,003億円下回っている。<strong>つまり自己計算ベースのROE（10.9%）は既に8%の目安を上回っており、「自己資本が過大で追加還元が必要」という状態には数値上ない。</strong>配当性向の低下は、還元不足というより純利益の伸びが配当の伸びを上回っているために生じている。</p>
+  <p class="prose">なお公表ROE（EDINET DB roeOfficial、6.9%）はこれより低い。非支配株主持分やその他包括利益累計額を含むより広い自己資本ベースで計算されているためとみられ、正確な算出式は未確認（gaps参照）。自己株式取得の実額も未取得のため、配当以外の還元（自社株買い）の動きは本カルテでは評価できていない。</p>
+
+  <h3>3. 名古屋証券取引所プレミア市場に単独上場</h3>
+  <p class="prose">東京証券取引所ではなく、名古屋証券取引所プレミア市場に単独上場している。本プロジェクトで名証単独上場銘柄を扱うのはこの銘柄が初めて。2025年8月には1株→2株の株式分割も実施しており（発行済株式数9,720,000株→19,440,000株）、EPS・DPSの年度間比較には分割調整後の値を使う必要がある。</p>
 </section>
 
 <!-- ===================== §5 ===================== -->
 <section>
   <p class="eyebrow">05　記録</p>
-  <h2>経営陣が何を言い、何をしたか</h2>
-
+  <h2>業績と経営陣の動向</h2>
   <ul class="tl">
     <li>
       <div class="date">2021（推定）</div>
       <p class="ev">中期経営計画「Global Innovation Challenge 2025（GIC 2025）」を公表</p>
-      <p class="note">2025年度（2026年2月期）を最終年度とする5ヶ年計画。基本方針はGlobal（国内外拠点拡充）・Innovation（DX推進）・Challenge（人材育成）の3本柱。数値目標は連結売上高1兆円以上・純利益200億円以上の2項目。公表日の一次資料は未確認（gaps参照）。</p>
+      <p class="note">2025年度（2026年2月期）を最終年度とする5ヶ年計画。数値目標は連結売上高1兆円以上・純利益200億円以上の2項目。公表日の一次資料は未確認。</p>
     </li>
-    <li class="good">
+    <li>
       <div class="date">2023.05.26</div>
-      <p class="ev">2023年度（2023年2月期）決算　／　純利益200億円の目標を3年前倒しで達成</p>
-      <p class="note">純利益235.20億円で目標200億円を初めて超過。GIC 2025はまだ2年目だった。</p>
+      <p class="ev">2022年度（2023年2月期）決算</p>
+      <p class="note">純利益235.20億円。目標200億円に対する到達はこの年度が最初。</p>
     </li>
-    <li class="good">
+    <li>
       <div class="date">2024.05.23</div>
-      <p class="ev">2024年度（2024年2月期）決算　／　売上高1兆円の目標を2年前倒しで達成</p>
-      <p class="note">売上高11,119.34億円で目標1兆円を初めて超過。この年度は自己資本も2,075億円→2,288億円へ増加している。</p>
+      <p class="ev">2023年度（2024年2月期）決算</p>
+      <p class="note">売上高11,119.34億円。目標1兆円に対する到達はこの年度が最初。</p>
     </li>
     <li>
       <div class="date">2025.08</div>
       <p class="ev">普通株式1株につき2株の株式分割を実施</p>
-      <p class="note">発行済株式数が9,720,000株から19,440,000株へ倍増。EPS・DPSの比較には分割調整後の値を使う必要がある。</p>
+      <p class="note">発行済株式数が9,720,000株から19,440,000株へ。</p>
     </li>
-    <li class="mark">
+    <li>
       <div class="date">2026.05.26</div>
-      <p class="ev">GIC 2025最終年度（2025年度＝2026年2月期）決算　／　両目標を大幅超過して計画満了</p>
-      <p class="note">売上高11,557.74億円（115.6%達成）・純利益305.06億円（152.5%達成）。ただし政策保有株式は2,873.32億円まで拡大し、公表ROEは6.9%とGIC 2025開始時点の7.7%を下回って着地した。次期中期経営計画は本カルテ作成時点（2026年9月28日）で未公表。</p>
+      <p class="ev">2025年度（2026年2月期）決算　／　GIC 2025最終年度</p>
+      <p class="note">売上高11,557.74億円（目標比115.6%）、純利益305.06億円（目標比152.5%）。政策保有株式2,873.32億円、公表ROE6.9%。</p>
+    </li>
+    <li>
+      <div class="date">2026.06.30</div>
+      <p class="ev">2027年2月期第1四半期決算</p>
+      <p class="note">売上高3,084.70億円（前年同期比+11.5%）、営業利益119.21億円（同+20.1%）、純利益97.88億円。後継の中期経営計画はこの時点でも未公表。</p>
     </li>
   </ul>
-</section>
-
-<!-- ===================== §6 ===================== -->
-<section>
-  <p class="eyebrow">06　直近の状況</p>
-  <h2>次期中計が公表されるまでの端境期</h2>
-  <p class="prose">2027年2月期第1四半期（2026年6月30日開示）の実績は、売上高3,084.70億円・営業利益119.21億円・純利益97.88億円で、いずれも前年同期を上回る増収増益。通期会社予想（売上高1兆1,500億円・営業利益350億円・純利益280億円）に対する進捗率は、売上高26.8%・営業利益34.1%・純利益35.0%と、工程比（25%）を上回るペースで滑り出している。<strong>GIC 2025が満了した後の次期中計がまだ公表されていない</strong>ため、この銘柄は現時点では「計画なき好調」の状態にある。</p>
-</section>
-
-<!-- ===================== §7 ===================== -->
-<section>
-  <p class="eyebrow">07　次の検証条件</p>
-  <h2>何が起きれば結論が変わるか</h2>
-  <p class="deck">株価データ・前中計の一次資料・セグメント別増分内訳が未取得のため、株価対比・C3・C4は含めていません。以下は次の開示で機械的に確認できる条件です。</p>
-
-  <ul class="tests">
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>次期中期経営計画に資本効率（ROE等）の数値目標が盛り込まれるか</h4>
-      <p>GIC 2025はROE目標を持たなかったが、公表ROEが低下傾向にある以上、次期計画で資本効率が論点化されるかは重要な分岐点になる。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>政策保有株式の削減方針が新たに打ち出されるか</h4>
-      <p>2,873億円まで膨らんだ政策保有株式に削減目標が付けば、Aレバーが初めて判定可能になる（4973・8158と同型の展開）。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>次期中計でも売上高・純利益の量的拡大のみが目標とされるか</h4>
-      <p>「稼ぐ力は強いが資本効率は問わない」という設計が繰り返されると、ROEの趨勢的な低下に歯止めがかからない可能性がある。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>自己資本の増加ペースが純利益の増加ペースを恒常的に上回るか</h4>
-      <p>2021年度→2025年度で純利益は約2.5倍、自己資本は約1.7倍——この年度は自己資本の伸びの方が緩やかだが、含み益変動を含む非現金性の増加が今後も続くかを見る必要がある。</p></div></li>
-  </ul>
+  <p class="prose" style="margin-top:16px">経営陣の異動（社長交代等）についての一次資料は未取得（gaps参照）。</p>
 </section>
 
 <div class="notes">
   <h2>注記と出典</h2>
   <ol>
-    <li>数値の出典：同社IR「中期経営計画」ページ（www.okaya.co.jp/company/plan/index.html、2026年9月28日取得）、EDINET DBコネクタ（get_company / get_financials / get_major_shareholders、design判断7）、日本経済新聞・野村證券・SMBC日興証券の銘柄情報ページ（上場市場・株価指標の確認、2026年9月28日取得）。</li>
-    <li>上場市場は東京証券取引所ではなく<strong>名古屋証券取引所プレミア市場</strong>（単独上場）。日本経済新聞の企業概要ページで確認済み。本プロジェクトで名証単独上場銘柄を扱うのはこの銘柄が初めて。</li>
-    <li>会計年度は2月期。「2025年度」という会社の呼称は、2025年3月〜2026年2月の期間（EDINET DBのfiscalYear基準では2026）を指す。本台帳のfy（=EDINETのfiscalYear−1）では2025に対応する。</li>
+    <li>数値の出典：同社IR「中期経営計画」ページ（www.okaya.co.jp/company/plan/index.html、2026年9月28日・29日取得）、EDINET DBコネクタ（get_company / get_financials / get_major_shareholders、design判断7）、日本経済新聞・野村證券・SMBC日興証券の銘柄情報ページ（上場市場・株価指標の確認）。</li>
+    <li>上場市場は東京証券取引所ではなく名古屋証券取引所プレミア市場（単独上場）。日本経済新聞の企業概要ページで確認済み。</li>
+    <li>会計年度は2月期。「2025年度」という会社の呼称は、2025年3月〜2026年2月の期間（EDINET DBのfiscalYear基準では2026）を指す。</li>
     <li>自己資本は「株主資本合計＋その他の包括利益累計額」相当のshareholdersEquity（親会社株主帰属分）。netAssets（非支配株主持分を含む連結純資産合計）とは異なる。</li>
-    <li>GIC 2025の公表日・策定時の社長名は未確認（gaps参照）。2025年8月の株式分割前後の発行済株式数の違いに注意（本カルテのEPS/DPS系列は分割調整後の値を使用）。</li>
-    <li>前中期経営計画（GIC 2025の前）の一次資料は未取得のためC4（前計画の達成履歴）は空欄。セグメント別増分（C3）も同様に未取得。</li>
-    <li>C2（ROE分母の原資）はGIC 2025が自己資本・ROEの数値目標を持たないため対象外。</li>
-    <li>株価対比は株価データが未取得のため含めていない。</li>
-    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）は台帳から自動生成している。§04以降は人が書いている。</li>
+    <li>GIC 2025の公表日・策定時の社長名・前中期経営計画の一次資料は未確認（gaps参照）。</li>
+    <li>§04の「自己計算ROE」は純利益÷期末自己資本（ともに親会社株主帰属分、EDINET DB get_financials）で本カルテが独自に算出した値。EDINET DBのroeOfficial（公表ROE、6.9%）とは分母の取り方が異なり一致しない。追加還元の必要性を評価するために置いた資本コスト8%は会社の公表値ではなく、本カルテが仮に置いた一般的な目安。</li>
+    <li>本カルテは2026年9月29日、5章構成（①中期経営計画の履歴／②前計画の達成度／③現計画の進捗／④注目すべき点／⑤記録）に全面改訂した。判定サマリー（旧§01のPAGREレバー・グレード表示）は廃止し、§04の分析に置き換えている。</li>
   </ol>
   <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、企業の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
 </div>

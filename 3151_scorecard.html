@@ -132,405 +132,184 @@ a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
 </style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
 
 <div class="wrap">
 
 <header class="masthead">
   <div class="mh-left">
     <div class="ticker">3151 ・ 東証プライム ・ 日本基準</div>
-    <h1>バイタルケーエスケー・ホールディングス<br>中期経営計画2027－Move on to the Next Stage－達成度検証</h1>
-    <p class="mh-sub">初年度からコア営業利益・営業利益が計画未達。純利益の超過達成は非事業性の益に支えられている</p>
+    <h1>バイタルケーエスケー・ホールディングス<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">「中期経営計画2027」は工程33%。営業利益・コア営業利益は計画未達だが、非事業性の利益（投資事業組合運用益・資産売却益）が経常利益・純利益を押し上げている</p>
   </div>
   <div class="mh-right">
-    計画期間　<b>2026/3期 － 2028/3期 </b><br>
-     公表日　<b>2025年4月17日 </b><br>
-     基準日　<b>2026年9月7日 </b><br>
-     金額単位　<b>億円（別記なき限り）</b>
+    基準日　<b>2026年9月29日</b><br>
+    会計年度　<b>3月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
   </div>
 </header>
 
+<!-- ===================== §1 ===================== -->
 <section style="margin-top:36px">
-  <p class="eyebrow">00　中期経営計画の履歴</p>
-  <h2>いつ発表され、いつ修正されたか</h2>
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
-      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <caption><b>発表の経緯</b></caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
       <tbody>
-        <tr><td class="num" style="white-space:nowrap">2022〜2024年度</td>
-          <td><span class="chip c-skip">終了</span></td>
-          <td class="item">第5次中期経営計画</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
-        <tr><td class="num" style="white-space:nowrap">2025年4月17日</td>
-          <td><span class="chip c-ok">公表</span></td>
-          <td class="item">中期経営計画2027－Move on to the Next Stage－</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">2025〜2027年度</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2022.04</td>
+          <td class="item">第5次中期経営計画（2023年3月期〜2025年3月期）スタート</td></tr>
+        <tr class="spot"><td class="num" style="white-space:nowrap">2025.04.17</td>
+          <td class="item">中期経営計画2027「Move on to the Next Stage」（2026年3月期〜2028年3月期）を公表。
+            新規事業として製薬事業（未承認薬導入支援）へ参入を決定</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.06.19</td>
+          <td class="item">有価証券報告書（第17期）提出。中計初年度（2026年3月期）実績が判明</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年9月29日時点</td>
+          <td class="item">中期経営計画2027は工程33%を通過、2027年3月期（2年目）が進行中</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
+<!-- ===================== §2 ===================== -->
 <section>
-  <p class="eyebrow">01　判定サマリー</p>
-  <h2>ボトルネックはP（稼ぐ）。純利益の見た目の好調さは非事業性の益による</h2>
+  <p class="eyebrow">02　前計画の達成度　─　第5次中期経営計画（2023年3月期〜2025年3月期）</p>
+  <h2>5項目すべて達成。ただし純利益急増の約58%は政策保有株式売却益</h2>
+  <p class="prose">決算短信本文に最終年度の利益計画と実績の対比表を掲げ、5項目すべての達成を明記している。ただし純利益は特別利益（投資有価証券売却益4,238百万円＝政策保有株式の売却）が7,308百万円のうち約58%を占めており、design判断3の実力値分解では実力純利益は概算4,704百万円（公表の64%程度）、実力ROEは概算4.5%（公表6.9%）まで下振れする。</p>
 
-<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
-  <div class="tablewrap" style="margin-bottom:24px">
-    <table style="min-width:660px">
-      <thead><tr>
-        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
-        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
-      </tr></thead>
-      <tbody><tr>
-        <td><span class="chip c-crit">E</span></td>
-        <td><span class="chip c-crit">D</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-crit">D</span></td>
-        <td><span class="chip c-good">A</span></td>
-        <td style="font-weight:700;white-space:nowrap"><b>P</b> 稼ぐ</td>
-        <td><span class="chip c-skip">開示なし</span><small style="display:block;color:var(--ink-muted);font-size:11px">計算に必要な数値が非開示</small></td>
-      </tr></tbody>
-    </table>
-  </div>
-
-  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
-    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
-      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
-      判定できたのは4本で、<b>「未判定」は良好という意味ではありません。</b>
-      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
-      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
-    </p>
-  </div>
-
-</section>
-
-<section>
-  <p class="eyebrow">02　現プランの進捗状況</p>
-  <h2>レバー別に並べた達成状況</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程33%。別建て期間のKPIはその期間の工程）</caption>
-      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
-        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <caption><b>第5次中計の目標と実績（2025年3月期）</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">目標</th><th class="num">実績</th><th>達成</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="item">売上高</td><td>PG</td>
-          <td class="num">6,104.97</td><td class="num">17.0%</td>
-          <td class="num">-16pt</td>
-          <td><div class="meter"><div class="fill f-warn" style="width:17.0%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-warn">C</span></td></tr>
-        <tr class="spot">
-          <td class="item">営業利益</td><td>P</td>
-          <td class="num">40.27</td><td class="num">-168.9%</td>
-          <td class="num">-202pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-crit">E</span></td></tr>
-        <tr>
-          <td class="item">純利益</td><td>P</td>
-          <td class="num">73.62</td><td class="num">6.8%</td>
-          <td class="num">-27pt</td>
-          <td><div class="meter"><div class="fill f-warn" style="width:6.8%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-warn">C</span></td></tr>
-        <tr class="spot">
-          <td class="item">コア営業利益率(研究開発費控除前)</td><td>P</td>
-          <td class="num">0.9</td><td class="num">-40.0%</td>
-          <td class="num">-73pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-crit">E</span></td></tr>
-        <tr class="spot">
-          <td class="item">調整後ROE</td><td>PE</td>
-          <td class="num">6.6</td><td class="num">-27.3%</td>
-          <td class="num">-61pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-crit">E</span></td></tr>
-        <tr>
-          <td class="item">自己資本(ROE目標からの逆算・会社非開示)</td><td>ARE</td>
-          <td class="num">1,172.23</td><td class="num">541.9%</td>
-          <td class="num">+509pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:100.0%"></div>
-            <div class="pace" style="left:33%" data-l="33%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr><td class="item">投資(3年累計200億円)</td><td>G</td>
-          <td class="num">—</td><td class="num">—</td>
-          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">基準不一致＝判定保留（目標:3年累計(FY2025-2027) / 実績:3年累計(FY2022-2024実績、比較対象として開示)）</td>
-          <td><span class="chip c-warn">未判定</span></td></tr>
-        <tr class="spot">
-          <td class="item">政策保有株式(対連結純資産比20%未満へ)<br><small style="color:var(--ink-muted)">別建て期間</small></td><td>A</td>
-          <td class="num">37.50</td><td class="num">-0.0%</td>
-          <td class="num">-50pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
-          <td><span class="chip c-crit">D</span></td></tr>
-        <tr class="spot">
-          <td class="item">DOE(3%以上)<br><small style="color:var(--ink-muted)">別建て期間</small></td><td>R</td>
-          <td class="num">2.1</td><td class="num">0.0%</td>
-          <td class="num">-50pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:50%" data-l="50%"></div></div></td>
-          <td><span class="chip c-crit">D</span></td></tr>
-        <tr>
-          <td class="item">配当性向(40〜45%程度)<br><small style="color:var(--ink-muted)">別建て期間</small></td><td>R</td>
-          <td class="num">46.0</td><td class="num">100.0%</td>
-          <td class="num">+33pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:100.0%"></div>
-            <div class="pace" style="left:67%" data-l="67%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
+        <tr><td class="item">売上高</td><td class="num">5,900</td><td class="num">6,003.70</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">営業利益</td><td class="num">55.00</td><td class="num">57.06</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">経常利益</td><td class="num">64.00</td><td class="num">69.70</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">純利益</td><td class="num">60.00</td><td class="num">73.08</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">ROE</td><td class="num">5.8%</td><td class="num">6.9%</td>
+          <td><span class="chip c-good">達成</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
-  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
 </section>
 
+<!-- ===================== §3 ===================== -->
 <section>
-  <p class="eyebrow">03　旧プランの結果</p>
-  <h2>前の計画は達成できたか</h2>
+  <p class="eyebrow">03　現計画の進捗　─　中期経営計画2027（2026年3月期〜2028年3月期）</p>
+  <h2>営業利益・コア営業利益は計画未達。経常利益・純利益は非事業性の利益で計画超過</h2>
+
   <div class="tablewrap">
     <table>
-      <caption><b>前計画（2022〜2024年度）の最終実績</b></caption>
-      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th>
-        <th class="num">達成率</th><th>判定</th><th>備考</th></tr></thead>
-      <tbody>
-        <tr><td class="item">rev</td><td class="num">5900</td>
-          <td class="num">6003.7</td><td class="num">102%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">op</td><td class="num">55.0</td>
-          <td class="num">57.06</td><td class="num">104%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">oi</td><td class="num">64.0</td>
-          <td class="num">69.7</td><td class="num">109%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">ni</td><td class="num">60.0</td>
-          <td class="num">73.08</td><td class="num">122%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">roe</td><td class="num">5.8</td>
-          <td class="num">6.9</td><td class="num">119%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose">決算短信本文に「最終年度の利益計画と実績」の対比表を掲げ、5項目すべて
-達成したことを明記（会社自身が総括）。純利益は計画比121.8%の大幅達成
-だが、要因は抗がん剤・各種ワクチンの販売増という営業要因に加え、
-政策保有株式の売却による特別利益4,238百万円（純利益7,308百万円の
-約58%に相当）が大きい。公表ROE6.9%は実力値ではかなり下振れする
-（後述actuals FY2024のflags参照、design判断3）。</p>
-</section>
-
-
-
-<!-- ===================== §4 ===================== -->
-<section>
-  <p class="eyebrow">04　ボトルネックの深掘り　—　なぜ営業利益は計画を割り込んだのか</p>
-  <h2>「稼ぐ」の中身：本業の初めての減益と、新規事業の先行投資</h2>
-  <p class="deck">Pレバー（稼ぐ）がボトルネックです。表示指標によって結論が割れる年度になりました。まず何が実際に起きたかをセグメント別に見ます。</p>
-
-  <h3>Pレバー（E）─ 医薬品卸売事業が初めて減益、製薬事業の損失が上乗せ</h3>
-  <p class="prose">2026年3月期の営業利益は40.27億円で、中期経営計画2027公表時点（2025年4月17日）の計画51.00億円を大きく下回りました。コア営業利益（研究開発費控除前、会社独自の恒常収益指標）も53.07億円と計画60.00億円に届いていません。原因はセグメント別に見ると明確です。</p>
-
-  <div class="tablewrap" style="margin-top:18px">
-    <table style="min-width:720px">
-      <caption><b>セグメント別営業利益の推移</b>　単位：百万円</caption>
-      <thead><tr><th>セグメント</th><th class="num">FY2024実績</th><th class="num">FY2025実績</th>
-        <th class="num">増減</th><th class="num">増減率</th></tr></thead>
-      <tbody>
-        <tr class="spot"><td class="item">医薬品卸売事業</td><td class="num">5,163</td><td class="num">4,920</td>
-          <td class="num">▲243</td><td class="num">▲4.7%</td></tr>
-        <tr><td class="item">薬局事業</td><td class="num">251</td><td class="num">252</td>
-          <td class="num">+1</td><td class="num">+0.4%</td></tr>
-        <tr><td class="item">動物用医薬品卸売事業</td><td class="num">314</td><td class="num">304</td>
-          <td class="num">▲10</td><td class="num">▲3.2%</td></tr>
-        <tr class="spot"><td class="item">製薬事業（新設）</td><td class="num">－</td><td class="num">△1,312</td>
-          <td class="num">△1,312</td><td class="num">－</td></tr>
-        <tr><td class="item">介護レンタルその他事業</td><td class="num">△78</td><td class="num">△102</td>
-          <td class="num">▲24</td><td class="num">－</td></tr>
-        <tr><td class="item"><b>合計（調整前）</b></td><td class="num"><b>5,650</b></td><td class="num"><b>4,062</b></td>
-          <td class="num"><b>▲1,588</b></td><td class="num"><b>▲28.1%</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">セグメント利益の減少額1,588百万円のうち、82.6%（1,312百万円）は新設の製薬事業（未承認薬導入支援事業）の研究開発費が占めています。これは会社が「中期経営計画2027は研究開発フェーズに充当。早期承認を目指し出来るだけ前倒しで研究開発費を投入」と明言している、計画どおりの先行投資です。もう一つの要因は、主力の医薬品卸売事業が売上高572,860百万円（+1.5%増収）にもかかわらず、セグメント利益が4,920百万円へ4.7%の減益に転じたことです。この銘柄がこの台帳で追跡している範囲で、中核セグメントが減益になったのは初めてです。薬価改定の影響や、局地的なエリアでの競争入札による売上減少が要因として開示されていますが、増収下での減益という点は注視が必要です。</p>
-
-  <h3>実力値への分解 ─ 経常利益・純利益の超過達成は「投資事業組合運用益」次第</h3>
-  <p class="prose">営業利益が計画を割り込んだにもかかわらず、経常利益（78.22億円、計画比130.4%）・純利益（73.62億円、計画比102.3%）は計画を超過しました。設計判断3（公表値をそのまま使わず実力値に分解する）に従って内訳を見ると、超過の主因は特別損益ではなく、営業外収益に計上された<strong>投資事業組合運用益27.42億円</strong>（前期はわずか0.01億円）にあります。サンバイオ株式会社との資本業務提携、㈱LinDoやMIJ BG2 LPへの出資など、これまでの製薬関連の間接投資（ファンド出資）の評価益とみられ、本業の収益力とは無関係な、市況に連動する一過性の益です。</p>
-
-  <div class="tablewrap">
-    <table style="min-width:680px">
-      <caption><b>実力値への分解</b>　単位：億円</caption>
-      <thead><tr><th>項目</th><th class="num">FY2024実績</th><th class="num">FY2025実績</th></tr></thead>
-      <tbody>
-        <tr><td class="item">公表純利益</td><td class="num">73.08</td><td class="num">73.62</td></tr>
-        <tr><td class="item">特別損益（純額）</td><td class="num">+37.20</td><td class="num">+36.80</td></tr>
-        <tr class="spot"><td class="item">投資事業組合運用益（営業外収益）</td><td class="num">0.01</td><td class="num">27.42</td></tr>
-        <tr class="spot"><td class="item">実力純利益（概算・特別損益控除のみ）</td><td class="num">47.04</td><td class="num">47.86</td></tr>
-        <tr><td class="item">公表ROE</td><td class="num">6.9%</td><td class="num">6.6%</td></tr>
-        <tr class="spot"><td class="item">実力ROE（概算）</td><td class="num">4.5%</td><td class="num">4.3%</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose">実効税率30%を仮定し、特別損益（純額）を税引後で控除すると、実力純利益は概算47.86億円で公表値の65%程度にとどまります。実力ROEは概算4.3%で、前期の4.5%からほぼ横ばいです。仮に投資事業組合運用益（税引後ベース）も合わせて控除すると、実力純利益は概算28.67億円・実力ROEは概算2.6%までさらに下がります（会社の公式区分ではない上振れ分の参考試算）。営業利益が計画未達な一方で純利益が計画超過という組み合わせは、「本業の実力は計画を下回っているが、非事業性の益がそれを覆い隠している」年度だったことを示しています。</p>
-
-  <h3>Aレバー（D）─ 個別銘柄は売っているのに、保有株式全体の時価は膨らんだ</h3>
-  <p class="prose">ユーザーが特に注視するよう指定した政策保有株式の縮減（対連結純資産比率を2028年3月期に20%未満、2030年3月期に10%未満へ）は、初年度から4973（日本高純度化学）と同じ「削減しているのに悪化する」構造が疑われる動きを見せています。</p>
-
-  <div class="tablewrap" style="margin-top:18px">
-    <table style="min-width:680px">
-      <caption><b>投資有価証券（政策保有株式を含む）の推移</b>　単位：億円</caption>
-      <thead><tr><th>時点</th><th class="num">BS投資有価証券</th><th class="num">その他有価証券評価差額金</th></tr></thead>
-      <tbody>
-        <tr><td class="item">2025年3月期末</td><td class="num">451.31</td><td class="num">226.24</td></tr>
-        <tr class="spot"><td class="item">2026年3月期末（FY2025）</td><td class="num">530.57</td><td class="num">274.38</td></tr>
-        <tr><td class="item">2026年6月末（Q1）</td><td class="num">520.08</td><td class="num">266.32</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="prose" style="margin-top:12px">有価証券報告書によれば、連結子会社の㈱ケーエスケーが保有銘柄のうち7銘柄を、㈱バイタルネットが6銘柄を2026年3月期中に売却しており（合計売却額約34.77億円）、会社は「決算対策として」実際に売却を進めています。それでもBS計上額の投資有価証券は451.31億円→530.57億円へ純増しました。その他有価証券評価差額金も226.24億円→274.38億円へ増加しており、残存銘柄の時価上昇（含み益の拡大）が売却額を上回ったと推定されます。design判断2-bが警告する「含み益は両刃」という構造が、4973に続きこの銘柄でも観測されつつある形です。ただし<strong>公式の対連結純資産比率の数値そのものはFY2025時点で有価証券報告書の可読テキストからは確認できていません</strong>（目標指標の表はFY2024実績37.5%のまま更新されておらず、今後の決算説明資料等での確認が必要です）。なお、直近のQ1（2026年6月末）では投資有価証券が520.08億円へわずかに減少していますが、当四半期の売却額は0.44億円（前年同期2.89億円）と急減しており、鈍化の兆候か市況変動によるものかは単四半期では判別できません。</p>
-
-  <h3>Eレバー（A、ただし要注意）─ 自己資本が逆算目標を上回った</h3>
-  <p class="prose">会社は自己資本の絶対水準を目標にしておらず（目標は調整後ROEという比率のみ）、engineに見せるため5290と同じ手法でROE目標から自己資本の逆算値（1,080.00億円）を立てています。この項目はグレードA・進捗率542%という機械的な出力になっていますが、<b>これは「良い」という意味ではありません。</b>FY2025実績の自己資本は1,172.23億円で、逆算目標をすでに上回っています。要因は含み益の拡大（その他有価証券評価差額金が+48.14億円）であり、design判断2-bが警告する「削減しているのに自己資本が膨らみEレバーが悪化する」構造そのものです。進捗率の絶対値は読まず、符号の向きが「不要気味」から「行き過ぎ」に転じた点だけを読むべき項目です。</p>
-</section>
-
-<!-- ===================== §5 ===================== -->
-<section>
-  <p class="eyebrow">05　記録</p>
-  <h2>経営陣が何を言い、何をしたか</h2>
-
-  <ul class="tl">
-    <li>
-      <div class="date">2022.04</div>
-      <p class="ev">第5次中期経営計画（2023年3月期〜2025年3月期）スタート</p>
-    </li>
-    <li class="mark">
-      <div class="date">2025.04.17</div>
-      <p class="ev">中期経営計画2027公表　／　製薬事業への新規参入を決定</p>
-      <p class="note">政策保有株式の縮減目標を2年前倒し（2028年3月期20%未満、2030年3月期10%未満）。株主還元方針を総還元性向50%以上+DOE2%以上→DOE3%以上・配当性向40〜45%程度へ変更。</p>
-    </li>
-    <li class="mark">
-      <div class="date">2025.05.14</div>
-      <p class="ev">2025年3月期決算発表　／　前中計最終年度、5項目すべて達成</p>
-      <p class="note">売上高600,370/営業利益5,706/経常利益6,970/純利益7,308百万円/ROE6.9%。純利益は政策保有株式売却益4,238百万円を含み前年同期比+25.1%。</p>
-    </li>
-    <li>
-      <div class="date">2025.09.16</div>
-      <p class="ev">㈱メドリープファーマを設立（製薬事業の実施主体）</p>
-      <p class="note">新薬候補「マルトール第二鉄」（Shield Therapeutics plc社より導入）が国内で第2相試験へ進行。</p>
-    </li>
-    <li>
-      <div class="date">2025.12.01</div>
-      <p class="ev">八千代ケアホールディングス㈱を取得し子会社化</p>
-      <p class="note">連結子会社の㈱ケーエスケーが21.00億円で全株式取得。のれん21.04億円発生。介護レンタル事業拡大方針の実行。</p>
-    </li>
-    <li class="mark">
-      <div class="date">2026.05.14</div>
-      <p class="ev">期末配当を34円→36円へ増額決定、あわせて新たな自己株式取得を決議</p>
-      <p class="note">年間配当70円（配当性向46.0%）。自己株式取得（上限200万株・40億円、2026/5/15-2027/3/24）。FY2025は自己株式取得がほぼゼロだった反動で再開。</p>
-    </li>
-    <li class="mark">
-      <div class="date">2026.06.19</div>
-      <p class="ev">有価証券報告書（第17期）提出　／　中計初年度実績が判明</p>
-      <p class="note">コア営業利益・営業利益は計画未達（88.5%・78.9%）。経常利益・純利益は投資事業組合運用益27.42億円に支えられ計画超過。医薬品卸売事業が初めて減益。</p>
-    </li>
-    <li class="mark">
-      <div class="date">2026.08.06</div>
-      <p class="ev">2027年3月期第1四半期決算短信　／　純利益が前年同期比▲48.2%</p>
-      <p class="note">通期予想を下方修正（コア営業利益66.00→57.00億円、営業利益51.00→41.00億円、経常利益60.00→50.00億円）。純利益予想は70.00→75.00億円へ上方修正。</p>
-    </li>
-  </ul>
-</section>
-
-<!-- ===================== §6 ===================== -->
-<section>
-  <p class="eyebrow">06　会社予想の精度</p>
-  <h2>2年目の計画も、収益性は下方修正・純利益は上方修正</h2>
-  <p class="deck">中期経営計画2027は年度別の内訳を開示している（has_annual_breakdown: full）ため、「計画→実績→翌年度の修正」という一連の流れを追えます。初年度（FY2025）の実績と、2年目（FY2026）の会社予想の修正状況を並べます。</p>
-
-  <div class="tablewrap">
-    <table style="min-width:760px">
-      <caption><b>FY2025（2026年3月期）：計画と実績</b>　単位：億円</caption>
-      <thead><tr><th>項目</th><th class="num">計画<br><small>（2025-04-17公表）</small></th>
-        <th class="num">実績</th><th class="num">計画比</th></tr></thead>
+      <caption><b>初年度（2026年3月期）：計画と実績</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th><th class="num">達成率</th></tr></thead>
       <tbody>
         <tr><td class="item">売上高</td><td class="num">6,200</td><td class="num">6,104.97</td><td class="num">98.5%</td></tr>
         <tr class="spot"><td class="item">コア営業利益</td><td class="num">60.00</td><td class="num">53.07</td><td class="num">88.5%</td></tr>
         <tr class="spot"><td class="item">営業利益</td><td class="num">51.00</td><td class="num">40.27</td><td class="num">78.9%</td></tr>
         <tr><td class="item">経常利益</td><td class="num">60.00</td><td class="num">78.22</td><td class="num">130.4%</td></tr>
         <tr><td class="item">純利益</td><td class="num">72.00</td><td class="num">73.62</td><td class="num">102.3%</td></tr>
-        <tr><td class="item">EPS（円）</td><td class="num">149.1</td><td class="num">152.29</td><td class="num">102.1%</td></tr>
       </tbody>
     </table>
   </div>
+  <p class="prose" style="margin-top:16px">整合性テストC1は「計画自体が初年度に減益を織り込んでいる（研究開発費計上のため）」ことへの警告として赤判定だったが、実績はその減益計画（51.00億円）すらさらに下回る40.27億円で着地し、警告が的中する形になった。一方、経常利益の大幅上振れ（130.4%）の主因は特別利益ではなく、営業外収益の「投資事業組合運用益」27.42億円（VC・PEファンド出資の評価益、前期はわずか0.01億円）という事業の実力とは無関係な一過性・市況連動の益である。FY2026（2027年3月期）会社予想もコア営業利益・営業利益・経常利益をすべて下方修正（純利益のみ上方修正）しており、「収益力を非事業性の利益で補う」構図が2年目も続く見通し。</p>
 
   <div class="tablewrap" style="margin-top:18px">
-    <table style="min-width:760px">
-      <caption><b>FY2026（2027年3月期）：原計画と修正後予想</b>　単位：億円</caption>
-      <thead><tr><th>項目</th><th class="num">原計画<br><small>（2025-04-17公表）</small></th>
-        <th class="num">修正後予想<br><small>（2026-08-06時点）</small></th><th class="num">修正率</th></tr></thead>
+    <table>
+      <caption><b>セグメント利益増分（2025年3月期→2026年3月期）</b>　単位：億円</caption>
+      <thead><tr><th>セグメント</th><th class="num">増減</th></tr></thead>
       <tbody>
-        <tr><td class="item">売上高</td><td class="num">6,400</td><td class="num">6,200</td><td class="num">▲3.1%</td></tr>
-        <tr class="spot"><td class="item">コア営業利益</td><td class="num">66.00</td><td class="num">57.00</td><td class="num">▲13.6%</td></tr>
-        <tr class="spot"><td class="item">営業利益</td><td class="num">51.00</td><td class="num">41.00</td><td class="num">▲19.6%</td></tr>
-        <tr><td class="item">経常利益</td><td class="num">60.00</td><td class="num">50.00</td><td class="num">▲16.7%</td></tr>
-        <tr class="spot"><td class="item">純利益</td><td class="num">70.00</td><td class="num">75.00</td><td class="num">+7.1%</td></tr>
+        <tr><td class="item">医薬品卸売事業</td><td class="num">▲2.43</td></tr>
+        <tr><td class="item">薬局事業</td><td class="num">+0.01</td></tr>
+        <tr><td class="item">動物用医薬品卸売事業</td><td class="num">▲0.10</td></tr>
+        <tr class="spot"><td class="item">製薬事業（新設）</td><td class="num">▲13.12</td></tr>
+        <tr><td class="item">介護レンタルその他事業</td><td class="num">▲0.24</td></tr>
+        <tr><td class="item">合計</td><td class="num">▲15.88</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="prose" style="margin-top:12px">2年目の会社予想も、収益性を測る4指標（コア営業利益・営業利益・経常利益）はすべて下方修正されている一方、純利益だけが上方修正されています。第1四半期（2026年4-6月）の純利益は前年同期比▲48.2%と大きく悪化しており、通期予想を達成するには残り3四半期での大幅な回復が必要です。「営業段階の弱さを非事業性の利益で補う」という初年度の構図が、2年目も続く可能性を会社予想自体が示唆しています。</p>
+  <p class="prose" style="margin-top:12px">営業利益悪化の82.6%は新設の製薬事業セグメントの損失（研究開発費先行投資）が占める。中核の医薬品卸売事業も単独で▲2.43億円（▲4.7%）の減益で、この銘柄で初めて中核セグメントが減益に転じた年度だが、これは会社が織り込み済みの新規事業への先行投資であり、5901・5290型の構造的な一点賭けとは性格が異なる。</p>
 </section>
 
-<!-- ===================== §7 ===================== -->
+<!-- ===================== §4 ===================== -->
 <section>
-  <p class="eyebrow">07　次の検証条件</p>
-  <h2>何が起きれば結論が変わるか</h2>
-  <p class="deck">対TOPIX超過リターン等の株価分析は未実施（coverage=coveredのため2軸マトリクスの対象外）。</p>
+  <p class="eyebrow">04　注目すべき点</p>
 
-  <ul class="tests">
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>医薬品卸売事業の営業利益が増益に戻るか</h4>
-      <p>FY2025は増収下で4.7%の減益に転じた。次期以降に増収と増益が揃えば、Pレバー悪化の主因の一つが解消されたことになる。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>政策保有株式の対純資産比率の公式数値が開示され、低下に転じるか</h4>
-      <p>FY2025時点の公式比率は未確認。次の決算説明資料・適時開示・有報でこの数値が確認でき、かつ低下していれば「削減が含み益の拡大に追いついた」という転換点になる。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>製薬事業（マルトール第二鉄）が第2相試験以降、順調に進むか</h4>
-      <p>研究開発費は計画を上回るペースで投入されている（FY2025実績12.80億円、計画9.00億円）。開発が計画通り進めば、この先行投資が将来の収益に結実する見通しが立つ。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>自己株式取得（上限40億円）がどの程度執行されるか</h4>
-      <p>FY2025はほぼゼロまで縮小した後、2026年5月に新プログラムを決議しQ1から再開している。執行ペースが本気度を測る材料になる。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>投資事業組合運用益・投資有価証券売却益への依存が続くか</h4>
-      <p>FY2025の経常利益・純利益の超過達成は本業以外の益に支えられていた。次期以降もこの依存が続けば、「表示指標が良く見えるが実力は伴わない」状態が定着する。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>FY2026の会社予想（下方修正後）がさらに未達となるか</h4>
-      <p>Q1時点で純利益は前年同期比▲48.2%。原計画から一段引き下げた修正後予想（コア営業利益57.00億円等）ですら未達となれば、中計全体の実現可能性への疑問が強まる。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>投資有価証券のBS計上額がさらに増加するか</h4>
-      <p>個別銘柄の売却を続けても含み益の拡大がそれを上回り続ければ、design判断2-bが警告する構造が定着し、Aレバーの逆行が長期化する。</p></div></li>
+  <h3>1. 「稼ぐ力」は非事業性の利益に支えられている。実力純利益は公表の65%</h3>
+  <p class="prose">design判断3の実力値分解では、特別損益（純額+36.80億円）を税引後控除した実力純利益は概算47.86億円で、公表純利益73.62億円の65%程度にとどまる。前述の投資事業組合運用益27.42億円も合わせて控除すると、実力純利益は概算28.67億円まで下がり、実力ROEは概算2.6%まで低下する（会社の公式区分ではない参考値）。前期（FY2024）の実力ROEも概算4.5%と、新中計開始前から既に公表値との乖離が続いている。</p>
+
+  <h3>2. 株主還元：配当は着実に増配。追加還元の必要性は数値上「中」程度</h3>
+  <p class="prose">DPSは42→45→70円と一貫増配（FY2025は前期比+55.6%）し、配当性向も目標レンジ40〜45%程度に到達している。自己株式取得はFY2025にほぼゼロまで縮小したが、2026年5月に新プログラム（上限40億円）を決議しQ1から再開した。</p>
+  <p class="prose"><strong>追加還元の必要性を数値で評価する。</strong>会社は自己資本の絶対水準を目標にしていないが、付録のROICツリー（FY2027計画：調整後ROE7.5%・純利益81.00億円）から自己資本を逆算すると81.00÷7.5%＝1,080.00億円になる。実績の自己資本は2026年3月期末で1,172.23億円と、この逆算目標を92.23億円（7.9%）上回っている。自己資本比7.9%の超過は本プロジェクトの区分では「小」〜「中」の境目に位置し、8158・8018ほど極端ではないが、政策保有株式の含み益拡大（その他有価証券評価差額金226.24億円→274.38億円）が主因という点で同じ構造の初期段階にある。前期（FY2024）末時点では逆算目標をむしろ下回っており（自己資本が不足気味だった）、1年でこの符号が反転した点に注意が必要。</p>
+
+  <h3>3. 政策保有株式：個別銘柄は売却継続も、BS計上額は含み益拡大で純増</h3>
+  <p class="prose">ユーザーが重点的に追うよう指定した政策保有株式の縮減目標（2028年3月期に対純資産比20%未満、2030年3月期に10%未満）に対し、当期はケーエスケー7銘柄・バイタルネット6銘柄を売却（合計約34.77億円）した一方、BS投資有価証券は451.31億円→530.57億円へ+79.26億円増加した。残存銘柄の時価上昇が売却を上回ったとみられ、4973（日本高純度化学）で確認された「削減しているのに含み益拡大が売却ペースを上回る」構造がこの銘柄でも疑われる。公式の対純資産比率のFY2025時点の数値は有報の可読テキストからは確認できていない（gaps参照）。2027年3月期第1四半期はBS投資有価証券がわずかに減少したが、売却額自体は前年同期の6分の1程度に鈍化しており、市況変動か売却進展かは単四半期では判別できない。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>業績と経営陣の動向</h2>
+  <ul class="tl">
+    <li>
+      <div class="date">2022.04</div>
+      <p class="ev">第5次中期経営計画（2023年3月期〜2025年3月期）スタート</p>
+    </li>
+    <li>
+      <div class="date">2024.08</div>
+      <p class="ev">アローメディカル㈱（動物用医薬品卸売）を連結子会社化</p>
+    </li>
+    <li>
+      <div class="date">2025.04.17</div>
+      <p class="ev">中期経営計画2027公表</p>
+      <p class="note">新規事業として製薬事業（未承認薬導入支援事業）への参入を決定。政策保有株式の縮減目標を2年前倒し（2028年3月期20%未満、2030年3月期10%未満）。株主還元方針を総還元性向50%以上+DOE2%以上→DOE3%以上・配当性向40〜45%程度へ変更。</p>
+    </li>
+    <li>
+      <div class="date">2025.05.14</div>
+      <p class="ev">2025年3月期決算発表　／　第5次中計最終年度、5項目すべて達成</p>
+      <p class="note">純利益は政策保有株式売却益4,238百万円を含み前年比+25.1%。自己株式取得200万株(25.05億円)実施、年間配当45円。</p>
+    </li>
+    <li>
+      <div class="date">2025.12.01</div>
+      <p class="ev">連結子会社の㈱ケーエスケーが八千代ケアホールディングス㈱を21.00億円で取得し子会社化</p>
+      <p class="note">中計の介護レンタル事業拡大方針の実行。のれん21.04億円発生。</p>
+    </li>
+    <li>
+      <div class="date">2026.05.14</div>
+      <p class="ev">2026年3月期決算発表　／　期末配当増額・新規自己株式取得を決議</p>
+      <p class="note">期末配当を34円→36円へ増額（年間70円、配当性向46.0%）。自己株式取得（上限200万株・40億円）を新規決議。</p>
+    </li>
+    <li>
+      <div class="date">2026.06.19</div>
+      <p class="ev">有価証券報告書（第17期）提出　／　中計初年度実績が判明</p>
+      <p class="note">コア営業利益・営業利益は計画未達（88.5%・78.9%）、経常利益・純利益は計画超過（130.4%・102.3%）。医薬品卸売事業セグメントが初めて減益。</p>
+    </li>
+    <li>
+      <div class="date">2026.08.06</div>
+      <p class="ev">2027年3月期第1四半期決算発表</p>
+      <p class="note">純利益が前年同期比-48.2%と大幅悪化。通期予想を下方修正（コア営業利益・営業利益・経常利益）、純利益予想は上方修正。</p>
+    </li>
   </ul>
 </section>
 
 <div class="notes">
   <h2>注記と出典</h2>
   <ol>
-    <li>数値の出典：2025年3月期決算短信〔日本基準〕(連結)（2025年5月14日）、中期経営計画2027－Move on to the Next Stage－策定に関するお知らせ・説明資料（2025年4月17日、全47ページ）、有価証券報告書 第17期（2025年4月1日〜2026年3月31日、2026年6月19日提出、EDINET）、2027年3月期第1四半期決算短信〔日本基準〕(連結)（2026年8月6日）。</li>
-    <li>実力純利益・実力ROEの試算は設計判断3（公表値をそのまま使わず実力値に分解する）に基づく参考値。実効税率は30%を仮定し、特別損益（純額）を税引後で控除して算出している。投資事業組合運用益は会社が特別損益に区分していないため、標準の実力値分解には含まれない（参考として別途言及）。実際の税務処理・会計上の取扱いとは異なる可能性がある。</li>
-    <li>政策保有株式の対連結純資産比率について、本カルテのFY2025（2026年3月期）時点の数値は有価証券報告書の可読テキストからは確認できていない（台帳plans/3151_vitalksk.yamlのgaps参照）。§04の投資有価証券残高は、政策保有株式単独ではなくBS計上額全体（純投資目的の保有等を含みうる）である点に留意。</li>
-    <li>調整後ROE・コア営業利益率は会社独自の定義（製薬事業の研究開発費を控除する前）であり、他銘柄のROE・営業利益率とは単純比較できない。</li>
-    <li>Eレバー（自己資本）の目標値1,080.00億円は、会社が公式に開示した目標ではなく、5290での裁定（裁定済みの論点#1）と同じ手法で調整後ROE目標（8.0%以上）から逆算した参考値。この項目の進捗率・グレードの絶対値は読まず、符号の向き（自己資本が目標を上回ったこと自体）のみを情報として扱っている（詳細は§04）。</li>
-    <li>Gレバー（投資、3年累計200億円）は、目標の基準（FY2025-2027累計）と実績basis（FY2022-2024累計177億円、比較対象として開示された数値）が異なる3年窓であるため、engineは基準不一致として扱い未判定としている。FY2025-2027の実績はまだ判明していない。</li>
-    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）・中計の履歴（§00）・前計画の結果（§03の前段）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+    <li>数値の出典：中期経営計画2027策定資料（2025年4月17日、全47ページ）、2025・2026年3月期決算短信〔日本基準〕(連結)、有価証券報告書 第17期（2026年6月19日提出）、2027年3月期第1四半期決算短信（2026年8月6日）。</li>
+    <li>実力純利益の試算は設計判断3に基づく参考値。実効税率は30%を仮定している。</li>
+    <li>§04の自己資本超過額（92.23億円＝7.9%）は、付録ROICツリー（調整後ROE7.5%・純利益81.00億円）から逆算した自己資本目標（1,080.00億円）を用いた本カルテの試算。会社は自己資本の絶対水準そのものは目標にしていない。配当・自己株買いの3年累計計画額は非開示のため、機械判定の追加還元必要度は「開示なし」のまま。</li>
+    <li>政策保有株式の対連結純資産比率のFY2025時点の公式数値は有報の可読テキストからは未確認。BS投資有価証券の純増から悪化の可能性が高いと推定している（gaps参照）。</li>
+    <li>本カルテは2026年9月29日、5章構成（①中期経営計画の履歴／②前計画の達成度／③現計画の進捗／④注目すべき点／⑤記録）に全面改訂した。判定サマリー（旧§01のPAGREレバー・グレード表示）は廃止し、§04の分析に置き換えている。</li>
   </ol>
   <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
 </div>
-
 </div>

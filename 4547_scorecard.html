@@ -132,428 +132,175 @@ a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
 </style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
 
 <div class="wrap">
 
 <header class="masthead">
   <div class="mh-left">
     <div class="ticker">4547 ・ 東証プライム ・ 日本基準</div>
-    <h1>キッセイ薬品工業<br>中期5ヵ年経営計画「Beyond 80」達成度検証</h1>
-    <p class="mh-sub">5か年計画の1年終了時点。還元は実行されているのに、自己資本は縮むどころか増えた</p>
+    <h1>キッセイ薬品工業<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">「Beyond 80」は工程20%。自己資本は目標（2,000億円未満）と逆方向に増加し、60億円の自己株買い枠は8月末時点で消化率わずか5.1%にとどまる</p>
   </div>
   <div class="mh-right">
-    計画期間　<b>2026/3期 － 2030/3期 </b><br>
-     公表日　<b>2025年5月7日 </b><br>
-     基準日　<b>2026年9月18日 </b><br>
-     金額単位　<b>億円（別記なき限り）</b>
+    基準日　<b>2026年9月29日</b><br>
+    会計年度　<b>3月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
   </div>
 </header>
 
+<!-- ===================== §1 ===================== -->
 <section style="margin-top:36px">
-  <p class="eyebrow">00　中期経営計画の履歴</p>
-  <h2>いつ発表され、いつ修正されたか</h2>
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>発表済みの中期経営計画と修正</b>　事実の並びのみ。評価は次章以降</caption>
-      <thead><tr><th>日付</th><th>種別</th><th>計画</th><th>内容</th></tr></thead>
+      <caption><b>発表の経緯</b></caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
       <tbody>
-        <tr><td class="num" style="white-space:nowrap">2020〜2024年度</td>
-          <td><span class="chip c-skip">終了</span></td>
-          <td class="item">中期5ヵ年経営計画「PEGASUS」</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">旧計画。結果は次章</td></tr>
-        <tr><td class="num" style="white-space:nowrap">2025年5月7日</td>
-          <td><span class="chip c-ok">公表</span></td>
-          <td class="item">新中期5ヵ年経営計画「Beyond 80」</td>
-          <td style="font-size:12.5px;color:var(--ink-2)">2025〜2029年度</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2020</td>
+          <td class="item">中期5ヵ年経営計画「PEGASUS」（2020〜2024年度）公表</td></tr>
+        <tr class="spot"><td class="num" style="white-space:nowrap">2025.05.07</td>
+          <td class="item">新中期5ヵ年経営計画「Beyond 80」（2025〜2029年度）公表。
+            創立80周年を機に策定。自己資本2,000億円未満・政策保有株式10%以下・配当性向40%以上を掲げる</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.05.15</td>
+          <td class="item">主力薬タブネオスについて米FDA・欧EMAが安全性・有効性データに疑義</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.07.31</td>
+          <td class="item">2027年3月期通期業績予想を下方修正（タブネオスの処方動向悪化）</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年9月29日時点</td>
+          <td class="item">Beyond 80は工程20%を通過、2027年3月期（2年目）が進行中</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
+<!-- ===================== §2 ===================== -->
 <section>
-  <p class="eyebrow">01　判定サマリー</p>
-  <h2>還元は実行されている。それでも自己資本は逆方向に増えた</h2>
+  <p class="eyebrow">02　前計画の達成度　─　PEGASUS（2020年度〜2024年度）</p>
+  <h2>売上高・ROEは目標超過。営業利益のみ未達</h2>
+  <p class="prose">主要3項目（売上高・営業利益・ROE）のうち、売上高とROEは目標を上回って達成した。唯一の未達は営業利益（目標90億円に対し実績57億円）で、原因はリンザゴリクスの海外事業化スキーム再構築（米国での承認申請取り下げ、欧州で新発売、韓国・台湾はパートナー企業へ委託）と明確に特定されている。会社自身は「パテントクリフを乗り越えて成長フェーズへ転換するという戦略目標を実現できた」と総括しており、未達への言及も明確。達成率67%（2/3）は本プロジェクトの信頼度「中」に相当する。</p>
 
-<!-- §00〜03 は src/scorecard.py が台帳から生成。手で編集しない -->
-  <div class="tablewrap" style="margin-bottom:24px">
-    <table style="min-width:660px">
-      <thead><tr>
-        <th>P 稼ぐ</th><th>A 資産を入れ替える</th><th>G 投じる</th><th>R 返す</th><th>E 資本を絞る</th>
-        <th>ボトルネック</th><th>追加還元<br><span style="font-weight:400;letter-spacing:0">の必要度</span></th>
-      </tr></thead>
-      <tbody><tr>
-        <td><span class="chip c-warn">C</span></td>
-        <td><span class="chip c-warn">未判定</span></td>
-        <td><span class="chip c-ok">B</span></td>
-        <td><span class="chip c-ok">B</span></td>
-        <td><span class="chip c-crit">E</span></td>
-        <td style="font-weight:700;white-space:nowrap"><b>E</b> 資本を絞る</td>
-        <td><span class="chip c-skip">開示なし</span><small style="display:block;color:var(--ink-muted);font-size:11px">計算に必要な数値が非開示</small></td>
-      </tr></tbody>
-    </table>
-  </div>
-
-  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--warn)">
-    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">
-      <b>総合判定は置いていません。</b>5本を1つの記号に丸めると「4本好調・1本逆行」が必ず消えるためです。
-      判定できたのは4本で、<b>「未判定」は良好という意味ではありません。</b>
-      理由は§02の各行に書いてあります。読むのは<b>レバー5列</b>と<b>ボトルネック</b>、
-      そして<b>当初目標の達成に追加還元がどれだけ要るか</b>の3点です。
-    </p>
-  </div>
-
-  <div class="tablewrap" style="margin-bottom:24px;border-left:3px solid var(--crit)">
-    <p style="margin:0;padding:14px 18px;font-size:13px;color:var(--ink-2);line-height:1.8">Rは実行されている（グレードB）のに、Eには効いていません（グレードE）。還元浸食率1.73 ─ 株主還元101に対し非現金性の自己資本増加が174あり、還元の100%相当を打ち消しています。理由は§04参照。</p>
-  </div>
-
-</section>
-
-<section>
-  <p class="eyebrow">02　現プランの進捗状況</p>
-  <h2>レバー別に並べた達成状況</h2>
   <div class="tablewrap">
     <table>
-      <caption><b>目標に対する進捗</b>　進捗率 =（実績 − 起点）÷（目標 − 起点）。メーターの目盛は各項目の工程（既定は工程20%。別建て期間のKPIはその期間の工程）</caption>
-      <thead><tr><th>目標項目</th><th>レバー</th><th class="num">実績</th><th class="num">進捗率</th>
-        <th class="num">工程差</th><th style="min-width:150px">工程</th><th>判定</th></tr></thead>
+      <caption><b>PEGASUSの目標と実績（2024年度）</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">目標</th><th class="num">実績</th><th>達成</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="item">売上高(目標1100億以上)</td><td>PG</td>
-          <td class="num">974.06</td><td class="num">42.0%</td>
-          <td class="num">+22pt</td>
-          <td><div class="meter"><div class="fill f-good" style="width:42.0%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr>
-          <td class="item">研究開発費控除前営業利益(目標290億以上)</td><td>P</td>
-          <td class="num">195.94</td><td class="num">9.6%</td>
-          <td class="num">-10pt</td>
-          <td><div class="meter"><div class="fill f-warn" style="width:9.6%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-warn">C</span></td></tr>
-        <tr>
-          <td class="item">ROE(目標8%以上)</td><td>PE</td>
-          <td class="num">6.3</td><td class="num">29.2%</td>
-          <td class="num">+9pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:29.2%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr class="spot">
-          <td class="item">自己資本(2000億円未満へ圧縮)</td><td>E</td>
-          <td class="num">2,301.46</td><td class="num">-235.0%</td>
-          <td class="num">-255pt</td>
-          <td><div class="meter"><div class="fill f-crit" style="width:0.0%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-crit">E</span></td></tr>
-        <tr><td class="item">政策保有株式(純資産比10%以下へ)</td><td>A</td>
-          <td class="num">—</td><td class="num">—</td>
-          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">実績未取得</td>
-          <td><span class="chip c-warn">未判定</span></td></tr>
-        <tr>
-          <td class="item">配当総額(5年累計270億円)</td><td>R</td>
-          <td class="num">48.41</td><td class="num">17.9%</td>
-          <td class="num">-2pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:17.9%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr>
-          <td class="item">自己株式取得(5年累計300億円)</td><td>R</td>
-          <td class="num">52.17</td><td class="num">17.4%</td>
-          <td class="num">-3pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:17.4%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr>
-          <td class="item">配当性向(40%以上)</td><td>R</td>
-          <td class="num">48.1</td><td class="num" style="font-size:11.5px;color:var(--ink-muted)">閾値方式</td>
-          <td class="num">—</td>
-          <td><div class="meter"><div class="fill f-good" style="width:100%"></div></div></td>
-          <td><span class="chip c-good">A</span></td></tr>
-        <tr>
-          <td class="item">研究開発投資(5年累計1000億円)</td><td>G</td>
-          <td class="num">225.21</td><td class="num">22.5%</td>
-          <td class="num">+3pt</td>
-          <td><div class="meter"><div class="fill f-ok" style="width:22.5%"></div>
-            <div class="pace" style="left:20%" data-l="20%"></div></div></td>
-          <td><span class="chip c-ok">B</span></td></tr>
-        <tr><td class="item">IT投資(5年累計200億円)</td><td>G</td>
-          <td class="num">—</td><td class="num">—</td>
-          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">実績が開示されない＝判定保留（目標:5年累計 / 実績:開示なし）</td>
-          <td><span class="chip c-warn">未判定</span></td></tr>
-        <tr><td class="item">設備投資(5年累計200億円)</td><td>G</td>
-          <td class="num">—</td><td class="num">—</td>
-          <td colspan="2" style="font-size:12px;color:var(--ink-muted)">実績が開示されない＝判定保留（目標:5年累計 / 実績:開示なし）</td>
-          <td><span class="chip c-warn">未判定</span></td></tr>
+        <tr><td class="item">売上高</td><td class="num">870</td><td class="num">883</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr class="spot"><td class="item">営業利益</td><td class="num">90</td><td class="num">57</td>
+          <td><span class="chip c-crit">未達</span></td></tr>
+        <tr><td class="item">ROE</td><td class="num">5.0%</td><td class="num">5.6%</td>
+          <td><span class="chip c-good">達成</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <p style="margin:22px 0 8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase">整合性テスト（C2 ROE分母の原資）</p>
-  <p class="prose" style="color:var(--ink-muted)">C2（ROE分母の原資）に重大な矛盾は検出されていません（詳細は省略）。</p>
 </section>
 
+<!-- ===================== §3 ===================== -->
 <section>
-  <p class="eyebrow">03　旧プランの結果</p>
-  <h2>前の計画は達成できたか</h2>
+  <p class="eyebrow">03　現計画の進捗　─　Beyond 80（2025年度〜2029年度）</p>
+  <h2>自己資本は目標と逆方向に増加。標準営業利益は赤字転換</h2>
+
   <div class="tablewrap">
     <table>
-      <caption><b>前計画（2020〜2024年度）の最終実績</b></caption>
-      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th>
-        <th class="num">達成率</th><th>判定</th><th>備考</th></tr></thead>
+      <caption><b>目標と実績の推移</b>　単位：億円・%</caption>
+      <thead><tr><th>年度</th><th class="num">売上高</th><th class="num">研究開発費控除前営業利益</th>
+        <th class="num">ROE</th><th class="num">自己資本</th></tr></thead>
       <tbody>
-        <tr><td class="item">rev</td><td class="num">870</td>
-          <td class="num">883</td><td class="num">101%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)">売上高。過去最高を更新</td></tr>
-        <tr><td class="item">op</td><td class="num">90</td>
-          <td class="num">57</td><td class="num">63%</td>
-          <td><span class="chip c-crit">未達</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)">▲32億円。リンザゴリクスの海外事業化スキーム再構築が要因</td></tr>
-        <tr><td class="item">roe</td><td class="num">5.0</td>
-          <td class="num">5.6</td><td class="num">112%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">rev_医薬品事業</td><td class="num">750</td>
-          <td class="num">752</td><td class="num">100%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)"></td></tr>
-        <tr><td class="item">rev_国内医薬品</td><td class="num">570</td>
-          <td class="num">639</td><td class="num">112%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)">+69億円</td></tr>
-        <tr><td class="item">rev_海外ライセンス</td><td class="num">135</td>
-          <td class="num">77</td><td class="num">57%</td>
-          <td><span class="chip c-crit">未達</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)">▲58億円。海外事業化スキーム再構築の影響が直接出た項目</td></tr>
-        <tr><td class="item">研究開発費</td><td class="num">130</td>
-          <td class="num">128</td><td class="num">98%</td>
-          <td><span class="chip c-good">達成</span></td>
-          <td style="font-size:12px;color:var(--ink-muted)">目標というより計画値。達成/未達の性質のものではない</td></tr>
+        <tr><td class="item">2024年度（起点）</td><td class="num">883</td><td class="num">186</td>
+          <td class="num">5.6%</td><td class="num">2,090.03</td></tr>
+        <tr class="spot"><td class="item">2025年度（初年度、工程20%）</td><td class="num">974.06</td><td class="num">195.94</td>
+          <td class="num">6.3%</td><td class="num">2,301.46</td></tr>
+        <tr><td class="item">2026年度（会社予想）</td><td class="num">887.00</td><td class="num">—</td>
+          <td class="num">—</td><td class="num">—</td></tr>
+        <tr><td class="item">目標（2029年度）</td><td class="num"><b>1,100以上</b></td><td class="num"><b>290以上</b></td>
+          <td class="num"><b>8.0%以上</b></td><td class="num"><b>2,000未満</b></td></tr>
       </tbody>
     </table>
   </div>
-  <p class="prose">売上高・ROEは目標超過達成。唯一の未達は営業利益（目標90億円に対し
-実績57億円）で、原因をリンザゴリクスの海外事業化スキーム再構築と
-明確に特定している（米国での承認申請を取り下げ、欧州で2024年9月に
-新発売、韓国・台湾はパートナー企業に委託する形へ再編）。
-会社自身は「パテントクリフを乗り越えて成長フェーズへ転換するという
-戦略目標を実現できた」と総括しており、未達の言及は明確。</p>
+  <p class="prose" style="margin-top:16px">研究開発費控除前営業利益（標準の営業利益にR&D費用を足し戻した会社独自指標）は186億円→195.94億円と前進した。一方、標準の営業利益は研究開発費増加（225.21億円、前期比+76%）で赤字転換（▲29.27億円）した。純利益は投資有価証券売却益170.44億円（政策保有株式の一部売却）に支えられ+15.2%増益（137.79億円）。2027年3月期第1四半期決算では通期予想を下方修正（売上957億→887億円、純利益145億→133億円）しており、主力薬タブネオスの処方動向悪化が要因。</p>
 </section>
-
-
 
 <!-- ===================== §4 ===================== -->
 <section>
-  <p class="eyebrow">04　ボトルネックの深掘り　—　E レバー</p>
-  <h2>211億円、目標と逆方向に動いた</h2>
-  <p class="deck">自己資本を2,000億円未満へ圧縮する5年目標に対し、初年度は逆に増加しました。何が効いて、何が打ち消したかを分解します。</p>
+  <p class="eyebrow">04　注目すべき点</p>
 
-  <figure>
-    <p class="fig-title">自己資本ブリッジ　2025年3月期末 → 2026年3月期末</p>
-    <p class="fig-note">単位：億円　／　縦軸は1,900億円から。棒はいずれも差分であり、両端の2本のみ残高</p>
-    <div class="legend">
-      <span><i style="background:var(--wf-total)"></i>残高</span>
-      <span><i style="background:var(--wf-up)"></i>増加要因（目標から遠ざかる）</span>
-      <span><i style="background:var(--wf-down)"></i>減少要因（目標に近づく）</span>
-      <span><i style="background:var(--crit);height:2px;width:16px;border-radius:0"></i>5年目標 2,000未満</span>
-    </div>
-    <div class="svgbox">
-      <svg viewBox="0 0 880 400" width="880" height="400" role="img" aria-label="自己資本ブリッジ。2025年3月期末2,090.03億円に純利益137.79億円とその他有価証券評価差額金等153.23億円が加わり、配当48.41億円と自己株式取得52.17億円が差し引かれ、その他の調整+21.0億円を経て2026年3月期末は2,301.46億円。5年目標2,000億円未満を301.46億円上回っている。">
-        <g stroke="var(--grid)" stroke-width="1">
-          <line x1="70" y1="51.5"  x2="860" y2="51.5"/>
-          <line x1="70" y1="94.6"  x2="860" y2="94.6"/>
-          <line x1="70" y1="137.7" x2="860" y2="137.7"/>
-          <line x1="70" y1="180.8" x2="860" y2="180.8"/>
-          <line x1="70" y1="223.9" x2="860" y2="223.9"/>
-          <line x1="70" y1="267.0" x2="860" y2="267.0"/>
-          <line x1="70" y1="310"   x2="860" y2="310"/>
-        </g>
-        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--ink-muted)" text-anchor="end">
-          <text x="62" y="55.5">2,500</text><text x="62" y="98.6">2,400</text>
-          <text x="62" y="141.7">2,300</text><text x="62" y="184.8">2,200</text>
-          <text x="62" y="227.9">2,100</text><text x="62" y="271.0">2,000</text>
-          <text x="62" y="314">1,900</text>
-        </g>
-        <line x1="70" y1="267.0" x2="860" y2="267.0" stroke="var(--crit)" stroke-width="2" stroke-dasharray="7 4"/>
-        <text x="76" y="262" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--crit)" text-anchor="start">5年目標 2,000未満</text>
-        <g stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="3 3">
-          <line x1="157.5" y1="228.2" x2="208.3" y2="228.2"/>
-          <line x1="270.3" y1="168.8" x2="321.2" y2="168.8"/>
-          <line x1="383.2" y1="102.8" x2="434.1" y2="102.8"/>
-          <line x1="496.1" y1="123.6" x2="547.0" y2="123.6"/>
-          <line x1="609.0" y1="137.1" x2="659.9" y2="137.1"/>
-          <line x1="721.9" y1="137.1" x2="772.8" y2="137.1"/>
-        </g>
-        <rect x="95.5"  y="228.2" width="62" height="81.8"  fill="var(--wf-total)"/>
-        <rect x="208.3" y="168.8" width="62" height="59.4"  fill="var(--wf-up)"/>
-        <rect x="321.2" y="102.8" width="62" height="66.0"  fill="var(--wf-up)"/>
-        <rect x="434.1" y="102.8" width="62" height="20.8"  fill="var(--wf-down)"/>
-        <rect x="547.0" y="123.6" width="62" height="22.5"  fill="var(--wf-down)"/>
-        <rect x="659.9" y="137.1" width="62" height="9.0"   fill="var(--wf-up)"/>
-        <rect x="772.8" y="137.1" width="62" height="172.9" fill="var(--wf-total)"/>
-        <g font-family="IBM Plex Mono, monospace" font-size="11.5" font-weight="600" text-anchor="middle">
-          <text x="126.5" y="222"   fill="var(--ink)">2,090.03</text>
-          <text x="239.3" y="163"   fill="var(--wf-up)">+137.79</text>
-          <text x="352.2" y="97"    fill="var(--wf-up)">+153.23</text>
-          <text x="465.1" y="97"    fill="var(--wf-down)">−48.41</text>
-          <text x="578.0" y="118"   fill="var(--wf-down)">−52.17</text>
-          <text x="690.9" y="131"   fill="var(--wf-up)">+21.0</text>
-          <text x="803.8" y="131"   fill="var(--ink)">2,301.46</text>
-        </g>
-        <g font-family="Noto Sans JP, sans-serif" font-size="11.5" fill="var(--ink-2)" text-anchor="middle">
-          <text x="126.5" y="330">2025年度末</text>
-          <text x="239.3" y="330">純利益</text>
-          <text x="352.2" y="330">評価差額金</text><text x="352.2" y="346" font-size="10" fill="var(--ink-muted)">等</text>
-          <text x="465.1" y="330">配当</text>
-          <text x="578.0" y="330">自己株式</text><text x="578.0" y="346" font-size="10" fill="var(--ink-muted)">取得</text>
-          <text x="690.9" y="330">その他</text>
-          <text x="803.8" y="330">2026年度末</text>
-        </g>
-        <g>
-          <line x1="852" y1="137.1" x2="852" y2="267.0" stroke="var(--crit)" stroke-width="1.5"/>
-          <line x1="847" y1="137.1" x2="857" y2="137.1" stroke="var(--crit)" stroke-width="1.5"/>
-          <line x1="847" y1="267.0" x2="857" y2="267.0" stroke="var(--crit)" stroke-width="1.5"/>
-          <text x="844" y="205" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="var(--crit)" text-anchor="end">目標との差 301.46</text>
-        </g>
-        <line x1="70" y1="310" x2="860" y2="310" stroke="var(--border-strong)" stroke-width="1"/>
-      </svg>
-    </div>
-    <figcaption>「評価差額金等」はその他有価証券評価差額金の変動（税効果後、+153.23億円）。「その他」は退職給付に係る調整累計額の変動（+20.28億円）と自己株式の処分等による残差（+0.7億円）の合計。</figcaption>
-  </figure>
+  <h3>1. 自己資本は目標（2,000億円未満）と逆方向に、初年度から211億円増加</h3>
+  <p class="prose">Beyond 80は自己資本を2,000億円未満へ圧縮する目標を掲げているが、初年度実績は2,090.03億円→2,301.46億円へ+211.43億円「増加」した。主因はその他有価証券評価差額金（投資有価証券の含み益拡大）+153.23億円と退職給付に係る調整+20.28億円で、いずれも非現金性の増加要因。純利益137.79億円・配当48.41億円・自己株式取得52.17億円という還元の実行（工程どおりのペース）を、この非現金の増加が上回った。CLAUDE.mdの原則どおり、この増加は「稼ぐ力の成果」ではなく市場変動によるものと扱う。</p>
 
-  <h3>還元は実行されていた。分母には効かなかった</h3>
-  <p class="prose">配当48.41億円・自己株式取得52.17億円、合計<strong>100.58億円の株主還元</strong>は5年目標570億円（配当270億円＋自己株式取得300億円）に対して工程どおりのペースです。5年計画の初年度としては素直な進み方で、還元そのものに問題はありません。</p>
-  <p class="prose">問題は分母の側です。純利益137.79億円と還元100.58億円を差し引きしても自己資本は+37.21億円増えるはずですが、実際の増加幅はそれよりずっと大きい<strong>+211.43億円</strong>でした。差額の主因はその他有価証券評価差額金の増加（+153.23億円）です。<strong>還元浸食率は1.73</strong>（非現金性の増加173.51億円 ÷ 株主還元100.58億円）で、還元の1.7倍に相当する含み益が自己資本を押し戻したことになります。</p>
-  <p class="pull">株を売って還元したのではなく、売らずに持ち続けた株の含み益が自己資本を膨らませた。</p>
-  <p class="prose">これは5901（政策保有株の含み益+901億円）と同じ構造です。ただしキッセイの場合、投資有価証券の内訳（政策保有株式か、それ以外の運用資産か）が有報の特定投資株式リストと突き合わせないと切り分けられません。特定投資株式（政策保有株式）の残高は2026年3月末で323.65億円（自己資本の14.1%）ですが、<strong>Beyond 80にはこの残高を削減する数値目標がありません。</strong>削減の約束が無い以上、含み益の増加そのものを問題視はできませんが、Eレバーの逆行の少なくとも一部を説明する要因です。</p>
+  <h3>2. 株主還元：配当・自己株買いとも計画は工程どおりだが、自己株買いの実行枠消化は本プロジェクト最大の遅れ</h3>
+  <p class="prose">5年累計の配当270億円・自己株式取得300億円（合計570億円）という目標に対し、初年度実績は配当48.41億円（進捗17.9%）・自己株式取得52.17億円（進捗17.4%）で、いずれも工程20%とほぼ同水準の順調なペースだった。</p>
+  <p class="prose"><strong>追加還元の必要性を会社公表の自己資本目標（2,000億円未満）で評価する。</strong>実績の自己資本2,301.46億円は目標を301.46億円（13.1%）上回っており、本プロジェクトの区分では「中」に該当する。5年累計の還元計画（570億円）と自己資本圧縮ペースを比べると、含み益拡大のペースが上回っている状態が続けば、目標達成には計画に無い追加の圧縮が必要になる可能性がある。</p>
+  <p class="prose">さらに2026年9月3日開示の自己株式取得状況（2026年5月11日決議、上限60億円、取得期間2026年5月12日〜12月31日）を確認したところ、8月末時点の消化額はわずか3.04億円（消化率5.1%）で、期間按分47.6%を42.5ポイント下回っている。これは本プロジェクトが監視する13銘柄中、枠消化の遅れとして最大（従来の最大は5290の▲16.3ポイント）で、CLAUDE.mdの閾値（▲20ポイントで売り方向のトリガー）を大きく超えている。初年度の還元ペース自体は工程どおりだったが、2年目に入ってから自社株買いの実行が急減速している可能性を示す一次データ。</p>
 
-  <h3>2026年度に入り、自己株買いのペースが急減速（2026-09-03追記）</h3>
-  <p class="prose">上記のFY2025実績（自己株式取得52.17億円）は5年枠300億円に対し工程どおりでした。しかし<strong>2026年5月11日に新たに決議された60億円枠（取得期間2026年5月12日〜12月31日）は、2026年8月31日時点で消化率わずか5.1%（取得3.04億円）</strong>です。決議から3.5か月・期間按分47.6%が経過した時点でこの消化率は、<strong>期間按分を42.5ポイント下回り</strong>、本プロジェクトが追跡する13銘柄の中で枠消化の遅れとして最大です（次点は5290ベルテクスの-16.3pt）。</p>
-  <p class="prose">決議日（5月11日）の4日後にタブネオスの安全性問題が公表されており、時期的には符合します。市場での自社株買いは相場動向やインサイダー規制の観点から執行のタイミングを裁量的に調整するのが通例で、この遅れだけで「還元姿勢の後退」と断じるのは早計です。ただし<strong>期末（12月31日）まで残り期間は限られ、按分どおりに戻すには急加速が必要</strong>な水準まで遅れています。次回月次開示（10月上旬）で加速の有無を確認すべき局面です。</p>
-
-  <h3>Aレバー ─ 目標はあるが、今期の実績が取れない</h3>
-  <p class="prose">Beyond 80は「政策保有株式は早期に純資産の10%以下まで縮減する」という明示的な閾値目標を掲げています。2023年3月末18.1%→2024年3月末15.3%→2025年3月末13.6%と、3期連続で縮小してきました。</p>
-  <p class="prose">ところが2026年3月期の有価証券報告書には、この「対純資産割合」の数値そのものが記載されていません。<strong>特定投資株式の残高（323.65億円）と自己資本（2,301.46億円）から単純計算すると14.1%</strong>ですが、これがBeyond 80の定義する算出方法と一致するかは確認できていません（分母を自己資本ではなく純資産や連結総資産で計算している可能性があります）。前期13.6%から悪化しているように見える点も含め、<strong>次回の決算説明資料で会社自身の算出値を確認するまでは判定を保留します。</strong></p>
-
-  <h3>Pレバー ─ 標準営業利益は赤字転換。タブネオスの不確実性も重なる</h3>
-  <p class="prose">研究開発費控除前営業利益（会社独自の収益性指標）は195.94億円で、5年目標290億円以上に対する進捗は9.6%、工程20%を10ポイント下回りました。標準の営業利益は<strong>29.27億円の赤字</strong>で、前期57億円の黒字から転落しています。研究開発費が128億円→225.21億円へ+76%増えたことが主因で、Beyond 80が「成長投資期」と位置付ける5年間の1年目としては、投資の踏み込み自体は計画どおりとも読めます。</p>
-  <p class="prose">2026年5月、主力薬タブネオス（2026年3月期売上115.24億円、医薬品事業の約15%）について、米FDAが重度の薬物誘発性肝障害を理由に承認撤回を提案し、欧EMAも国際共同第III相試験データの信頼性に疑義を呈しました。会社は医療従事者へ新規投与の当面控えを要請し、安全性速報（ブルーレター）を発出しています。<strong>2027年3月期業績への影響は「精査中」</strong>で、7月の1Q決算では通期売上予想を957億円→887億円へ、純利益予想を145億円→133億円へ下方修正しました。研究開発投資を増やした年に主力薬の先行きが不透明になっており、稼ぐ力の判定はここから数四半期が正念場です。</p>
+  <h3>3. 主力薬タブネオスの薬事リスクが「稼ぐ力」の先行きに影を落とす</h3>
+  <p class="prose">2026年5月、主力薬タブネオス（2025年度売上115.24億円、医薬品事業の約15%）について、米FDA・欧EMAが有効性・安全性データの信頼性に疑義を呈し、承認撤回・取消しの可能性を検討していることが判明した。会社は添付文書を改訂し安全性速報（ブルーレター）を発出、2027年3月期業績への影響は「精査中」としつつ、7月の第1四半期決算では既に通期予想を下方修正した。政策保有株式の削減目標（純資産比10%以下）については3年連続で改善（18.1%→15.3%→13.6%）していたが、この稼ぐ力の不確実性が計画全体の前提を揺るがすリスクとして最優先で監視すべき論点になっている。</p>
 </section>
 
 <!-- ===================== §5 ===================== -->
 <section>
   <p class="eyebrow">05　記録</p>
-  <h2>経営陣が何を言い、何をしたか</h2>
-
+  <h2>業績と経営陣の動向</h2>
   <ul class="tl">
     <li>
-      <div class="date">2025.05.07</div>
-      <p class="ev">新中期5ヵ年経営計画「Beyond 80」を公表　（代表取締役会長 神澤陸雄）</p>
-      <p class="note">創立80周年（2026年）を機に「10年後の目指す姿」を設定し、5年間を成長投資期と位置付け。自己資本2,000億円未満・政策保有株式10%以下・配当性向40%以上・累進配当を掲げました。</p>
+      <div class="date">2020</div>
+      <p class="ev">中期5ヵ年経営計画「PEGASUS」公表</p>
     </li>
-    <li class="good">
-      <div class="date">2026.04.28</div>
-      <p class="ev">2026年3月期決算　／　増収、標準営業利益は赤字転換</p>
-      <p class="note">売上高974.06億円（+10.3%）は好調でしたが、研究開発費増と原価率上昇で<strong>標準営業利益が29.27億円の赤字</strong>に。純利益は投資有価証券売却益（170.44億円）で137.79億円と増益を確保しました。</p>
+    <li>
+      <div class="date">2024.09</div>
+      <p class="ev">リンザゴリクス（Yselty）を欧州で新発売</p>
+    </li>
+    <li>
+      <div class="date">2025.05.07</div>
+      <p class="ev">新中期5ヵ年経営計画「Beyond 80」公表</p>
+      <p class="note">創立80周年を機に策定。自己資本2,000億円未満・政策保有株式10%以下・配当性向40%以上・累進配当を掲げる。</p>
     </li>
     <li>
       <div class="date">2026.05.11</div>
-      <p class="ev">自己株式取得決議　上限130万株・60億円（取得期間2026年5月12日〜12月31日）</p>
-      <p class="note">同日、取得済み自己株式の消却も決議。5年計画の還元枠300億円の一部。</p>
+      <p class="ev">2026年3月期決算発表　／　自己株式取得決議（上限130万株・60億円）</p>
+      <p class="note">Beyond 80初年度。増収も研究開発費増で標準営業利益は赤字転換。投資有価証券売却益で純利益は増益。</p>
     </li>
-    <li class="mark">
-      <div class="date">2026.05.15〜21</div>
-      <p class="ev">タブネオスの安全性に関する当局対応　／　医療従事者への投与制限要請、安全性速報発出</p>
-      <p class="note">米FDA・欧EMAのレビューを受け、新規投与の当面控えと継続投与の是非再検討を要請。添付文書を改訂し重篤な肝機能障害への注意喚起（ブルーレター）を発出しました。</p>
+    <li>
+      <div class="date">2026.05.15</div>
+      <p class="ev">主力薬タブネオスについて米FDA・欧EMAが安全性・有効性レビューを要請</p>
     </li>
-    <li class="mark">
-      <div class="date">2026.09.03</div>
-      <p class="ev">自己株式の取得状況（2026年8月31日現在）　／　消化率5.1%、期間按分47.6%を42.5pt下回る</p>
-      <p class="note">2026.05.11決議の60億円枠に対し、取得済みは3.04億円（75,500株）にとどまる。本プロジェクトが監視する13銘柄中、枠の消化と期間按分の乖離幅としては最大（5290ベルテクスの-16.3ptを上回る）。タブネオスの安全性問題が公表された直後の期間と重なっており、還元の実行意思というより裁量的な執行ペース調整の可能性がある。次回開示（10月）で加速するか、様子見が続くかが焦点。</p>
+    <li>
+      <div class="date">2026.05.21</div>
+      <p class="ev">タブネオスの添付文書を改訂し安全性速報（ブルーレター）を発出</p>
+      <p class="note">重篤な肝機能障害の注意喚起。</p>
     </li>
     <li>
       <div class="date">2026.06.22</div>
       <p class="ev">有価証券報告書（第81期）提出</p>
-      <p class="note">連結貸借対照表で自己資本2,301.46億円を確認。前期末2,090.03億円から<strong>211.43億円増加</strong>しており、Beyond 80の圧縮目標とは逆方向に動いていることが分かります。</p>
+      <p class="note">自己資本2,301.46億円（前期比+211億円）を確認。目標2,000億円未満とは逆方向。</p>
     </li>
-    <li class="mark">
+    <li>
       <div class="date">2026.07.31</div>
-      <p class="ev">2027年3月期第1四半期決算　／　通期予想を下方修正</p>
-      <p class="note">タブネオスの処方動向悪化を理由に、通期売上高予想を957億円→887億円、純利益予想を145億円→133億円へ下方修正。営業利益も当初見通し44億円→2億円へ大幅減額しました。</p>
+      <p class="ev">2027年3月期第1四半期決算　／　通期業績予想を下方修正</p>
+      <p class="note">売上957→887億円、純利益145→133億円。タブネオスの処方動向悪化が要因。</p>
     </li>
-  </ul>
-</section>
-
-<!-- ===================== §6 ===================== -->
-<section>
-  <p class="eyebrow">06　会社予想の精度</p>
-  <h2>1四半期で早くも下方修正</h2>
-
-  <div class="tablewrap">
-    <table style="min-width:640px">
-      <caption><b>2027年3月期の業績予想の推移</b></caption>
-      <thead><tr><th>時点</th><th class="num">売上高</th><th class="num">営業利益</th><th class="num">経常利益</th><th class="num">純利益</th></tr></thead>
-      <tbody>
-        <tr><td class="item">当初見通し<small>2026年5月11日公表</small></td>
-          <td class="num">957.00</td><td class="num">44.00</td><td class="num">60.00</td><td class="num">145.00</td></tr>
-        <tr class="spot"><td class="item">修正後<small>2026年7月31日公表（1Q決算短信）</small></td>
-          <td class="num">887.00</td><td class="num">20.00</td><td class="num">40.00</td><td class="num">133.00</td></tr>
-        <tr><td class="item">修正幅</td>
-          <td class="num">−70.00</td><td class="num">−24.00</td><td class="num">−20.00</td><td class="num">−12.00</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p class="prose" style="margin-top:18px">通期予想を出してから<strong>3か月足らず、第1四半期を終えた時点で早くも下方修正</strong>しました。理由はタブネオスの処方動向分析による売上予想の減額です。営業利益の修正幅（−24億円）は売上の修正幅（−70億円）に対して大きく、<strong>限界利益率の高い製品の落ち込みが直撃した</strong>ことがうかがえます。</p>
-  <p class="pull">当初見通しの精度を測るには早すぎる。ただし下振れの初動は速い。</p>
-  <p class="prose">なお修正後の純利益133億円には、投資有価証券売却益140億円（当初見通しどおりの計上を予定）が含まれています。<strong>これを除いた実力ベースの利益は前期に続き低水準にとどまる見込み</strong>で、稼ぐ力の実態は表面の純利益より厳しく読む必要があります。2026年3月期の期初予想（Beyond 80公表と同時期の会社予想）は未取得のため、初年度自体の予想精度はまだ検証できていません。</p>
-</section>
-
-<!-- ===================== §7 ===================== -->
-<section>
-  <p class="eyebrow">07　次の検証条件</p>
-  <h2>何が起きれば結論が変わるか</h2>
-  <p class="deck">株価データが未取得のため、株価対比（PBR・イベントスタディ）は含めていません。以下はいずれも、次の四半期・年次の開示で機械的に判定できる条件です。</p>
-
-  <ul class="tests">
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>自己資本が減少に転じるか</h4>
-      <p>初年度は+211億円の逆行でした。含み益の押し戻しが一巡し、還元と利益の差し引きどおりに自己資本が動けば（純利益の範囲内の増加にとどまれば）、5年計画の軌道に戻ったと判定できます。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>政策保有株式の対純資産割合を会社自身が開示するか</h4>
-      <p>2025年3月末13.6%から縮小が続いているなら、次回の決算説明資料か有報で確認できるはずです。開示されれば未判定のAレバーが動きます。</p></div></li>
-    <li><span class="tag t-buy">達成の証拠</span>
-      <div><h4>タブネオスの影響が限定的にとどまるか</h4>
-      <p>米欧の薬事当局の最終判断（EU：欧州委員会の最終決定、米：FDAの聴聞会結果）が出た後、業績予想への織り込みが一度で収まるか、追加の下方修正が続くかで深刻度が変わります。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>還元浸食率が1を超える状態が続くか</h4>
-      <p>初年度は1.73（非現金性の増加173.51億円 ÷ 株主還元100.58億円）でした。この状態が続けば、還元を強化しても自己資本の圧縮には結びつきません。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>標準営業利益の赤字が2期連続になるか</h4>
-      <p>初年度の赤字（▲29.27億円）が研究開発投資の踏み込みによる一時的なものか、構造的なものかは2期目で見えてきます。研究開発費控除前営業利益の目標達成ペース（工程比−10pt）と合わせて確認する必要があります。</p></div></li>
-    <li><span class="tag t-sell">未達の兆候</span>
-      <div><h4>タブネオスの売上減少が他製品でカバーできないか</h4>
-      <p>国内医薬品の主力製品（ベオーバ・コルスバ・タバリス等）の伸長でタブネオスの落ち込みを相殺できるかが、Pレバーの2年目の焦点になります。</p></div></li>
+    <li>
+      <div class="date">2026.09.03</div>
+      <p class="ev">自己株式の取得状況を開示　／　消化率5.1%、按分を42.5ポイント下回る</p>
+      <p class="note">枠60億円（2026年5月12日〜12月31日）に対し消化3.04億円。本プロジェクト13銘柄中、最大の未消化幅。</p>
+    </li>
   </ul>
 </section>
 
 <div class="notes">
   <h2>注記と出典</h2>
   <ol>
-    <li>数値の出典：新中期5ヵ年経営計画「Beyond 80」説明資料（2025年5月7日）、2026年3月期有価証券報告書 第81期（2026年6月22日提出、EDINET）、2027年3月期第1四半期決算短信（2026年7月31日発表）。</li>
-    <li>自己資本は「株主資本合計＋その他の包括利益累計額」（非支配株主持分を除く連結ベース）。2025年3月期末2,090.03億円（株主資本165,550＋その他の包括利益累計額43,453百万円）、2026年3月期末2,301.46億円（株主資本169,339＋その他の包括利益累計額60,806百万円）。</li>
-    <li>還元浸食率（本カルテ独自の呼称）＝非現金性の自己資本増加（その他有価証券評価差額金の変動＋退職給付に係る調整累計額の変動）÷ 期間中の株主還元額（配当＋自己株式取得、現金支払ベース）。2026年3月期は173.51億円 ÷ 100.58億円 ＝ 1.73。</li>
-    <li>配当性向48.1%は当年度分の配当決議額（2025年11月4日決議の中間配当24.87億円＋2026年6月23日開催予定の定時株主総会での期末配当予定41.45億円、合計66.32億円）÷連結純利益137.79億円で算出した概算値。有報記載の単体（提出会社）配当性向53.1%は分母が単体純利益（125.26億円）のため使用していない。</li>
-    <li>研究開発費控除前営業利益は「標準の営業利益＋研究開発費」（2026年3月期：▲29.27億円＋225.21億円＝195.94億円）として算出した概算値。会社が公表する厳密な算出方法（他の足し戻し項目の有無）は有報に記載がない。</li>
-    <li>政策保有株式（特定投資株式）の残高323.65億円は、有報「株式の保有状況」の非上場株式（3.61億円）と非上場株式以外の株式（320.04億円）の合計。対純資産割合14.1%は自己資本2,301.46億円に対する単純計算であり、Beyond 80が用いる算出方法（分母の定義）とは一致しない可能性がある。</li>
-    <li>タブネオスの2026年3月期売上高115.24億円は、有報「主要な顧客ごとの情報」ではなく販売実績の「希少疾病用薬剤」区分に含まれる金額を、後発事象の記載（同一の売上高が明記）と突き合わせて特定した。</li>
-    <li>C3のセグメント別増分は、Beyond 80の計数目標表（2024年度実績→2029年度目標、いずれも「以上」目標の下限値）を売上高ベースで機械的に計算した参考値。C3の本来の定義（利益増分ベース）とは異なる。</li>
-    <li>C4の達成率は、前中計PEGASUSの説明資料に明記された最終年度目標（売上高・営業利益・ROEの3項目）で数えている。セグメント別内訳・研究開発費は売上高の構成要素または計画値であり、別項目として数えていない。</li>
-    <li>C1（初年度ジャンプ）・C2（ROE分母の原資）は、中間年度の目標非開示（has_annual_breakdown: none）と5年累計の純利益計画の非開示により、入力なし＝スキップとなっている。</li>
-    <li>株価対比は株価データが未取得のため含めていない。</li>
-    <li>判定サマリー（§01）・目標一覧（§02）・整合性テスト（§03）は台帳から自動生成している。手で書くとエンジンの出力とずれるためである。§04以降は人が書いている。</li>
+    <li>数値の出典：新中期5ヵ年経営計画「Beyond 80」説明資料（2025年5月7日）、有価証券報告書 第81期（2026年6月22日提出、EDINET）、2027年3月期第1四半期決算短信（2026年7月31日）、自己株式の取得状況（2026年9月3日開示、src/buyback_pdf.pyで機械読み取り）。</li>
+    <li>自己資本は2,090.03億円（2025年度）→2,301.46億円（2026年度）が有報原本で確認した正しい値。旧版が使っていたirbank.net由来の1,693億円は誤りで、訂正済み。</li>
+    <li>「研究開発費控除前営業利益」は標準の営業利益にR&D費用を足し戻した会社独自指標。標準の営業利益とは別物。</li>
+    <li>§04の自己資本超過額（301.46億円＝13.1%）は、会社公表の自己資本目標（2,000億円未満）を用いた本カルテの試算。5年累計の純利益計画は非開示のため、機械判定の追加還元必要度は「開示なし」のまま。</li>
+    <li>本カルテは2026年9月29日、5章構成（①中期経営計画の履歴／②前計画の達成度／③現計画の進捗／④注目すべき点／⑤記録）に全面改訂した。判定サマリー（旧§01のPAGREレバー・グレード表示）は廃止し、§04の分析に置き換えている。</li>
   </ol>
   <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
 </div>
-
 </div>
