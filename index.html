@@ -110,6 +110,10 @@ td.cmt{position:relative;text-align:center}
 .cmt-pop textarea{width:100%;box-sizing:border-box;font-family:var(--f-body);font-size:12.5px;
   color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:3px;
   padding:6px;resize:vertical;line-height:1.6}
+.drag-handle{cursor:grab;color:var(--ink-muted);margin-right:6px;font-size:13px;user-select:none;display:inline-block}
+.drag-handle:active{cursor:grabbing}
+tr.dragging{opacity:.4}
+tr.drag-over{outline:2px dashed var(--accent);outline-offset:-2px}
 td.del{text-align:center}
 .del-btn{font-size:15px;line-height:1;background:var(--surface-2);border:1px solid var(--border);
   border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(--ink-muted)}
@@ -152,9 +156,11 @@ tr.row-deleted{display:none}
 /* 2026-09-30修正：spanは5個（日付・ティッカー・社名・種類・タイトル）なのに
    列定義が4つしかなく、タイトルが次の行へ落ちて折り返す不具合があった。
    日付・ティッカー・社名・種類は折り返さない最小幅の固定値、残りは
-   すべてタイトルへ（1fr）というユーザー指定の配分にする。 */
+   すべてタイトルへ（1fr）というユーザー指定の配分にする。
+   ★同日追加指示：社名の幅をさらに2/3（250px→167px）に縮め、浮いた分は
+   そのままタイトル側（1fr）に回す。 */
 .feed li{display:grid;text-align:left;
-  grid-template-columns:84px 44px 250px 116px 1fr;gap:10px;align-items:start;
+  grid-template-columns:84px 44px 167px 116px 1fr;gap:10px;align-items:start;
   padding:9px 12px;font-size:12.5px}
 .feed li+li{border-top:1px solid var(--border)}
 .feed .fd{font-family:var(--f-data);color:var(--ink-muted);white-space:nowrap;text-align:left}
@@ -208,10 +214,10 @@ tr.row-deleted{display:none}
     （カルテがまだ書いていない銘柄は機械判定の値）。
     <span class="upd" style="margin-left:2px">更新</span> は台帳が直近7日以内に
     実際に更新された銘柄の印。重要度は後で入力する欄で、選ぶと保存され、次に開いたときも
-    同じ内容を表示する（🔽で絞り込み）。未選択＞高＞中＞低の順で自動的に並び替わる。
-    削除で一覧から外せる（確認あり。台帳ファイル自体は消えず、下のバーから戻せる）。
-    レバー内訳（P/A/G/R/E）とボトルネックはL1一覧表（別ページ）で確認できる。
-    最大30銘柄まで。</p>
+    同じ内容を表示する（🔽で絞り込み）。行の並び順はコード欄の⠿をドラッグして入れ替えられ、
+    次に開いたときも同じ順で表示される。削除で一覧から外せる（確認あり。台帳ファイル自体は
+    消えず、下のバーから戻せる）。レバー内訳（P/A/G/R/E）とボトルネックはL1一覧表（別ページ）
+    で確認できる。最大30銘柄まで。</p>
 
   <div class="filter-bar">
     <span class="filter-label">重要度で絞り込み</span>
@@ -232,10 +238,10 @@ tr.row-deleted{display:none}
       </tr>
     </thead>
     <tbody>
-      <tr data-code="3151">
-        <td class="code">3151</td>
+      <tr data-code="3151" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>3151</td>
         <td class="nm"><a href="3151_scorecard.html">バイタルケーエスケー・ホールディングス</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>835</b>億円<br><span class="mkt-sub">10.4倍 ／ 0.68倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>835</b>億円<br><span class="mkt-sub"><b>10.4</b>倍 ／ <b>0.68</b>倍</span></td>
         <td class="num">2025-2027</td>
         <td class="num">1/3</td>
         
@@ -257,10 +263,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="3151"
           data-name="バイタルケーエスケー・ホールディングス" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="4547">
-        <td class="code">4547</td>
+      <tr data-code="4547" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>4547</td>
         <td class="nm"><a href="4547_scorecard.html">キッセイ薬品工業</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>1,876</b>億円<br><span class="mkt-sub">12.6倍 ／ 0.73倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>1,876</b>億円<br><span class="mkt-sub"><b>12.6</b>倍 ／ <b>0.73</b>倍</span></td>
         <td class="num">2025-2029</td>
         <td class="num">1/5</td>
         
@@ -282,10 +288,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="4547"
           data-name="キッセイ薬品工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="4619">
-        <td class="code">4619</td>
+      <tr data-code="4619" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>4619</td>
         <td class="nm"><a href="4619_scorecard.html">日本特殊塗料</a></td>
-        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">10.5倍 ／ 0.92倍</span></td>
+        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub"><b>10.5</b>倍 ／ <b>0.92</b>倍</span></td>
         <td class="num">2025-2029</td>
         <td class="num">1/5</td>
         
@@ -307,10 +313,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="4619"
           data-name="日本特殊塗料" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="4973">
-        <td class="code">4973</td>
+      <tr data-code="4973" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>4973</td>
         <td class="nm"><a href="4973_scorecard.html">日本高純度化学</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>290</b>億円<br><span class="mkt-sub">12.8倍 ／ 1.25倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>290</b>億円<br><span class="mkt-sub"><b>12.8</b>倍 ／ <b>1.25</b>倍</span></td>
         <td class="num">2025-2027</td>
         <td class="num">1/3</td>
         
@@ -332,10 +338,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="4973"
           data-name="日本高純度化学" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="5290">
-        <td class="code">5290</td>
+      <tr data-code="5290" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>5290</td>
         <td class="nm"><a href="5290_scorecard.html">ベルテクスコーポレーション</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>641</b>億円<br><span class="mkt-sub">12.3倍 ／ 1.33倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>641</b>億円<br><span class="mkt-sub"><b>12.3</b>倍 ／ <b>1.33</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -357,10 +363,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="5290"
           data-name="ベルテクスコーポレーション" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="5482">
-        <td class="code">5482</td>
+      <tr data-code="5482" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>5482</td>
         <td class="nm"><a href="5482_scorecard.html">愛知製鋼</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>2,123</b>億円<br><span class="mkt-sub">18.6倍 ／ 0.89倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>2,123</b>億円<br><span class="mkt-sub"><b>18.6</b>倍 ／ <b>0.89</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -382,8 +388,8 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="5482"
           data-name="愛知製鋼" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="5563">
-        <td class="code">5563</td>
+      <tr data-code="5563" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>5563</td>
         <td class="nm"><a href="5563_scorecard.html">新日本電工</a></td>
         <td class="mkt"><span class="mkt-empty">—</span></td>
         <td class="num">2024-2027</td>
@@ -407,10 +413,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="5563"
           data-name="新日本電工" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="5901">
-        <td class="code">5901</td>
+      <tr data-code="5901" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>5901</td>
         <td class="nm"><a href="5901_scorecard.html">東洋製罐グループホールディングス</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>6,921</b>億円<br><span class="mkt-sub">21.6倍 ／ 0.96倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>6,921</b>億円<br><span class="mkt-sub"><b>21.6</b>倍 ／ <b>0.96</b>倍</span></td>
         <td class="num">2026-2030</td>
         <td class="num">0/5</td>
         
@@ -432,10 +438,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="5901"
           data-name="東洋製罐グループホールディングス" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="5976">
-        <td class="code">5976</td>
+      <tr data-code="5976" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>5976</td>
         <td class="nm"><a href="5976_scorecard.html">ネツレン（高周波熱錬）</a><span class="upd" title="台帳更新 2026-09-28">更新</span></td>
-        <td class="mkt" title="2026-09-28時点・EDINET DB（get_financials、2026年3月期実績ベース）"><b>412</b>億円<br><span class="mkt-sub">31.6倍 ／ 0.70倍</span></td>
+        <td class="mkt" title="2026-09-28時点・EDINET DB（get_financials、2026年3月期実績ベース）"><b>412</b>億円<br><span class="mkt-sub"><b>31.6</b>倍 ／ <b>0.70</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -457,10 +463,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="5976"
           data-name="ネツレン（高周波熱錬）" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="6309">
-        <td class="code">6309</td>
+      <tr data-code="6309" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>6309</td>
         <td class="nm"><a href="6309_scorecard.html">巴工業</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub">13.8倍 ／ 1.38倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>617</b>億円<br><span class="mkt-sub"><b>13.8</b>倍 ／ <b>1.38</b>倍</span></td>
         <td class="num">2026-2028</td>
         <td class="num">0/3</td>
         
@@ -482,10 +488,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="6309"
           data-name="巴工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="6737">
-        <td class="code">6737</td>
+      <tr data-code="6737" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>6737</td>
         <td class="nm"><a href="6737_scorecard.html">EIZO</a></td>
-        <td class="mkt" title="2026-09-14時点・Yahoo!ファイナンス"><b>1,278</b>億円<br><span class="mkt-sub">18.4倍 ／ 0.59倍</span></td>
+        <td class="mkt" title="2026-09-14時点・Yahoo!ファイナンス"><b>1,278</b>億円<br><span class="mkt-sub"><b>18.4</b>倍 ／ <b>0.59</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -507,10 +513,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="6737"
           data-name="EIZO" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="7305">
-        <td class="code">7305</td>
+      <tr data-code="7305" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>7305</td>
         <td class="nm"><a href="7305_scorecard.html">新家工業</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>289</b>億円<br><span class="mkt-sub">15.6倍 ／ 0.77倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>289</b>億円<br><span class="mkt-sub"><b>15.6</b>倍 ／ <b>0.77</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -532,10 +538,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="7305"
           data-name="新家工業" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="7485">
-        <td class="code">7485</td>
+      <tr data-code="7485" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>7485</td>
         <td class="nm"><a href="7485_scorecard.html">岡谷鋼機</a><span class="upd" title="台帳更新 2026-09-28">更新</span></td>
-        <td class="mkt" title="2026-09-24時点・野村證券／SMBC日興証券 銘柄情報ページ"><b>1,948</b>億円<br><span class="mkt-sub">6.2倍 ／ 0.38倍</span></td>
+        <td class="mkt" title="2026-09-24時点・野村證券／SMBC日興証券 銘柄情報ページ"><b>1,948</b>億円<br><span class="mkt-sub"><b>6.2</b>倍 ／ <b>0.38</b>倍</span></td>
         <td class="num">2021-2025</td>
         <td class="num">5/5</td>
         
@@ -557,10 +563,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="7485"
           data-name="岡谷鋼機" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="8018">
-        <td class="code">8018</td>
+      <tr data-code="8018" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>8018</td>
         <td class="nm"><a href="8018_scorecard.html">三共生興</a></td>
-        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>380</b>億円<br><span class="mkt-sub">15.5倍 ／ 0.51倍</span></td>
+        <td class="mkt" title="2026-09-11時点・Yahoo!ファイナンス"><b>380</b>億円<br><span class="mkt-sub"><b>15.5</b>倍 ／ <b>0.51</b>倍</span></td>
         <td class="num">2024-2026</td>
         <td class="num">2/3</td>
         
@@ -582,10 +588,10 @@ tr.row-deleted{display:none}
         <td class="del"><button type="button" class="del-btn" data-code="8018"
           data-name="三共生興" title="この銘柄をリストから外す">🗑</button></td>
       </tr>
-      <tr data-code="8158">
-        <td class="code">8158</td>
+      <tr data-code="8158" draggable="true">
+        <td class="code"><span class="drag-handle" title="ドラッグして並び替え" aria-hidden="true">⠿</span>8158</td>
         <td class="nm"><a href="8158_scorecard.html">ソーダニッカ</a></td>
-        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>304</b>億円<br><span class="mkt-sub">12.3倍 ／ 0.83倍</span></td>
+        <td class="mkt" title="2026-09-07時点・Yahoo!ファイナンス"><b>304</b>億円<br><span class="mkt-sub"><b>12.3</b>倍 ／ <b>0.83</b>倍</span></td>
         <td class="num">2023-2026</td>
         <td class="num">3/4</td>
         
@@ -732,11 +738,18 @@ tr.row-deleted{display:none}
   var loaded = {};
 
   function currentState(code){
+    // order は含めないと save() の .set()（全体上書き）でドラッグ並び替えの
+    // 結果が消えてしまうため、現在のDOM上の値をそのまま持たせて保持する。
     var sel = document.querySelector('select.importance[data-code="' + code + '"]');
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
     var tr = document.querySelector('tr[data-code="' + code + '"]');
-    return {importance: sel ? sel.value : "", comment: ta ? ta.value : "",
+    var state = {importance: sel ? sel.value : "", comment: ta ? ta.value : "",
             deleted: tr ? tr.dataset.deleted === "1" : false};
+    if (tr && tr.dataset.order !== undefined && tr.dataset.order !== "") {
+      var ord = parseFloat(tr.dataset.order);
+      if (!isNaN(ord)) state.order = ord;
+    }
+    return state;
   }
 
   function applyRowData(code, data){
@@ -746,6 +759,7 @@ tr.row-deleted{display:none}
     if (tr) {
       tr.dataset.importance = data.importance || "";
       tr.dataset.deleted = data.deleted ? "1" : "0";
+      tr.dataset.order = (data.order !== undefined && data.order !== null) ? String(data.order) : "";
       tr.classList.toggle("row-deleted", !!data.deleted);
     }
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
@@ -765,16 +779,70 @@ tr.row-deleted{display:none}
   }
 
   function resortRows(){
+    // 2026-09-30: 重要度ベースの自動並び替えは廃止。誰か一人でも一度でも
+    // ドラッグして order を持たせていれば、その順序（order昇順、無い行は
+    // 末尾寄せ）に従う。誰もドラッグしていなければコード順のまま何もしない
+    // （db読み込み直後に勝手に並び替わって驚かせないため）。
     var tbody = document.querySelector("tbody");
     if (!tbody) return;
     var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
+    var hasOrder = trs.some(function(tr){ return tr.dataset.order !== undefined && tr.dataset.order !== ""; });
+    if (!hasOrder) return;
     trs.sort(function(a, b){
-      var pa = IMPORTANCE_PRIORITY[a.dataset.importance || ""];
-      var pb = IMPORTANCE_PRIORITY[b.dataset.importance || ""];
-      if (pa !== pb) return pa - pb;
+      var oa = (a.dataset.order !== undefined && a.dataset.order !== "") ? parseFloat(a.dataset.order) : Infinity;
+      var ob = (b.dataset.order !== undefined && b.dataset.order !== "") ? parseFloat(b.dataset.order) : Infinity;
+      if (oa !== ob) return oa - ob;
       return a.dataset.code < b.dataset.code ? -1 : 1;
     });
     trs.forEach(function(tr){ tbody.appendChild(tr); });
+  }
+
+  // ドラッグ&ドロップでの手動並び替え（2026-09-30追加）。db が無い環境でも
+  // そのセッション内の並び替え自体は効く（保存だけされない）。
+  var dragSrc = null;
+  function wireDragAndDrop(){
+    document.querySelectorAll("tbody tr[data-code]").forEach(function(tr){
+      tr.addEventListener("dragstart", function(e){
+        dragSrc = tr;
+        tr.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "move";
+        try { e.dataTransfer.setData("text/plain", tr.dataset.code); } catch (err) {}
+      });
+      tr.addEventListener("dragend", function(){
+        tr.classList.remove("dragging");
+        document.querySelectorAll(".drag-over").forEach(function(x){ x.classList.remove("drag-over"); });
+        dragSrc = null;
+      });
+      tr.addEventListener("dragover", function(e){
+        if (!dragSrc || dragSrc === tr) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        tr.classList.add("drag-over");
+      });
+      tr.addEventListener("dragleave", function(){
+        tr.classList.remove("drag-over");
+      });
+      tr.addEventListener("drop", function(e){
+        e.preventDefault();
+        tr.classList.remove("drag-over");
+        if (!dragSrc || dragSrc === tr) return;
+        var tbody = tr.parentElement;
+        var rect = tr.getBoundingClientRect();
+        var before = (e.clientY - rect.top) < rect.height / 2;
+        tbody.insertBefore(dragSrc, before ? tr : tr.nextSibling);
+        persistOrder();
+      });
+    });
+  }
+
+  function persistOrder(){
+    var tbody = document.querySelector("tbody");
+    if (!tbody) return;
+    var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
+    trs.forEach(function(tr, i){
+      tr.dataset.order = String(i);
+      if (dbRef) dbRef.doc("stocks/" + tr.dataset.code).update({order: i}).catch(function(){});
+    });
   }
 
   function updateRestoreBar(){
@@ -861,13 +929,17 @@ tr.row-deleted{display:none}
   document.querySelectorAll("textarea.cmt-text").forEach(function(ta){
     var t;
     ta.addEventListener("input", function(){
-      clearTimeout(t);
       var code = ta.dataset.code;
+      // 記載の有無による背景色は保存を待たず即座に反映する（2026-09-30追加）。
+      var btn = document.querySelector('button.cmt-btn[data-code="' + code + '"]');
+      if (btn) btn.classList.toggle("has-comment", !!ta.value.trim());
+      clearTimeout(t);
       t = setTimeout(function(){ save(code); }, 600);
     });
   });
 
   applyFilter();
+  wireDragAndDrop();
 
   (async function(){
     var db = null;
