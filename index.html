@@ -93,6 +93,14 @@ td.mkt .mkt-sub{display:block;font-size:10.5px;color:var(--ink-muted);margin-top
   padding:5px 14px;cursor:pointer}
 .filter-btn:hover{border-color:var(--border-strong)}
 .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.save-btn{font-family:var(--f-body);font-size:12.5px;font-weight:600;color:#fff;
+  background:var(--accent);border:1px solid var(--accent);border-radius:14px;
+  padding:5px 16px;cursor:pointer;margin-left:auto}
+.save-btn:hover{opacity:.9}
+.save-btn:disabled{opacity:.6;cursor:default}
+.save-status{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.save-status.ok{color:var(--good-ink)}
+.save-status.err{color:var(--crit-ink)}
 td.imp{white-space:nowrap}
 select.importance{font-family:var(--f-body);font-size:12.5px;color:var(--ink-2);
   background:var(--surface);border:1px solid var(--border);border-radius:3px;
@@ -225,6 +233,8 @@ tr.row-deleted{display:none}
     <button type="button" class="filter-btn" data-filter="高">高</button>
     <button type="button" class="filter-btn" data-filter="中">中</button>
     <button type="button" class="filter-btn" data-filter="低">低</button>
+    <button type="button" id="save-all-btn" class="save-btn">変更を保存</button>
+    <span id="save-status" class="save-status"></span>
   </div>
 <div class="tablewrap">
   <table>
@@ -880,6 +890,52 @@ tr.row-deleted{display:none}
     });
   });
 
+  // 2026-09-30追加: 自動保存が信用できない（無音で失敗しうる）というユーザー
+  // 指摘を受け、明示的な保存ボタンを追加した。クリック時に全銘柄の現在の
+  // DOM状態（重要度・コメント・削除・並び順）をdbへ書き込み、成功/失敗を
+  // 画面上に表示する。自動保存（change/input時のsave()）はそのまま残す。
+  function setSaveStatus(text, cls){
+    var el = document.getElementById("save-status");
+    if (!el) return;
+    el.textContent = text;
+    el.className = "save-status" + (cls ? " " + cls : "");
+  }
+
+  var saveAllBtn = document.getElementById("save-all-btn");
+  if (saveAllBtn) {
+    saveAllBtn.addEventListener("click", function(){
+      if (!dbRef) {
+        setSaveStatus("データベースに接続できていません。時間をおいて再読み込みしてください。", "err");
+        return;
+      }
+      saveAllBtn.disabled = true;
+      setSaveStatus("保存中…");
+      var codes = CODES.slice();
+      var okCount = 0;
+      var failCodes = [];
+      var remaining = codes.length;
+      codes.forEach(function(code){
+        dbRef.doc("stocks/" + code).set(currentState(code)).then(function(){
+          okCount += 1;
+        }).catch(function(e){
+          console.error("db set(save-all) failed", code, e);
+          failCodes.push(code);
+        }).finally(function(){
+          remaining -= 1;
+          if (remaining <= 0) {
+            saveAllBtn.disabled = false;
+            if (failCodes.length) {
+              setSaveStatus("保存に失敗：" + failCodes.join("・"), "err");
+            } else {
+              setSaveStatus("保存しました（" + okCount + "件）", "ok");
+              setTimeout(function(){ setSaveStatus(""); }, 4000);
+            }
+          }
+        });
+      });
+    });
+  }
+
   // 吹き出しの開閉（dbが使えない環境でもここは動く）
   document.querySelectorAll(".cmt-btn").forEach(function(btn){
     btn.addEventListener("click", function(e){
@@ -956,7 +1012,11 @@ tr.row-deleted{display:none}
   (async function(){
     var db = null;
     try { db = await claude.use("db"); } catch (e) { db = null; }
-    if (!db) { console.warn("db capability unavailable; importance/comment/order will not persist"); return; }
+    if (!db) {
+      console.warn("db capability unavailable; importance/comment/order will not persist");
+      setSaveStatus("データベース機能が読み込めませんでした（保存されません）", "err");
+      return;
+    }
     dbRef = db;
 
     // 2026-09-30修正: 旧実装は「15回イベントが発火したら読み込み完了」という
