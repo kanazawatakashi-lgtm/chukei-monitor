@@ -101,6 +101,7 @@ td.mkt .mkt-sub{display:block;font-size:10.5px;color:var(--ink-muted);margin-top
 .save-status{font-size:12px;color:var(--ink-muted);white-space:nowrap}
 .save-status.ok{color:var(--good-ink)}
 .save-status.err{color:var(--crit-ink)}
+.save-status.dirty{color:var(--warn-ink)}
 td.imp{white-space:nowrap}
 select.importance{font-family:var(--f-body);font-size:12.5px;color:var(--ink-2);
   background:var(--surface);border:1px solid var(--border);border-radius:3px;
@@ -600,8 +601,9 @@ tr.row-deleted{display:none}
     高/中/低の3択でフィルタできる。コメントは💬アイコンから開く欄に
     自由記述する（記載があるとアイコンの背景に色が付く）。行の並び順は
     コード欄の<span class="drag-handle" style="cursor:default">⠿</span>を
-    ドラッグして入れ替えられる。いずれもブラウザではなくこのページの
-    データベースに保存されるため、ページを開き直しても消えない。</p></div>
+    ドラッグして入れ替えられる。これらの変更は「変更を保存」ボタンを押すまでは
+    このページを開いている間だけの一時的な状態で、保存を押すとページ自体が
+    新しい内容で保存し直され、次に開いたときも同じ内容が表示される。</p></div>
 </div>
 
 <div class="notes">
@@ -613,50 +615,41 @@ tr.row-deleted{display:none}
     <li>会計基準がIFRSの銘柄は、特別損益の区分が無いため実力値への分解が自動では埋まりません。公表値ベースの判定になっている点に注意してください。</li>
     <li>「—」はデータの欠落であり、良好とは異なります。判定できていないレバーがある銘柄は、総合の母数（n本）を必ず確認してください。</li>
     <li>時価総額・PER・PBRはYahoo!ファイナンスからの手動転記（<code>plans/*.yaml</code>の<code>market_data</code>）で、日次自動更新ではありません。</li>
-    <li>重要度・コメントはこのページのデータベース機能に保存されます。TOPページに埋め込まれた一覧表は別のページ（別のデータベース）のため、そちらには反映されません。</li>
+    <li>重要度・コメント・並び順は「変更を保存」ボタンを押すとこのページ自体が新しい内容で保存し直されます。TOPページに埋め込まれた一覧表は別のページのため、そちらには反映されません。</li>
   </ol>
   <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、企業の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
 </div>
 </div>
 
 
+<script type="application/json" id="row-state-data">{"3151": {"importance": "中", "comment": "株式の追加売却が必要だが、どこまでやるのか不明", "deleted": false}, "4547": {"importance": "低", "comment": "", "deleted": false}, "4619": {"importance": "中", "comment": "", "deleted": false}, "4973": {"importance": "高", "comment": "", "deleted": false}, "5290": {"importance": "高", "comment": "", "deleted": false}, "5482": {"importance": "高", "comment": "", "deleted": false}, "5563": {"importance": "低", "comment": "", "deleted": false}, "5901": {"importance": "中", "comment": "", "deleted": false}, "6309": {"importance": "高", "comment": "", "deleted": false}, "6737": {"importance": "中", "comment": "", "deleted": false}, "7305": {"importance": "低", "comment": "", "deleted": false}, "8018": {"importance": "中", "comment": "", "deleted": false}, "8158": {"importance": "中", "comment": "", "deleted": false}}</script>
+<script type="application/json" id="row-order-data">[]</script>
 <script>
 (function(){
   var CODES = ["3151","4547","4619","4973","5290","5482","5563","5901","5976","6309","6737","7305","7485","8018","8158"];
   var NAMES = {"3151":"バイタルケーエスケー・ホールディングス","4547":"キッセイ薬品工業","4619":"日本特殊塗料","4973":"日本高純度化学","5290":"ベルテクスコーポレーション","5482":"愛知製鋼","5563":"新日本電工","5901":"東洋製罐グループホールディングス","5976":"ネツレン（高周波熱錬）","6309":"巴工業","6737":"EIZO","7305":"新家工業","7485":"岡谷鋼機","8018":"三共生興","8158":"ソーダニッカ"};
-  var IMPORTANCE_PRIORITY = {"": 0, "高": 1, "中": 2, "低": 3};
-  var loaded = {};
 
   function currentState(code){
-    // order は含めないと save() の .set()（全体上書き）でドラッグ並び替えの
-    // 結果が消えてしまうため、現在のDOM上の値をそのまま持たせて保持する。
     var sel = document.querySelector('select.importance[data-code="' + code + '"]');
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
     var tr = document.querySelector('tr[data-code="' + code + '"]');
-    var state = {importance: sel ? sel.value : "", comment: ta ? ta.value : "",
+    return {importance: sel ? sel.value : "", comment: ta ? ta.value : "",
             deleted: tr ? tr.dataset.deleted === "1" : false};
-    if (tr && tr.dataset.order !== undefined && tr.dataset.order !== "") {
-      var ord = parseFloat(tr.dataset.order);
-      if (!isNaN(ord)) state.order = ord;
-    }
-    return state;
   }
 
   function applyRowData(code, data){
     var sel = document.querySelector('select.importance[data-code="' + code + '"]');
-    if (sel && document.activeElement !== sel) sel.value = data.importance || "";
+    if (sel) sel.value = data.importance || "";
     var tr = document.querySelector('tr[data-code="' + code + '"]');
     if (tr) {
       tr.dataset.importance = data.importance || "";
       tr.dataset.deleted = data.deleted ? "1" : "0";
-      tr.dataset.order = (data.order !== undefined && data.order !== null) ? String(data.order) : "";
       tr.classList.toggle("row-deleted", !!data.deleted);
     }
     var ta = document.querySelector('textarea.cmt-text[data-code="' + code + '"]');
-    if (ta && document.activeElement !== ta) ta.value = data.comment || "";
+    if (ta) ta.value = data.comment || "";
     var btn = document.querySelector('button.cmt-btn[data-code="' + code + '"]');
     if (btn) btn.classList.toggle("has-comment", !!(data.comment && data.comment.trim()));
-    loaded[code] = true;
   }
 
   function applyFilter(){
@@ -668,27 +661,17 @@ tr.row-deleted{display:none}
     });
   }
 
-  function resortRows(){
-    // 2026-09-30: 重要度ベースの自動並び替えは廃止。誰か一人でも一度でも
-    // ドラッグして order を持たせていれば、その順序（order昇順、無い行は
-    // 末尾寄せ）に従う。誰もドラッグしていなければコード順のまま何もしない
-    // （db読み込み直後に勝手に並び替わって驚かせないため）。
+  function resortRows(order){
     var tbody = document.querySelector("tbody");
-    if (!tbody) return;
-    var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
-    var hasOrder = trs.some(function(tr){ return tr.dataset.order !== undefined && tr.dataset.order !== ""; });
-    if (!hasOrder) return;
-    trs.sort(function(a, b){
-      var oa = (a.dataset.order !== undefined && a.dataset.order !== "") ? parseFloat(a.dataset.order) : Infinity;
-      var ob = (b.dataset.order !== undefined && b.dataset.order !== "") ? parseFloat(b.dataset.order) : Infinity;
-      if (oa !== ob) return oa - ob;
-      return a.dataset.code < b.dataset.code ? -1 : 1;
+    if (!tbody || !order || !order.length) return;
+    var byCode = {};
+    tbody.querySelectorAll("tr[data-code]").forEach(function(tr){ byCode[tr.dataset.code] = tr; });
+    order.forEach(function(code){
+      var tr = byCode[code];
+      if (tr) tbody.appendChild(tr);
     });
-    trs.forEach(function(tr){ tbody.appendChild(tr); });
   }
 
-  // ドラッグ&ドロップでの手動並び替え（2026-09-30追加）。db が無い環境でも
-  // そのセッション内の並び替え自体は効く（保存だけされない）。
   var dragSrc = null;
   function wireDragAndDrop(){
     document.querySelectorAll("tbody tr[data-code]").forEach(function(tr){
@@ -720,26 +703,8 @@ tr.row-deleted{display:none}
         var rect = tr.getBoundingClientRect();
         var before = (e.clientY - rect.top) < rect.height / 2;
         tbody.insertBefore(dragSrc, before ? tr : tr.nextSibling);
-        persistOrder();
+        markDirty();
       });
-    });
-  }
-
-  function persistOrder(){
-    // 2026-09-30修正: update()は対象ドキュメントが既に存在することを要求し、
-    // 存在しなければinvalid_argumentで拒否される（db.d.ts参照）。重要度・
-    // コメントを一度も設定していない銘柄はドキュメント自体が無いため、
-    // update({order:i})は常に失敗していた（ArtifactDataで確認：orderが
-    // 1件も保存されていなかった）。set(currentState(code))なら無ければ
-    // 作成し、あれば全体を今のDOM状態で書き直すため存在有無に依存しない。
-    var tbody = document.querySelector("tbody");
-    if (!tbody) return;
-    var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
-    trs.forEach(function(tr, i){
-      tr.dataset.order = String(i);
-      var code = tr.dataset.code;
-      if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code))
-        .catch(function(e){ console.error("db set(order) failed", code, e); });
     });
   }
 
@@ -762,6 +727,35 @@ tr.row-deleted{display:none}
     });
   }
 
+  function setSaveStatus(text, cls){
+    var el = document.getElementById("save-status");
+    if (!el) return;
+    el.textContent = text;
+    el.className = "save-status" + (cls ? " " + cls : "");
+  }
+
+  function markDirty(){
+    setSaveStatus("未保存の変更があります。「変更を保存」を押してください", "dirty");
+  }
+
+  function setDeleted(code, val){
+    var tr = document.querySelector('tr[data-code="' + code + '"]');
+    if (tr) { tr.dataset.deleted = val ? "1" : "0"; tr.classList.toggle("row-deleted", val); }
+    applyFilter();
+    updateRestoreBar();
+    markDirty();
+  }
+
+  document.querySelectorAll(".del-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var code = btn.dataset.code;
+      var name = btn.dataset.name || code;
+      if (!window.confirm(name + "（" + code + "）を一覧から削除しますか？\n"
+        + "（台帳ファイル自体は消えません。一覧から非表示にするだけで、下のバーから元に戻せます）")) return;
+      setDeleted(code, true);
+    });
+  });
+
   document.querySelectorAll(".filter-btn").forEach(function(b){
     b.addEventListener("click", function(){
       document.querySelectorAll(".filter-btn").forEach(function(x){ x.classList.remove("active"); });
@@ -770,53 +764,26 @@ tr.row-deleted{display:none}
     });
   });
 
-  // 2026-09-30追加: 自動保存が信用できない（無音で失敗しうる）というユーザー
-  // 指摘を受け、明示的な保存ボタンを追加した。クリック時に全銘柄の現在の
-  // DOM状態（重要度・コメント・削除・並び順）をdbへ書き込み、成功/失敗を
-  // 画面上に表示する。自動保存（change/input時のsave()）はそのまま残す。
-  function setSaveStatus(text, cls){
-    var el = document.getElementById("save-status");
-    if (!el) return;
-    el.textContent = text;
-    el.className = "save-status" + (cls ? " " + cls : "");
-  }
-
-  var saveAllBtn = document.getElementById("save-all-btn");
-  if (saveAllBtn) {
-    saveAllBtn.addEventListener("click", function(){
-      if (!dbRef) {
-        setSaveStatus("データベースに接続できていません。時間をおいて再読み込みしてください。", "err");
-        return;
-      }
-      saveAllBtn.disabled = true;
-      setSaveStatus("保存中…");
-      var codes = CODES.slice();
-      var okCount = 0;
-      var failCodes = [];
-      var remaining = codes.length;
-      codes.forEach(function(code){
-        dbRef.doc("stocks/" + code).set(currentState(code)).then(function(){
-          okCount += 1;
-        }).catch(function(e){
-          console.error("db set(save-all) failed", code, e);
-          failCodes.push(code);
-        }).finally(function(){
-          remaining -= 1;
-          if (remaining <= 0) {
-            saveAllBtn.disabled = false;
-            if (failCodes.length) {
-              setSaveStatus("保存に失敗：" + failCodes.join("・"), "err");
-            } else {
-              setSaveStatus("保存しました（" + okCount + "件）", "ok");
-              setTimeout(function(){ setSaveStatus(""); }, 4000);
-            }
-          }
-        });
-      });
+  document.querySelectorAll("select.importance").forEach(function(sel){
+    sel.addEventListener("change", function(){
+      var code = sel.dataset.code;
+      var tr = document.querySelector('tr[data-code="' + code + '"]');
+      if (tr) tr.dataset.importance = sel.value;
+      applyFilter();
+      markDirty();
     });
-  }
+  });
 
-  // 吹き出しの開閉（dbが使えない環境でもここは動く）
+  document.querySelectorAll("textarea.cmt-text").forEach(function(ta){
+    ta.addEventListener("input", function(){
+      var code = ta.dataset.code;
+      var btn = document.querySelector('button.cmt-btn[data-code="' + code + '"]');
+      if (btn) btn.classList.toggle("has-comment", !!ta.value.trim());
+      markDirty();
+    });
+  });
+
+  // 吹き出しの開閉
   document.querySelectorAll(".cmt-btn").forEach(function(btn){
     btn.addEventListener("click", function(e){
       e.stopPropagation();
@@ -833,95 +800,63 @@ tr.row-deleted{display:none}
     p.addEventListener("click", function(e){ e.stopPropagation(); });
   });
 
-  var dbRef = null;
-  function setDeleted(code, val){
-    var tr = document.querySelector('tr[data-code="' + code + '"]');
-    if (tr) { tr.dataset.deleted = val ? "1" : "0"; tr.classList.toggle("row-deleted", val); }
-    applyFilter();
-    updateRestoreBar();
-    // 2026-09-30修正: 同上の理由でupdate()をset()に統一（ドキュメント未作成の
-    // 銘柄を先に削除しようとするとupdate()は失敗するため）。
-    if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code))
-      .catch(function(e){ console.error("db set(deleted) failed", code, e); });
+  function replaceJsonBlock(html, id, value){
+    var re = new RegExp('(<script type="application/json" id="' + id + '">)[\s\S]*?(<\/script>)');
+    if (!re.test(html)) throw new Error("marker not found: " + id);
+    var payload = JSON.stringify(value).replace(/<\//g, "<\\/");
+    return html.replace(re, function(_, open, close){ return open + payload + close; });
   }
 
-  document.querySelectorAll(".del-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var code = btn.dataset.code;
-      var name = btn.dataset.name || code;
-      if (!window.confirm(name + "（" + code + "）を一覧から削除しますか？\n"
-        + "（台帳ファイル自体は消えません。一覧から非表示にするだけで、下のバーから元に戻せます）")) return;
-      setDeleted(code, true);
-    });
-  });
+  var saveAllBtn = document.getElementById("save-all-btn");
+  if (saveAllBtn) {
+    saveAllBtn.addEventListener("click", function(){
+      saveAllBtn.disabled = true;
+      setSaveStatus("保存中…");
+      (async function(){
+        try {
+          var art = await claude.use("artifact");
+          if (!art) { setSaveStatus("保存機能（artifact）が読み込めませんでした", "err"); return; }
+          var resp = await fetch(location.href, {cache: "no-store"});
+          if (!resp.ok) throw new Error("fetch failed: HTTP " + resp.status);
+          var text = await resp.text();
 
-  // 重要度・コメントの操作自体はdbが無くても効く（そのセッション内だけ、
-  // 保存されずに）。db capabilityがある場合だけ、変更を永続化し、他の
-  // 端末・再訪問時にも反映する（2026-09-15: 削除ボタンと同じ設計に統一）。
-  function save(code){
-    if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code))
-      .catch(function(e){ console.error("db set failed", code, e); });
-  }
+          var newState = {};
+          CODES.forEach(function(code){ newState[code] = currentState(code); });
+          var tbody = document.querySelector("tbody");
+          var newOrder = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"))
+            .map(function(tr){ return tr.dataset.code; });
 
-  document.querySelectorAll("select.importance").forEach(function(sel){
-    sel.addEventListener("change", function(){
-      var code = sel.dataset.code;
-      var tr = document.querySelector('tr[data-code="' + code + '"]');
-      if (tr) tr.dataset.importance = sel.value;
-      applyFilter();
-      resortRows();
-      save(code);
-    });
-  });
+          text = replaceJsonBlock(text, "row-state-data", newState);
+          text = replaceJsonBlock(text, "row-order-data", newOrder);
 
-  document.querySelectorAll("textarea.cmt-text").forEach(function(ta){
-    var t;
-    ta.addEventListener("input", function(){
-      var code = ta.dataset.code;
-      // 記載の有無による背景色は保存を待たず即座に反映する（2026-09-30追加）。
-      var btn = document.querySelector('button.cmt-btn[data-code="' + code + '"]');
-      if (btn) btn.classList.toggle("has-comment", !!ta.value.trim());
-      clearTimeout(t);
-      t = setTimeout(function(){ save(code); }, 600);
-    });
-  });
-
-  applyFilter();
-  wireDragAndDrop();
-
-  (async function(){
-    var db = null;
-    try { db = await claude.use("db"); } catch (e) { db = null; }
-    if (!db) {
-      console.warn("db capability unavailable; importance/comment/order will not persist");
-      setSaveStatus("データベース機能が読み込めませんでした（保存されません）", "err");
-      return;
-    }
-    dbRef = db;
-
-    // 2026-09-30修正: 旧実装は「15回イベントが発火したら読み込み完了」という
-    // カウンタだった。onSnapshotはキャッシュ→サーバーの2段で同じcodeに対し
-    // 複数回発火しうるため、一部のcodeが2回発火しただけで他のcodeの実データが
-    // 届く前に「完了」と誤判定し、並び替えが不完全なまま確定するバグがあった。
-    // 「どのcodeから届いたか」を集合で管理し、全codeが最低1回届いたかで判定する。
-    var receivedCodes = {};
-    var receivedCount = 0;
-    var initialLoadDone = false;
-    CODES.forEach(function(code){
-      db.doc("stocks/" + code).onSnapshot(function(snap){
-        applyRowData(code, snap.data() || {});
-        applyFilter();
-        updateRestoreBar();
-        if (!receivedCodes[code]) {
-          receivedCodes[code] = true;
-          receivedCount += 1;
-          if (receivedCount >= CODES.length) initialLoadDone = true;
+          await art.publish(text);
+          setSaveStatus("保存しました。ページがまもなく更新されます…", "ok");
+        } catch (e) {
+          console.error("save failed", e);
+          setSaveStatus("保存に失敗しました：" + (e && e.message ? e.message : e), "err");
+        } finally {
+          saveAllBtn.disabled = false;
         }
-        // 初回全件読み込み後は、以降のスナップショット更新（他タブでの操作等）でも
-        // 並び順を再計算する。ただし自分がドラッグ中の間は触らない。
-        if (initialLoadDone && !dragSrc) resortRows();
-      }, function(err){ console.error("db watch failed", code, err); });
+      })();
     });
-  })();
+  }
+
+  // 初期表示：埋め込まれた row-state-data／row-order-data から同期的に復元する。
+  var STATE = {};
+  var ORDER = [];
+  try {
+    var stateEl = document.getElementById("row-state-data");
+    if (stateEl) STATE = JSON.parse(stateEl.textContent || "{}");
+  } catch (e) { console.error("row-state-data parse failed", e); }
+  try {
+    var orderEl = document.getElementById("row-order-data");
+    if (orderEl) ORDER = JSON.parse(orderEl.textContent || "[]");
+  } catch (e) { console.error("row-order-data parse failed", e); }
+
+  CODES.forEach(function(code){ applyRowData(code, STATE[code] || {}); });
+  resortRows(ORDER);
+  applyFilter();
+  updateRestoreBar();
+  wireDragAndDrop();
 })();
 </script>
