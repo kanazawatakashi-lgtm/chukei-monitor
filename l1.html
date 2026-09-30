@@ -390,7 +390,7 @@ tr.row-deleted{display:none}
         <td class="num">2/3</td>
         <td class="lev g-d">D</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td><td class="lev none" title="判定に必要な実績が台帳に無い">—</td>
         <td class="bn"><b class="g-e">P</b> 稼ぐ</td>
-        <td class="ct"><span class="p p-warn" title="台帳にまだ転記していない（要確認）">未確認</span></td>
+        <td class="ct"><span class="p p-ok" title="修正後のROE目標「2.5%以上」を直近実績純利益13.29億で評価すると必要な自己資本上限は531.6億で、実際の自己資本491.41億はこれを下回り超過は生じない（ただしROEの余裕自体は乏しい）。当初目標6.5%基準では自己資本が286.9億(58.4%)超過していたが、目標自体が切り下げられたため現行基準では機械判定と一致して不要">不要</span></td>
         <td class="meta">covered<small>日本基準</small></td>
         <td class="imp"><select class="importance" data-code="5976">
           <option value="">─</option><option value="高">高</option><option value="中">中</option><option value="低">低</option>
@@ -721,7 +721,9 @@ tr.row-deleted{display:none}
     var trs = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-code]"));
     trs.forEach(function(tr, i){
       tr.dataset.order = String(i);
-      if (dbRef) dbRef.doc("stocks/" + tr.dataset.code).update({order: i}).catch(function(){});
+      var code = tr.dataset.code;
+      if (dbRef) dbRef.doc("stocks/" + code).update({order: i})
+        .catch(function(e){ console.error("db update(order) failed", code, e); });
     });
   }
 
@@ -775,7 +777,8 @@ tr.row-deleted{display:none}
     if (tr) { tr.dataset.deleted = val ? "1" : "0"; tr.classList.toggle("row-deleted", val); }
     applyFilter();
     updateRestoreBar();
-    if (dbRef) dbRef.doc("stocks/" + code).update({deleted: val}).catch(function(){});
+    if (dbRef) dbRef.doc("stocks/" + code).update({deleted: val})
+      .catch(function(e){ console.error("db update(deleted) failed", code, e); });
   }
 
   document.querySelectorAll(".del-btn").forEach(function(btn){
@@ -792,7 +795,8 @@ tr.row-deleted{display:none}
   // 保存されずに）。db capabilityがある場合だけ、変更を永続化し、他の
   // 端末・再訪問時にも反映する（2026-09-15: 削除ボタンと同じ設計に統一）。
   function save(code){
-    if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code)).catch(function(){});
+    if (dbRef) dbRef.doc("stocks/" + code).set(currentState(code))
+      .catch(function(e){ console.error("db set failed", code, e); });
   }
 
   document.querySelectorAll("select.importance").forEach(function(sel){
@@ -824,17 +828,30 @@ tr.row-deleted{display:none}
   (async function(){
     var db = null;
     try { db = await claude.use("db"); } catch (e) { db = null; }
-    if (!db) return;
+    if (!db) { console.warn("db capability unavailable; importance/comment/order will not persist"); return; }
     dbRef = db;
 
-    var pending = CODES.length;
+    // 2026-09-30修正: 旧実装は「15回イベントが発火したら読み込み完了」という
+    // カウンタだった。onSnapshotはキャッシュ→サーバーの2段で同じcodeに対し
+    // 複数回発火しうるため、一部のcodeが2回発火しただけで他のcodeの実データが
+    // 届く前に「完了」と誤判定し、並び替えが不完全なまま確定するバグがあった。
+    // 「どのcodeから届いたか」を集合で管理し、全codeが最低1回届いたかで判定する。
+    var receivedCodes = {};
+    var receivedCount = 0;
+    var initialLoadDone = false;
     CODES.forEach(function(code){
       db.doc("stocks/" + code).onSnapshot(function(snap){
         applyRowData(code, snap.data() || {});
         applyFilter();
         updateRestoreBar();
-        pending -= 1;
-        if (pending <= 0) resortRows();
+        if (!receivedCodes[code]) {
+          receivedCodes[code] = true;
+          receivedCount += 1;
+          if (receivedCount >= CODES.length) initialLoadDone = true;
+        }
+        // 初回全件読み込み後は、以降のスナップショット更新（他タブでの操作等）でも
+        // 並び順を再計算する。ただし自分がドラッグ中の間は触らない。
+        if (initialLoadDone && !dragSrc) resortRows();
       }, function(err){ console.error("db watch failed", code, err); });
     });
   })();
