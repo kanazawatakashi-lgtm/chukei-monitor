@@ -1,0 +1,345 @@
+<title>ヤマタネ 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">9305 ・ 東証プライム ・ 日本基準</div>
+    <h1>ヤマタネ<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">「ヤマタネ2028プラン」は初年度でROE・営業利益の目標を超過したが、コメ高騰の追い風が剥がれ、2027年3月期は営業利益が据置目標を下回る見通し</p>
+  </div>
+  <div class="mh-right">
+    基準日　<b>2026年10月3日</b><br>
+    会計年度　<b>3月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<!-- ===================== §1 ===================== -->
+<section style="margin-top:36px">
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表・改定の経緯</b></caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2024.11.14</td>
+          <td class="item">中期経営計画「ヤマタネ2028プラン」（2026年3月期〜2028年3月期）を公表。
+            2028年3月期の目標：売上高880億円／営業利益47億円／EBITDA92億円／ROE6.5%以上／
+            総還元性向70〜80%。政策保有株式は2030年までに対純資産比20%以下へ</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2025.04</td>
+          <td class="item">事業部制からカンパニー制へ移行（物流・食品・情報・不動産）</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2025.11.28</td>
+          <td class="item">2026年3月期の通期予想を営業利益37.8億円→57.1億円へ上方修正。2028年3月期目標の修正は
+            「コメ市況の動向等を鑑みて慎重に協議、検討」と説明</td></tr>
+        <tr class="spot"><td class="num" style="white-space:nowrap">2026.05.13</td>
+          <td class="item">財務目標の一部見直し：売上高880億→1,000億円、ROE6.5%以上→7.5%以上。
+            営業利益47億円・EBITDA92億円・総還元性向70〜80%は据置。同日、2027年3月期の会社予想
+            （営業利益41.1億円、前期比▲29.9%）を公表</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.08.07</td>
+          <td class="item">2027年3月期Q1決算。営業利益4.41億円（前年同期比▲78.1%）。通期予想は据置</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px;font-size:12.5px;color:var(--ink-muted)">
+    原本：<a href="https://kanazawatakashi-lgtm.github.io/chukei-monitor/pdf/9305/midterm_plan_yamatane2028.pdf" target="_blank" rel="noopener">中期経営計画「ヤマタネ2028プラン」（2024年11月14日）（PDF）</a>　／
+    <a href="https://kanazawatakashi-lgtm.github.io/chukei-monitor/pdf/9305/notice_target_revision_20260513.pdf" target="_blank" rel="noopener">財務目標の一部見直しに関するお知らせ（2026年5月13日）（PDF）</a>　／
+    <a href="https://kanazawatakashi-lgtm.github.io/chukei-monitor/pdf/9305/deck_2026-03_q2.pdf" target="_blank" rel="noopener">2026年3月期第2四半期決算説明資料（PDF）</a>
+  </p>
+</section>
+
+<!-- ===================== §2 ===================== -->
+<section>
+  <p class="eyebrow">02　前計画の達成度　─　ヤマタネ2025プラン（2023年3月期〜2025年3月期）</p>
+  <h2>定量5項目をすべて達成。ただし売上の増加はM&A、営業利益は3年で+8億円</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>目標と実績</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">起点（2022年3月期）</th><th class="num">目標</th><th class="num">実績（2025年3月期）</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">467</td><td class="num">565</td><td class="num">809.22</td><td>達成</td></tr>
+        <tr><td class="item">営業利益</td><td class="num">30</td><td class="num">32</td><td class="num">37.80</td><td>達成</td></tr>
+        <tr><td class="item">EBITDA</td><td class="num">53</td><td class="num">66</td><td class="num">80.02</td><td>達成</td></tr>
+        <tr><td class="item">ROE</td><td class="num">4.4%</td><td class="num">5.0%以上</td><td class="num">5.6%</td><td>達成</td></tr>
+        <tr><td class="item">配当性向</td><td class="num">31.0%</td><td class="num">35%以上</td><td class="num">35.1%</td><td>達成</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">会社は「主要定量目標は一年前倒しで達成」と総括している。売上高の増加（+342億円）は2023年10月のショクカイ子会社化で食品の売上が195億→498億円に膨らんだことが主因で、営業利益は物流の新倉庫（本牧）の償却負担で物流が減益となり、3年で+8億円にとどまった。定性評価ではコア事業は達成、チャレンジ領域は物流不動産の仲介（競争激化で断念）と棚卸アプリ（販売拡大が未達）が残った。ROEは4.4%→5.6%に上がったものの、会社が想定する株主資本コスト（7〜8%）には届かず、PBRは0.3〜0.6倍台にとどまった。</p>
+</section>
+
+<!-- ===================== §3 ===================== -->
+<section>
+  <p class="eyebrow">03　現計画の進捗　─　ヤマタネ2028プラン（2026年3月期〜2028年3月期）</p>
+  <h2>初年度で売上・営業利益・ROEの当初目標を超過。2027年3月期は営業利益が目標を下回る予想</h2>
+  <div class="tablewrap" style="margin-top:14px">
+    <table>
+      <caption><b>政策保有株式の削減計画と進捗</b>　売却は株主還元・成長投資の原資（3年累計30〜40億円）</caption>
+      <thead><tr><th>項目</th><th class="num">起点</th><th class="num">目標（期限）</th><th class="num">最新実績</th><th>達成度</th></tr></thead>
+      <tbody>
+        <tr class="spot"><td class="item">対純資産比（上場株式）</td><td class="num" style="white-space:normal">39.3%<br><small style="color:var(--ink-muted)">2025年3月期末（229.73億円）</small></td><td class="num" style="white-space:normal">20%以下（2030年3月期）</td><td class="num" style="white-space:normal">36.6%<br><small style="color:var(--ink-muted)">2026年3月期末（232.47億円）。有報の上場株式÷連結純資産で当方算出</small></td><td>14.0%（期間経過20%）。20%に届くには追加で約105億円の削減が必要（純資産が現状並みの場合）</td></tr>
+        <tr><td class="item">売却額</td><td class="num" style="white-space:normal">—</td><td class="num" style="white-space:normal">—</td><td class="num" style="white-space:normal">17.59億円<br><small style="color:var(--ink-muted)">2026年3月期（有報の売却価額）</small></td><td>前期14.54億円。残り4年で約105億円なら年約26億円が必要</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">起点の229.73億円には、山種不動産の吸収合併で移管された77.19億円が含まれる。会社は2026年3月期の比率を開示していないため、36.6%は有価証券報告書の上場14銘柄232.47億円を連結純資産635.33億円で割った当方の算出値で、会社の使う時価総額（範囲が異なる可能性）とは一致しない場合がある。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table>
+      <caption><b>財務目標と実績</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">起点<br>2025年3月期</th><th class="num">初年度実績<br>2026年3月期</th><th class="num">会社予想<br>2027年3月期</th><th class="num">目標（2028年3月期）</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">809.22</td><td class="num">886.74</td><td class="num">985.60</td><td class="num"><b>1,000</b>（当初880）</td></tr>
+        <tr class="spot"><td class="item">営業利益</td><td class="num">37.80</td><td class="num">58.64</td><td class="num">41.10</td><td class="num"><b>47</b>（据置）</td></tr>
+        <tr><td class="item">純利益</td><td class="num">30.91</td><td class="num">54.98</td><td class="num">44.00</td><td class="num">—</td></tr>
+        <tr><td class="item">ROE</td><td class="num">5.6%</td><td class="num">9.0%</td><td class="num">—</td><td class="num"><b>7.5%以上</b>（当初6.5%）</td></tr>
+        <tr><td class="item">配当（1株）</td><td class="num">52.5円</td><td class="num">75.0円</td><td class="num">85.0円</td><td class="num">DOE3%に向け累進</td></tr>
+        <tr><td class="item">総還元性向</td><td class="num">—</td><td class="num">72.0%</td><td class="num">—</td><td class="num"><b>70〜80%</b>（総還元額70〜80億円）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:16px">初年度は売上高886.74億円・営業利益58.64億円・ROE9.0%と、当初目標（880億・47億・6.5%）をすべて1年目で超えた。会社予想の2027年3月期は売上高985.6億円と修正後目標の98.6%に迫る一方、営業利益は41.1億円で据置目標47億円の87.4%にとどまる。営業利益だけは目標を引き上げなかったが、初年度の水準（58.64億円）を維持できる前提にはなっていない。EBITDAは会社の定義値を取得できておらず、本表には載せていない。</p>
+  <p class="prose">2027年3月期Q1は営業利益4.41億円（前年同期20.15億円、▲78.1%）で、通期予想の10.7%の進捗。食品カンパニーが営業赤字（▲1.95億円、前年同期は+12.64億円）に転落した。コメ需給の緩和で販売単価が下がり、コメ販売数量も前年同期比15.6%減った。物流は▲12.8%、不動産は+3.3%、情報は黒字転換。純利益は投資有価証券売却益10.94億円で9.84億円を確保した。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table>
+      <caption><b>総還元の進捗</b>　単位：億円</caption>
+      <thead><tr><th>項目</th><th class="num">2026年3月期</th><th class="num">会社想定（3年累計）</th><th>進捗</th></tr></thead>
+      <tbody>
+        <tr><td class="item">配当（支払ベース）</td><td class="num">14.74</td><td class="num" rowspan="3" style="white-space:normal">総還元額<br>70〜80</td><td rowspan="3">初年度で約50〜57%を消化</td></tr>
+        <tr><td class="item">自己株式取得</td><td class="num">24.83</td></tr>
+        <tr class="spot"><td class="item">合計</td><td class="num">39.57</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">自己株式取得は会社想定30〜40億円のうち初年度で24.83億円（有報の自己株式残高の増加額。会社資料は22.3億円）。山種不動産の吸収合併で自己株式2,496,120株（35.62億円）を交付した希薄化への対応を含む枠で、消却はしていない。</p>
+</section>
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　注目すべき点</p>
+
+  <h3>1. 初年度の好業績はコメ高騰による一時的な利益。実力ベースでは目標への距離が残る</h3>
+  <p class="prose">2026年3月期の営業利益の増益（+20.84億円）のほぼ全て（中間期時点では95.9%）が食品カンパニーで、コメ関連の価格転嫁益が1事業に集中していた。Q1でその食品が赤字に転じており、集中の反動が既に出ている。純利益54.98億円には特別利益34.41億円・特別損失9.66億円（純額+24.75億円）が含まれ、税引後を控除した実力純利益は概算37.81億円（公表の69%）、実力ROEは概算6.2%（公表9.0%）。修正後ROE目標7.5%には実力ベースでは届いていない。2027年3月期の会社予想純利益44.0億円も経常利益36.1億円を上回っており、年度内に政策保有株式の売却益等の特別利益を織り込んでいる。</p>
+
+  <h3>2. 株主還元：追加還元の必要性は数値上「大」。政策保有株式の売却が原資になる</h3>
+  <p class="prose"><strong>政策保有株式の削減：</strong>対純資産比は39.3%→36.6%と低下したが、2030年3月期の20%以下までの進捗は14.0%（期間経過20%）にとどまる（§03の表）。売却額は17.59億円で、20%到達に必要な約105億円を残り4年で売るなら年約26億円と、現在のペースの1.5倍が要る。上場株式232.47億円のうち東京海上HDが191.10億円（82%）を占め、同株は288,000株を売却して段階的な売却を継続中。清水建設・東京ガス・乾汽船・きんでん・イトーキは売却方針、DCMHDは2027年3月期に売却済み。2027年3月期Q1も売却益10.94億円を計上している。</p>
+  <p class="prose">配当は1株52.5円→75.0円（+43%）と大幅に増やし、2027年3月期は85円を予想する。DOEは2.5%で、目標の3%に向けて引き上げ中。自己株式は初年度に24.83億円を取得したが、Q1は自己株式数が1,562,686株→1,564,818株とほぼ動いておらず新たな買付は確認できない。</p>
+  <p class="prose"><strong>追加還元の必要性を会社公表のROE目標（7.5%以上）で評価する。</strong>2027年3月期の会社予想純利益44.0億円÷7.5%＝586.67億円が逆算した自己資本の水準で、2026年3月期末の実績635.33億円はこれを48.66億円（8.3%）上回る。拡大の主因は包括利益のうち純利益を除く部分（35.11億円）で、保有株の時価上昇による増加は会社の意思とは別に起きる。その上で、計画期間3年の純利益（概算142.98億円。2028年3月期は2027年3月期予想と同水準と仮定）は、会社が想定する総還元（概算77.02億円＝配当52.19億円＋自己株式24.83億円）を約66億円上回って積み上がる設計のため、<strong>ROE7.5%を達成するには計画に無い追加還元が約114.6億円（自己資本の18.0%＝「大」）必要</strong>という計算になる。現預金79.76億円ではカバー率0.70と足りないが、上場株式232.47億円の売却を還元に充てれば原資にはなりうる。予想純利益に特別利益を含むため、本業が弱含めば必要額はこの計算より大きくなる。</p>
+
+  <h3>3. 売却資金の規模と、2030年度以降の大型投資</h3>
+  <p class="prose">会社は2030年度以降、越中島（約1,000億円）と新宿（約300億円）の再開発で総額1,300億円超の投資を予定しており、内部留保・新規借入・政策保有株式の売却で調達するとしている。2028プランのキャッシュ・アロケーションで見込む政策保有株式の売却は3年累計30〜40億円で、この投資額の3%程度にとどまる。有利子負債は約802億円（D/Eレシオ1.27倍）で、自己資本比率は35.8%。ROE目標の引き上げ理由を「政策保有株式縮減のため売却を加速」と説明した一方、売却資金を還元と大型投資のどちらに優先して振り向けるかは会社が示していない。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>業績と経営陣の動向</h2>
+  <ul class="tl">
+    <li>
+      <div class="date">2023.10</div>
+      <p class="ev">株式会社ショクカイ（加工食品卸）を連結子会社化</p>
+      <p class="note">食品カンパニーの売上が195億円（2022年3月期）→498億円（2025年3月期）に拡大。</p>
+    </li>
+    <li>
+      <div class="date">2024.09</div>
+      <p class="ev">農業生産法人「株式会社ブルーシード新潟」を設立</p>
+      <p class="note">米生産への進出。「複合経営」モデルの確立を目指す。</p>
+    </li>
+    <li>
+      <div class="date">2024.11.14</div>
+      <p class="ev">中期経営計画「ヤマタネ2028プラン」を公表</p>
+      <p class="note">株主還元指標にDOEを導入（2028年3月期3%）、累進配当化。山種不動産の吸収合併に伴う希薄化への対応として自己株式取得を計画。</p>
+    </li>
+    <li>
+      <div class="date">2025年3月期中</div>
+      <p class="ev">山種不動産を吸収合併</p>
+      <p class="note"><strong>自己株式2,496,120株（35.62億円）を山種美術財団等へ合併対価として交付。</strong>同社保有の有価証券が移管され、政策保有株式の時価が138.86億円→229.73億円、対純資産比24.8%→39.3%に上昇した。</p>
+    </li>
+    <li>
+      <div class="date">2025.06</div>
+      <p class="ev">普通株式1株を2株に分割（6月1日付）。農産ベストパートナー等を子会社化</p>
+      <p class="note">2025年7月にヤマタネドキュメントマネジメント・キョクトウも連結子会社化。</p>
+    </li>
+    <li>
+      <div class="date">2025.04〜11</div>
+      <p class="ev">自己株式の取得</p>
+      <p class="note"><strong>2025年4〜8月に12.5億円、同年11月に9.8億円、合計22.3億円（11月28日時点）を取得。</strong>有報の自己株式残高ベースでは2026年3月期の取得額は24.83億円。消却はしていない（発行済株式数22,688,362株のまま）。</p>
+    </li>
+    <li>
+      <div class="date">2025.11.28</div>
+      <p class="ev">2026年3月期の通期予想を上方修正　／　中間配当を増額</p>
+      <p class="note">営業利益37.8億円→57.1億円。中間配当35円（前期比+15円）。政策保有株式は「今後売却ペースを加速」と説明。</p>
+    </li>
+    <li>
+      <div class="date">2026.05.13</div>
+      <p class="ev">財務目標の一部見直し　／　売上高880億→1,000億円、ROE6.5%→7.5%以上</p>
+      <p class="note">営業利益47億円・EBITDA92億円・総還元性向70〜80%は据置。2027年3月期の会社予想：売上高985.6億円、営業利益41.1億円（▲29.9%）、純利益44.0億円、配当85円。</p>
+    </li>
+    <li>
+      <div class="date">2026.06.01</div>
+      <p class="ev">株式会社アジテック・ファインフーズの全株式を取得（取得原価80百万円）</p>
+      <p class="note">加工食品卸売の強化。M&amp;A取得費用がQ1の食品の営業利益に計上されている。</p>
+    </li>
+    <li>
+      <div class="date">2026.08.07</div>
+      <p class="ev">2027年3月期Q1決算　／　営業利益4.41億円（前年同期比▲78.1%）</p>
+      <p class="note">食品が営業赤字▲1.95億円。投資有価証券売却益10.94億円で純利益は9.84億円。<strong>自己株式数は1,564,818株で、期中の新たな取得は確認できない。</strong>通期予想は据置。</p>
+    </li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：中期経営計画「ヤマタネ2028プラン」（2024年11月14日）、財務目標の一部見直しに関するお知らせ（2026年5月13日）、2026年3月期第2四半期決算説明資料（2025年11月28日）、2027年3月期第1四半期決算短信（2026年8月7日）、有価証券報告書（2026年3月期、EDINET DBの構造化データ）。</li>
+    <li>2026年3月期の本決算短信は未取得のため、特別利益34.41億円の内訳（投資有価証券売却益・固定資産売却益）、通期のセグメント別営業利益、EBITDAの会社定義値は確認できていない。§04の「95.9%」は2026年3月期中間期のセグメント別営業利益増分による。</li>
+    <li>実力純利益・実力ROEの試算は設計判断3（公表値をそのまま使わず実力値に分解する）に基づく参考値。特別損益（純額）を税引後（実効税率30.62%）で控除している。</li>
+    <li>§04の追加還元必要額（約114.6億円）は、会社公表のROE目標（7.5%以上）と2027年3月期会社予想純利益から逆算した自己資本（586.67億円）を用いた本カルテの試算。会社は自己資本の絶対水準そのものは目標にしていない。2028年3月期の純利益・配当は会社予想を延長した仮定（純利益は2027年3月期予想と同額、配当はDOE3%）による。</li>
+    <li>政策保有株式の対純資産比36.6%は、有価証券報告書の純投資目的以外の上場株式14銘柄（232.47億円）を連結純資産で割った当方の算出値。非上場28銘柄（35.16億円）は含めていない。</li>
+    <li>前中期経営計画の目標・実績は「ヤマタネ2028プラン」資料の振り返りページによる。ヤマタネ2025プランの原本は未取得。</li>
+    <li>配当は2025年6月1日付の1株→2株の株式分割後の数字に統一している。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+</div>
