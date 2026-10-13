@@ -1,0 +1,340 @@
+<title>バイタルケーエスケー・ホールディングス 中計スコアカード</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F5; --surface:#FFFFFF; --surface-2:#F8F9FB;
+  --border:#DCE1E7; --border-strong:#BFC8D2;
+  --ink:#14181F; --ink-2:#3E4854; --ink-muted:#6C7683;
+  --accent:#1F3A5F; --accent-soft:#E4EAF2;
+  --good:#148F5B; --good-tint:#E3F3EB; --good-ink:#0E6E45;
+  --ontrack:#2B6FC4; --ontrack-tint:#E4EDF9; --ontrack-ink:#22589C;
+  --warn:#B5820A; --warn-tint:#F7EFDC; --warn-ink:#8A6407;
+  --crit:#C4362B; --crit-tint:#FAE7E5; --crit-ink:#992A21;
+  --wf-up:#C77B18; --wf-down:#04867C; --wf-total:#3E4854;
+  --grid:#E6EAEF;
+  --f-display:"Noto Serif JP",'Hiragino Mincho ProN',serif;
+  --f-body:"Noto Sans JP",'Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}}
+:root[data-theme="dark"]{
+  --ground:#0E1116; --surface:#161A20; --surface-2:#1C212A;
+  --border:#282F39; --border-strong:#3A434F;
+  --ink:#E9EDF2; --ink-2:#B6BFCA; --ink-muted:#7E8895;
+  --accent:#8FB0DA; --accent-soft:#1E2733;
+  --good:#3AA87A; --good-tint:#152A22; --good-ink:#5CC094;
+  --ontrack:#6296D8; --ontrack-tint:#16212F; --ontrack-ink:#84B0E5;
+  --warn:#D6A82A; --warn-tint:#2A2312; --warn-ink:#E5BE52;
+  --crit:#E0685E; --crit-tint:#2C1A18; --crit-ink:#EC8880;
+  --wf-up:#CE9033; --wf-down:#2DA79E; --wf-total:#B6BFCA; --grid:#242B34;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.75;margin:0;padding:0 20px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto}
+.prose{max-width:64ch}
+.masthead{padding:44px 0 22px;border-bottom:2px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.mh-left{display:flex;flex-direction:column;gap:6px}
+.ticker{font-family:var(--f-data);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--ink-muted)}
+.masthead h1{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.3;
+  margin:0;text-wrap:balance;letter-spacing:.01em}
+.mh-sub{font-size:13.5px;color:var(--ink-2);margin:0}
+.mh-right{font-family:var(--f-data);font-size:11.5px;line-height:1.9;color:var(--ink-muted);text-align:right}
+.mh-right b{color:var(--ink-2);font-weight:500}
+section{margin-top:56px}
+.eyebrow{font-family:var(--f-data);font-size:11px;font-weight:600;letter-spacing:.16em;
+  color:var(--accent);text-transform:uppercase;margin:0 0 6px}
+h2{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.45;margin:0 0 4px;text-wrap:balance}
+.deck{color:var(--ink-2);font-size:14px;margin:0 0 22px;max-width:66ch}
+h3{font-family:var(--f-display);font-weight:500;font-size:16px;margin:28px 0 8px}
+.verdict{background:var(--surface);border:1px solid var(--border);
+  border-top:3px solid var(--accent);padding:26px 30px;margin-top:32px}
+.verdict p{margin:0 0 14px;font-size:15.5px;line-height:1.85}
+.verdict p:last-child{margin-bottom:0}
+.verdict strong{font-weight:700}
+.pull{font-family:var(--f-display);font-weight:500;font-size:18px;line-height:1.6;
+  color:var(--ink);border-left:3px solid var(--wf-up);padding-left:16px;margin:20px 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13.5px}
+caption{text-align:left;padding:14px 16px 12px;font-size:13px;color:var(--ink-2);
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+caption b{color:var(--ink);font-weight:700;font-family:var(--f-display)}
+th,td{padding:9px 14px;text-align:left;vertical-align:middle}
+thead th{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ink-muted);
+  border-bottom:1px solid var(--border-strong);white-space:nowrap;background:var(--surface-2)}
+tbody tr+tr td{border-top:1px solid var(--border)}
+td.num,th.num{text-align:right;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+td.item{font-weight:500;min-width:150px}
+td.item small{display:block;font-weight:400;font-size:11.5px;color:var(--ink-muted);line-height:1.5;font-family:var(--f-body)}
+tr.spot td{background:var(--crit-tint)}
+tr.spot td.item{font-weight:700}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:2px;white-space:nowrap;letter-spacing:.02em}
+.c-good{background:var(--good-tint);color:var(--good-ink)}
+.c-ok{background:var(--ontrack-tint);color:var(--ontrack-ink)}
+.c-warn{background:var(--warn-tint);color:var(--warn-ink)}
+.c-crit{background:var(--crit-tint);color:var(--crit-ink)}
+.c-skip{background:var(--surface-2);color:var(--ink-muted);border:1px solid var(--border)}
+.meter{position:relative;height:20px;min-width:150px;background:var(--surface-2);border:1px solid var(--border)}
+.meter .fill{position:absolute;top:0;bottom:0;left:0}
+.meter .pace{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-2)}
+.meter .pace::after{content:attr(data-l);position:absolute;top:-15px;left:50%;transform:translateX(-50%);
+  font-family:var(--f-data);font-size:9px;color:var(--ink-muted);white-space:nowrap}
+.f-good{background:var(--good)} .f-ok{background:var(--ontrack)}
+.f-warn{background:var(--warn)} .f-crit{background:var(--crit)}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--border);padding:22px 22px 16px}
+figure .fig-title{font-family:var(--f-display);font-weight:500;font-size:15px;margin:0 0 2px}
+figure .fig-note{font-size:12px;color:var(--ink-muted);margin:0 0 14px;line-height:1.6}
+.svgbox{overflow-x:auto}
+figcaption{font-size:12px;color:var(--ink-muted);margin-top:12px;line-height:1.65}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 14px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;display:inline-block;border-radius:1px}
+.tl{list-style:none;margin:0;padding:0;border-left:1px solid var(--border-strong)}
+.tl li{position:relative;padding:0 0 24px 26px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:50%}
+.tl li.mark::before{background:var(--crit);border-color:var(--crit)}
+.tl li.good::before{background:var(--good);border-color:var(--good)}
+.tl .date{font-family:var(--f-data);font-size:11.5px;font-weight:600;color:var(--ink-muted);letter-spacing:.04em}
+.tl .ev{font-weight:500;margin:1px 0 2px}
+.tl .note{font-size:13px;color:var(--ink-2);margin:0;line-height:1.7}
+.tests{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:1px;background:var(--border);border:1px solid var(--border)}
+.tests li{background:var(--surface);padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tests .tag{font-family:var(--f-data);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  padding:4px 8px;border-radius:2px;white-space:nowrap;margin-top:2px}
+.tests .t-buy{background:var(--good-tint);color:var(--good-ink)}
+.tests .t-sell{background:var(--crit-tint);color:var(--crit-ink)}
+.tests h4{margin:0 0 3px;font-size:14.5px;font-weight:500;font-family:var(--f-body)}
+.tests p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+.notes{margin-top:56px;padding-top:22px;border-top:1px solid var(--border)}
+.notes h2{font-size:15px;margin-bottom:10px}
+.notes ol{margin:0;padding-left:1.3em;font-size:12.5px;color:var(--ink-muted);line-height:1.85}
+.notes li{margin-bottom:5px}
+.disclaimer{margin-top:26px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12px;color:var(--ink-muted);line-height:1.7}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.masthead h1{font-size:23px}.mh-right{text-align:left}body{font-size:14.5px}}
+</style>
+<style>
+/* report_style.STYLE の .prose{max-width:64ch} は8章構成カード向けの
+   可読性重視の行長。5章構成カードは自由記述の段落が長く、64chだと
+   画面半分で折り返して読みにくい（2026-09-29ユーザー指摘）ため全幅にする。 */
+.prose{max-width:none}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="mh-left">
+    <div class="ticker">3151 ・ 東証プライム ・ 日本基準</div>
+    <h1>バイタルケーエスケー・ホールディングス<br>中期経営計画の履歴と進捗</h1>
+    <p class="mh-sub">「中期経営計画2027」は工程33%。営業利益・コア営業利益は計画未達だが、非事業性の利益（投資事業組合運用益・資産売却益）が経常利益・純利益を押し上げている</p>
+  </div>
+  <div class="mh-right">
+    基準日　<b>2026年9月29日</b><br>
+    会計年度　<b>3月期</b><br>
+    金額単位　<b>億円（別記なき限り）</b>
+  </div>
+</header>
+
+<!-- ===================== §1 ===================== -->
+<section style="margin-top:36px">
+  <p class="eyebrow">01　中期経営計画の履歴</p>
+  <h2>いつ発表され、いまどういう状態か</h2>
+  <div class="tablewrap">
+    <table>
+      <caption><b>発表の経緯</b></caption>
+      <thead><tr><th>時期</th><th>できごと</th></tr></thead>
+      <tbody>
+        <tr><td class="num" style="white-space:nowrap">2022.04</td>
+          <td class="item">第5次中期経営計画（2023年3月期〜2025年3月期）スタート</td></tr>
+        <tr class="spot"><td class="num" style="white-space:nowrap">2025.04.17</td>
+          <td class="item">中期経営計画2027「Move on to the Next Stage」（2026年3月期〜2028年3月期）を公表。
+            新規事業として製薬事業（未承認薬導入支援）へ参入を決定</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026.06.19</td>
+          <td class="item">有価証券報告書（第17期）提出。中計初年度（2026年3月期）実績が判明</td></tr>
+        <tr><td class="num" style="white-space:nowrap">2026年9月29日時点</td>
+          <td class="item">中期経営計画2027は工程33%を通過、2027年3月期（2年目）が進行中</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px;font-size:12.5px;color:var(--ink-muted)">
+    原本：<a href="https://kanazawatakashi-lgtm.github.io/chukei-monitor/pdf/3151/midterm_plan_2027.pdf" target="_blank" rel="noopener">中期経営計画2027「Move on to the Next Stage」（PDF）</a>
+  </p>
+</section>
+
+<!-- ===================== §2 ===================== -->
+<section>
+  <p class="eyebrow">02　前計画の達成度　─　第5次中期経営計画（2023年3月期〜2025年3月期）</p>
+  <h2>5項目すべて達成。ただし純利益急増の約58%は政策保有株式売却益</h2>
+  <p class="prose">決算短信本文に最終年度の利益計画と実績の対比表を掲げ、5項目すべての達成を明記している。ただし純利益は特別利益（投資有価証券売却益4,238百万円＝政策保有株式の売却）が7,308百万円のうち約58%を占めており、design判断3の実力値分解では実力純利益は概算4,704百万円（公表の64%程度）、実力ROEは概算4.5%（公表6.9%）まで下振れする。</p>
+
+  <div class="tablewrap">
+    <table>
+      <caption><b>第5次中計の目標と実績（2025年3月期）</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">目標</th><th class="num">実績</th><th>達成</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">5,900</td><td class="num">6,003.70</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">営業利益</td><td class="num">55.00</td><td class="num">57.06</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">経常利益</td><td class="num">64.00</td><td class="num">69.70</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">純利益</td><td class="num">60.00</td><td class="num">73.08</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+        <tr><td class="item">ROE</td><td class="num">5.8%</td><td class="num">6.9%</td>
+          <td><span class="chip c-good">達成</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===================== §3 ===================== -->
+<section>
+  <p class="eyebrow">03　現計画の進捗　─　中期経営計画2027（2026年3月期〜2028年3月期）</p>
+  <h2>営業利益・コア営業利益は計画未達。経常利益・純利益は非事業性の利益で計画超過</h2>
+  <div class="tablewrap" style="margin-top:14px">
+    <table>
+      <caption><b>政策保有株式の削減計画と進捗</b>　対連結純資産比。売却資金は新規事業投資と株主還元の原資</caption>
+      <thead><tr><th>項目</th><th class="num">起点</th><th class="num">目標（期限）</th><th class="num">最新実績</th><th>達成度</th></tr></thead>
+      <tbody>
+        <tr class="spot"><td class="item">政策保有株式の対純資産比</td><td class="num" style="white-space:normal">37.5%<br><small style="color:var(--ink-muted)">2025年3月期末・403億円</small></td><td class="num" style="white-space:normal">20%未満（2028年3月期末）<br>10%未満（2030年3月期末）</td><td class="num" style="white-space:normal">公式比率は未確認<br><small style="color:var(--ink-muted)">2026年3月期末</small></td><td>判定不能。削減は確認できていない</td></tr>
+        <tr><td class="item">参考：BS投資有価証券</td><td class="num" style="white-space:normal">451.31億円<br><small style="color:var(--ink-muted)">2025年3月期末</small></td><td class="num" style="white-space:normal">—</td><td class="num" style="white-space:normal">530.57億円<br><small style="color:var(--ink-muted)">2026年3月期末。2026年6月末は520.08億円</small></td><td>+17.6%（時価上昇を含む）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">当期はケーエスケー7銘柄・バイタルネット6銘柄を売却（約34.77億円、売却益40.80億円）した。起点から期限（2028年3月期末）までの3年のうち、約1.5年が経過している。</p>
+
+  <div class="tablewrap">
+    <table>
+      <caption><b>初年度（2026年3月期）：計画と実績</b>　単位：億円・%</caption>
+      <thead><tr><th>項目</th><th class="num">計画</th><th class="num">実績</th><th class="num">達成率</th></tr></thead>
+      <tbody>
+        <tr><td class="item">売上高</td><td class="num">6,200</td><td class="num">6,104.97</td><td class="num">98.5%</td></tr>
+        <tr class="spot"><td class="item">コア営業利益</td><td class="num">60.00</td><td class="num">53.07</td><td class="num">88.5%</td></tr>
+        <tr class="spot"><td class="item">営業利益</td><td class="num">51.00</td><td class="num">40.27</td><td class="num">78.9%</td></tr>
+        <tr><td class="item">経常利益</td><td class="num">60.00</td><td class="num">78.22</td><td class="num">130.4%</td></tr>
+        <tr><td class="item">純利益</td><td class="num">72.00</td><td class="num">73.62</td><td class="num">102.3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:16px">計画そのものが研究開発費の計上を織り込み初年度を減益（営業利益51.00億円）と見込んでいたが、実績はその低い計画すらさらに下回る40.27億円で着地した。一方、経常利益の大幅上振れ（130.4%）の主因は特別利益ではなく、営業外収益の「投資事業組合運用益」27.42億円（VC・PEファンド出資の評価益、前期はわずか0.01億円）という事業の実力とは無関係な一過性・市況連動の益である。FY2026（2027年3月期）会社予想もコア営業利益・営業利益・経常利益をすべて下方修正（純利益のみ上方修正）しており、非事業性の利益に稼ぐ力を補ってもらう構図が2年目も続く見通し。</p>
+
+  <div class="tablewrap" style="margin-top:18px">
+    <table>
+      <caption><b>セグメント利益増分（2025年3月期→2026年3月期）</b>　単位：億円</caption>
+      <thead><tr><th>セグメント</th><th class="num">増減</th></tr></thead>
+      <tbody>
+        <tr><td class="item">医薬品卸売事業</td><td class="num">▲2.43</td></tr>
+        <tr><td class="item">薬局事業</td><td class="num">+0.01</td></tr>
+        <tr><td class="item">動物用医薬品卸売事業</td><td class="num">▲0.10</td></tr>
+        <tr class="spot"><td class="item">製薬事業（新設）</td><td class="num">▲13.12</td></tr>
+        <tr><td class="item">介護レンタルその他事業</td><td class="num">▲0.24</td></tr>
+        <tr><td class="item">合計</td><td class="num">▲15.88</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:12px">営業利益悪化の82.6%は新設の製薬事業セグメントの損失（研究開発費先行投資）が占める。中核の医薬品卸売事業も単独で▲2.43億円（▲4.7%）の減益で、この銘柄で初めて中核セグメントが減益に転じた年度だが、これは会社が織り込み済みの新規事業への先行投資であり、5901・5290型の構造的な一点賭けとは性格が異なる。</p>
+</section>
+
+<!-- ===================== §4 ===================== -->
+<section>
+  <p class="eyebrow">04　注目すべき点</p>
+
+  <h3>1. 「稼ぐ力」は非事業性の利益に支えられている。実力純利益は公表の65%</h3>
+  <p class="prose">design判断3の実力値分解では、特別損益（純額+36.80億円）を税引後控除した実力純利益は概算47.86億円で、公表純利益73.62億円の65%程度にとどまる。前述の投資事業組合運用益27.42億円も合わせて控除すると、実力純利益は概算28.67億円まで下がり、実力ROEは概算2.6%まで低下する（会社の公式区分ではない参考値）。前期（FY2024）の実力ROEも概算4.5%と、新中計開始前から既に公表値との乖離が続いている。</p>
+
+  <h3>2. 株主還元：配当は着実に増配。追加還元の必要性は数値上「中」程度</h3>
+  <p class="prose"><strong>政策保有株式の削減：</strong>2028年3月期末に対純資産比20%未満（起点37.5%）という目標に対し、最新の公式比率は未確認で、BS投資有価証券は+17.6%増えており、削減は確認できていない（§03の表）。売却資金は新規事業投資と還元の両方に充てる設計で、還元余力は売却の進捗に左右される。</p>
+  <p class="prose">DPSは42→45→70円と一貫増配（FY2025は前期比+55.6%）し、配当性向も目標レンジ40〜45%程度に到達している。自己株式取得はFY2025にほぼゼロまで縮小したが、2026年5月に新プログラム（上限40億円）を決議しQ1から再開した。</p>
+  <p class="prose"><strong>追加還元の必要性を数値で評価する。</strong>会社は自己資本の絶対水準を目標にしていないが、付録のROICツリー（FY2027計画：調整後ROE7.5%・純利益81.00億円）から自己資本を逆算すると81.00÷7.5%＝1,080.00億円になる。実績の自己資本は2026年3月期末で1,172.23億円と、この逆算目標を92.23億円（7.9%）上回っている。自己資本比7.9%の超過は本プロジェクトの区分では「小」〜「中」の境目に位置し、8158・8018ほど極端ではないが、政策保有株式の含み益拡大（その他有価証券評価差額金226.24億円→274.38億円）が主因という点で同じ構造の初期段階にある。前期（FY2024）末時点では逆算目標をむしろ下回っており（自己資本が不足気味だった）、1年でこの符号が反転した点に注意が必要。</p>
+
+  <h3>3. 政策保有株式：個別銘柄は売却継続も、BS計上額は含み益拡大で純増</h3>
+  <p class="prose">ユーザーが重点的に追うよう指定した政策保有株式の縮減目標（2028年3月期に対純資産比20%未満、2030年3月期に10%未満）に対し、当期はケーエスケー7銘柄・バイタルネット6銘柄を売却（合計約34.77億円）した一方、BS投資有価証券は451.31億円→530.57億円へ+79.26億円増加した。残存銘柄の時価上昇が売却を上回ったとみられ、4973（日本高純度化学）で確認された「削減しているのに含み益拡大が売却ペースを上回る」構造がこの銘柄でも疑われる。公式の対純資産比率のFY2025時点の数値は有報の可読テキストからは確認できていない（gaps参照）。2027年3月期第1四半期はBS投資有価証券がわずかに減少したが、売却額自体は前年同期の6分の1程度に鈍化しており、市況変動か売却進展かは単四半期では判別できない。</p>
+</section>
+
+<!-- ===================== §5 ===================== -->
+<section>
+  <p class="eyebrow">05　記録</p>
+  <h2>業績と経営陣の動向</h2>
+  <ul class="tl">
+    <li>
+      <div class="date">2022.04</div>
+      <p class="ev">第5次中期経営計画（2023年3月期〜2025年3月期）スタート</p>
+    </li>
+    <li>
+      <div class="date">2024.08</div>
+      <p class="ev">アローメディカル㈱（動物用医薬品卸売）を連結子会社化</p>
+    </li>
+    <li>
+      <div class="date">2025.04.17</div>
+      <p class="ev">中期経営計画2027公表</p>
+      <p class="note">新規事業として製薬事業（未承認薬導入支援事業）への参入を決定。政策保有株式の縮減目標を2年前倒し（2028年3月期20%未満、2030年3月期10%未満）。株主還元方針を総還元性向50%以上+DOE2%以上→DOE3%以上・配当性向40〜45%程度へ変更。</p>
+    </li>
+    <li>
+      <div class="date">2025.05.14</div>
+      <p class="ev">2025年3月期決算発表　／　第5次中計最終年度、5項目すべて達成</p>
+      <p class="note">純利益は政策保有株式売却益4,238百万円を含み前年比+25.1%。自己株式取得200万株(25.05億円)実施、年間配当45円。</p>
+    </li>
+    <li>
+      <div class="date">2025.12.01</div>
+      <p class="ev">連結子会社の㈱ケーエスケーが八千代ケアホールディングス㈱を21.00億円で取得し子会社化</p>
+      <p class="note">中計の介護レンタル事業拡大方針の実行。のれん21.04億円発生。</p>
+    </li>
+    <li>
+      <div class="date">2026.05.14</div>
+      <p class="ev">2026年3月期決算発表　／　期末配当増額・新規自己株式取得を決議</p>
+      <p class="note">期末配当を34円→36円へ増額（年間70円、配当性向46.0%）。自己株式取得（上限200万株・40億円）を新規決議。</p>
+    </li>
+    <li>
+      <div class="date">2026.06.19</div>
+      <p class="ev">有価証券報告書（第17期）提出　／　中計初年度実績が判明</p>
+      <p class="note">コア営業利益・営業利益は計画未達（88.5%・78.9%）、経常利益・純利益は計画超過（130.4%・102.3%）。医薬品卸売事業セグメントが初めて減益。</p>
+    </li>
+    <li>
+      <div class="date">2026.08.06</div>
+      <p class="ev">2027年3月期第1四半期決算発表</p>
+      <p class="note">純利益が前年同期比-48.2%と大幅悪化。通期予想を下方修正（コア営業利益・営業利益・経常利益）、純利益予想は上方修正。</p>
+    </li>
+    <li>
+      <div class="date">2026.09.01</div>
+      <p class="ev">自己株式の取得状況を開示（2026年8月31日時点）</p>
+      <p class="note"><strong>2026年5月14日決議の取得枠（上限200万株・40億円）に対し、8月末までの累計取得は77.48万株・12.25億円（消化率30.6%）</strong>で、期間按分34.5%とほぼ整合するペース。</p>
+    </li>
+    <li>
+      <div class="date">2026.10.01</div>
+      <p class="ev">自己株式の取得状況を開示（2026年9月30日時点）</p>
+      <p class="note"><strong>累計取得は91.52万株・14.52億円（消化率36.3%、期間按分44.1%を7.8ポイント下回る）</strong>。8月末の下回り幅（3.9ポイント）から拡大した。</p>
+    </li>
+  </ul>
+</section>
+
+<div class="notes">
+  <h2>注記と出典</h2>
+  <ol>
+    <li>数値の出典：中期経営計画2027策定資料（2025年4月17日、全47ページ）、2025・2026年3月期決算短信〔日本基準〕(連結)、有価証券報告書 第17期（2026年6月19日提出）、2027年3月期第1四半期決算短信（2026年8月6日）。</li>
+    <li>実力純利益の試算は設計判断3に基づく参考値。実効税率は30%を仮定している。</li>
+    <li>§04の自己資本超過額（92.23億円＝7.9%）は、付録ROICツリー（調整後ROE7.5%・純利益81.00億円）から逆算した自己資本目標（1,080.00億円）を用いた本カルテの試算。会社は自己資本の絶対水準そのものは目標にしていない。配当・自己株買いの3年累計計画額は非開示のため、機械判定の追加還元必要度は「開示なし」のまま。</li>
+    <li>政策保有株式の対連結純資産比率のFY2025時点の公式数値は有報の可読テキストからは未確認。BS投資有価証券の純増から悪化の可能性が高いと推定している（gaps参照）。</li>
+    <li>本カルテは2026年9月29日、5章構成（①中期経営計画の履歴／②前計画の達成度／③現計画の進捗／④注目すべき点／⑤記録）に全面改訂した。判定サマリー（旧§01のPAGREレバー・グレード表示）は廃止し、§04の分析に置き換えている。</li>
+  </ol>
+  <p class="disclaimer">本資料は公開開示資料の整理と論点抽出を目的としたもので、投資勧誘または投資助言ではありません。将来の達成可能性に関する記述は開示情報からの推論であり、会社の見解ではありません。投資判断はご自身の責任においてお願いします。</p>
+</div>
+</div>
